@@ -488,6 +488,10 @@
   text-transform: uppercase;
 }
 
+.about-core-specs-head {
+  margin-bottom: 5px;
+}
+
 .work-card-copy-row {
   display: flex;
   align-items: start;

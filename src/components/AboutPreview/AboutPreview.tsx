@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
@@ -14,8 +15,61 @@ interface AboutPreviewProps {
   onToggleExpanded: () => void;
 }
 
+const YOUTUBE_VIEWS_FALLBACK = '130K+';
+const YOUTUBE_VIEWS_CACHE_KEY = 'woguiro-youtube-views';
+const YOUTUBE_VIEWS_CACHE_TTL_MS = 12 * 60 * 60 * 1000;
+
+const formatStatCount = (value: number) => {
+  if (value >= 1_000_000) {
+    const millions = Math.floor(value / 100_000) / 10;
+    return `${Number.isInteger(millions) ? millions.toFixed(0) : millions.toFixed(1)}M+`;
+  }
+
+  if (value >= 1_000) {
+    return `${Math.floor(value / 1_000)}K+`;
+  }
+
+  return value.toString();
+};
+
 export default function AboutPreview({ expanded, onToggleExpanded }: AboutPreviewProps) {
   const { t } = useTranslation();
+  const [youtubeViews, setYoutubeViews] = useState(YOUTUBE_VIEWS_FALLBACK);
+
+  useEffect(() => {
+    const now = Date.now();
+
+    try {
+      const cached = window.localStorage.getItem(YOUTUBE_VIEWS_CACHE_KEY);
+      const parsed = cached ? JSON.parse(cached) : null;
+
+      if (typeof parsed?.value === 'string' && now - Number(parsed.updatedAt) < YOUTUBE_VIEWS_CACHE_TTL_MS) {
+        setYoutubeViews(parsed.value);
+        return;
+      }
+    } catch {
+      window.localStorage.removeItem(YOUTUBE_VIEWS_CACHE_KEY);
+    }
+
+    let isCurrent = true;
+
+    fetch('/api/youtube-stats')
+      .then((response) => (response.ok ? response.json() : null))
+      .then((payload) => {
+        if (!isCurrent || typeof payload?.viewCount !== 'number') {
+          return;
+        }
+
+        const value = formatStatCount(payload.viewCount);
+        setYoutubeViews(value);
+        window.localStorage.setItem(YOUTUBE_VIEWS_CACHE_KEY, JSON.stringify({ value, updatedAt: now }));
+      })
+      .catch(() => undefined);
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
 
   return (
     <section className="home-section about-preview-section" id="about-section">
@@ -46,7 +100,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
             <div className="about-stat-strip">
               {STAT_HIGHLIGHTS.map((stat) => (
                 <div key={stat.labelKey} className="about-stat-card">
-                  <span className="about-stat-value">{stat.value}</span>
+                  <span className="about-stat-value">{stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}</span>
                   <span className="about-stat-label">{t(stat.labelKey)}</span>
                 </div>
               ))}
