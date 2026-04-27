@@ -34,6 +34,9 @@ const compactLinks = [
   },
 ] as const;
 
+type CompactLink = (typeof compactLinks)[number];
+type CompactSublink = Extract<CompactLink, { readonly sublinks: readonly unknown[] }>['sublinks'][number];
+
 export default function SiteNav() {
   const { t } = useTranslation();
   const location = useLocation();
@@ -86,7 +89,7 @@ export default function SiteNav() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const runNavAction = (link: (typeof compactLinks)[number] | NonNullable<(typeof compactLinks)[number]['sublinks']>[number]) => {
+  const runNavAction = (link: CompactLink | CompactSublink) => {
     if ('action' in link && link.action === 'home') {
       handleLogoClick();
       return;
