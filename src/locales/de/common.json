@@ -1,0 +1,159 @@
+{
+  "seo": {
+    "title": "Woguiro - Fotograf & Filmemacher | Portugal",
+    "description": "Fotografie und Video fur alle, die das Gewohnliche ablehnen. Lissabon - Weltweit."
+  },
+  "hero": {
+    "title": "WOGUIRO",
+    "tagline": "Fotografie & Videografie fur alle, die das Gewohnliche ablehnen.",
+    "location": "Lissabon-Weltweit",
+    "cta": "Projekt Starten",
+    "clockLabel": "Lissabon Zeit",
+    "discover": "Entdecken"
+  },
+  "loading": {
+    "label": "Archiv Wird Geoffnet",
+    "status": "Unabhangige visuelle Recherche ladt"
+  },
+  "nav": {
+    "home": "Home",
+    "siteNavigation": "Seitennavigation",
+    "heroNavigation": "Hero-Navigation",
+    "homeLabel": "Woguiro Home",
+    "portfolio": "Portfolio",
+    "photography": "Fotografie",
+    "videography": "Videografie",
+    "creator": "Der Kreative",
+    "about": "Uber Mich",
+    "specs": "Tech Specs",
+    "connect": "Kontakt",
+    "expertise": "Expertise",
+    "brands": "Brands & UGC",
+    "artists": "Fur Artists"
+  },
+  "language": {
+    "selector": "Sprachauswahl"
+  },
+  "cursor": {
+    "view": "SEHEN"
+  },
+  "works": {
+    "eyebrow": "Ausgewahlte Arbeiten",
+    "meta": "Unabhangiges visuelles Archiv",
+    "title": "Foto, Motion und Direction mit Haltung.",
+    "description": "Eine kuratierte Startauswahl aus Bild, Motion und kommerziellem Instinkt. Jeder Fokus offnet eine tiefere editoriale Lesart innerhalb der Homepage.",
+    "ghost": "Werke",
+    "focus": "Ausgewahlter Fokus",
+    "viewAll": "Alle Arbeiten Ansehen",
+    "collapse": "Archiv Schliessen",
+    "openProject": "Fokus Offnen",
+    "available": "Archiv Bereit",
+    "curated": "Kuration fur die Homepage",
+    "filters": {
+      "all": "Alle",
+      "photography": "Fotografie",
+      "videography": "Videografie",
+      "brands": "Brands & UGC",
+      "artists": "Fur Artists"
+    },
+    "items": {
+      "street-narrative": {
+        "title": "Street Narrative",
+        "subtitle": "Licht, Stille und menschliche Textur in der Stadt.",
+        "description": "Eine Still-Image-Direction, die zuerst um Atmosphare gebaut ist. Der Frame bleibt minimal, aber jeder Crop tragt Spannung, Bewegung und premium editorial Kontrolle.",
+        "location": "Lissabon / Porto",
+        "focusPoints": ["Unabhangige visuelle Recherche", "Kontraststarke Stills", "Frames fur Kampagnen-Cuts vorbereitet"],
+        "tags": ["Street", "Portrait", "Editorial"]
+      },
+      "artist-motion-cut": {
+        "title": "Artist Motion Cut",
+        "subtitle": "Visuelle Sprache fur Artists, die Mood vor Noise wollen.",
+        "description": "Motion-Arbeit fur Musik, Performance und Identitat. Das Pacing ist cinematografisch, das Grading bleibt kontrolliert und der finale Cut wirkt bewusst statt uberladen.",
+        "location": "Portugal / Remote",
+        "focusPoints": ["Artist-first Pacing", "Cinematografische Motion-Grammatik", "Gebaut fur Reels, Clips und Social Edits"],
+        "tags": ["Musik", "Direction", "Motion"]
+      },
+      "brand-pulse": {
+        "title": "Brand Pulse",
+        "subtitle": "Kommerzieller Instinkt in scharfen visuellen Rhythmus ubersetzt.",
+        "description": "Ein sauberer kommerzieller Cut fur Brands und UGC. Produktframing, Rhythmus und Call-to-Action-Abstand werden mit derselben Sorgfalt behandelt wie das Bild selbst.",
+        "location": "Europa / Remote",
+        "focusPoints": ["Brand-ready Struktur", "Schnelle Aufmerksamkeitsaufnahme", "Cutdowns fur paid und organic Nutzung"],
+        "tags": ["UGC", "Commercial", "Conversion"]
+      },
+      "portrait-study": {
+        "title": "Portrait Study",
+        "subtitle": "Stille, Zuruckhaltung und Prasenz ohne visuellen Abfall.",
+        "description": "Portrait-Sessions, abgestimmt auf Identitat und Prasenz. Minimale Hintergrunde, prazises Licht und eine reduzierte Palette lassen Ausdruck die Arbeit tragen.",
+        "location": "Lissabon",
+        "focusPoints": ["Kontrollierte Portraitsprache", "Editoriale Haltung", "High-end Still-Auswahl"],
+        "tags": ["Portrait", "Identitat", "Minimal"]
+      },
+      "ugc-signal": {
+        "title": "UGC Signal",
+        "subtitle": "Schneller, taktiler Content, der trotzdem autoral wirkt.",
+        "description": "UGC-Direction, die nicht in generische Formeln fallt. Framing, Rhythmus und Produktnahe werden fur Vertrauen und Wiederansehen geschliffen.",
+        "location": "Europa",
+        "focusPoints": ["Mobile-natives Pacing", "Produkt-fokussiertes Framing", "Conversion-orientierte Cuts"],
+        "tags": ["UGC", "Produkt", "Social"]
+      }
+    }
+  },
+  "aboutPreview": {
+    "eyebrow": "Der Kreative",
+    "meta": "Profil / Reichweite / System",
+    "ghost": "Profil",
+    "title": "Gebaut zwischen Street-Instinkt, cinematografischer Motion und Creative Direction.",
+    "description": "Guiro arbeitet als Fotograf, Videograf und visueller Director mit einem premium Blick fur Atmosphare, Bewegung und Markensensibilitat.",
+    "body": "Basierend in Portugal, arbeitend in Europa und daruber hinaus, verbindet er unabhangigen Geschmack mit kommerziell scharfer Ausfuhrung.",
+    "readMore": "Mehr Lesen",
+    "collapse": "Schliessen",
+    "disciplines": "Disziplinen",
+    "reach": "Globale Reichweite",
+    "languages": "Arbeitssprachen",
+    "specs": "Core Setup",
+    "disciplineDirection": "Creative Direction",
+    "disciplineMusic": "Musikalische Sensibilitat",
+    "portraitAlt": "Guiro Portrait",
+    "disciplinesList": [
+      "Street, Portrait und Still-Image-Systeme mit cinematografischem Auge.",
+      "Motion-gefuhrte Visuals fur Musik, Reels, Kampagnen und narrative Cuts.",
+      "Creative Direction, die Mood, Framing, Farbe und Pace ausrichtet.",
+      "Commercial- und UGC-Arbeit fur Markenrelevanz und Klarheit.",
+      "Visuelle Identitaten fur Artists, Cover, Clips und atmospharische Kampagnen.",
+      "Musikalische Sensibilitat, die Rhythmus, Edits und emotionales Timing scharft."
+    ],
+    "tech": {
+      "cpu": "CPU",
+      "gpu": "GPU",
+      "camera": "Kamera",
+      "gimbal": "Gimbal",
+      "audio": "Audio",
+      "storage": "Speicher"
+    },
+    "stats": {
+      "views": "YouTube Views",
+      "countries": "Kundenlander",
+      "languages": "Site-Sprachen",
+      "partnerships": "Aktive Partnerschaften"
+    }
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "meta": "Verfugbarkeit / direkte Kanale",
+    "ghost": "Start",
+    "title": "Lasst uns Bilder bauen, die das Gewohnliche ablehnen.",
+    "description": "Verfugbar fur Foto, Motion, Artist Visuals, UGC und Creative Direction. Kurzer Brief oder komplette Produktion, alles beginnt hier.",
+    "primary": "Email Senden",
+    "secondary": "Instagram Offnen",
+    "copy": "Email Kopieren",
+    "copied": "Email Kopiert",
+    "availability": "Verfugbarkeit",
+    "availabilityValue": "Lissabon Base / globale Produktionen",
+    "reply": "Ubliche Antwortzeit: bis zu 48h",
+    "channels": "Bevorzugte Kanale",
+    "youtube": "YouTube",
+    "instagram": "Instagram",
+    "email": "Email"
+  }
+}

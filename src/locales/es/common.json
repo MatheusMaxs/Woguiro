@@ -1,0 +1,159 @@
+{
+  "seo": {
+    "title": "Woguiro - Fotografo & Videografo | Portugal",
+    "description": "Fotografia y videografia para quienes rechazan lo ordinario. Lisboa - Mundial."
+  },
+  "hero": {
+    "title": "WOGUIRO",
+    "tagline": "Fotografia & Videografia para quienes rechazan lo ordinario.",
+    "location": "Lisboa-Mundial",
+    "cta": "Iniciar Proyecto",
+    "clockLabel": "Hora de Lisboa",
+    "discover": "Explorar"
+  },
+  "loading": {
+    "label": "Entrando en el Archivo",
+    "status": "Investigacion visual independiente cargando"
+  },
+  "nav": {
+    "home": "Inicio",
+    "siteNavigation": "Navegacion del sitio",
+    "heroNavigation": "Navegacion de la hero",
+    "homeLabel": "Woguiro Inicio",
+    "portfolio": "Portfolio",
+    "photography": "Fotografia",
+    "videography": "Videografia",
+    "creator": "El Creador",
+    "about": "Sobre Mi",
+    "specs": "Especificaciones",
+    "connect": "Contacto",
+    "expertise": "Especialidad",
+    "brands": "Marcas & UGC",
+    "artists": "Para Artistas"
+  },
+  "language": {
+    "selector": "Selector de idioma"
+  },
+  "cursor": {
+    "view": "VER"
+  },
+  "works": {
+    "eyebrow": "Trabajos Destacados",
+    "meta": "Archivo visual independiente",
+    "title": "Foto, motion y direccion con identidad.",
+    "description": "Una curadoria inicial de imagen, motion e instinto comercial. Cada foco abre una lectura editorial mas profunda dentro de la homepage.",
+    "ghost": "Obras",
+    "focus": "Foco Seleccionado",
+    "viewAll": "Ver Todos los Trabajos",
+    "collapse": "Cerrar Archivo",
+    "openProject": "Abrir Foco",
+    "available": "Archivo Listo",
+    "curated": "Curadoria pensada para la homepage",
+    "filters": {
+      "all": "Todos",
+      "photography": "Fotografia",
+      "videography": "Videografia",
+      "brands": "Marcas & UGC",
+      "artists": "Para Artistas"
+    },
+    "items": {
+      "street-narrative": {
+        "title": "Narrativa de Calle",
+        "subtitle": "Luz, silencio y textura humana dentro de la ciudad.",
+        "description": "Una direccion de imagen fija construida primero desde la atmosfera. El encuadre se mantiene minimalista, pero cada corte lleva tension, movimiento y control editorial premium.",
+        "location": "Lisboa / Porto",
+        "focusPoints": ["Investigacion visual independiente", "Stills de alto contraste", "Frames preparados para cortes de campana"],
+        "tags": ["Calle", "Retrato", "Editorial"]
+      },
+      "artist-motion-cut": {
+        "title": "Corte Motion para Artistas",
+        "subtitle": "Lenguaje visual para artistas que quieren mood antes que ruido.",
+        "description": "Motion pensado para musica, performance e identidad. El ritmo es cinematografico, el color se mantiene controlado y el corte final se siente intencional en vez de saturado.",
+        "location": "Portugal / Remoto",
+        "focusPoints": ["Ritmo pensado para artistas", "Gramatica cinematografica de movimiento", "Construido para reels, clips y ediciones sociales"],
+        "tags": ["Musica", "Direccion", "Motion"]
+      },
+      "brand-pulse": {
+        "title": "Pulso de Marca",
+        "subtitle": "Instinto comercial traducido en ritmo visual afilado.",
+        "description": "Un corte comercial mas limpio para marcas y UGC. Encuadre de producto, ritmo y espacio de llamada a la accion reciben el mismo cuidado que la imagen.",
+        "location": "Europa / Remoto",
+        "focusPoints": ["Estructura lista para marca", "Captura rapida de atencion", "Cortes para uso pago y organico"],
+        "tags": ["UGC", "Comercial", "Conversion"]
+      },
+      "portrait-study": {
+        "title": "Estudio de Retrato",
+        "subtitle": "Quietud, contencion y presencia sin desperdicio visual.",
+        "description": "Sesiones de retrato ajustadas a identidad y presencia. Fondos minimos, luz precisa y paleta contenida dejan que la expresion sostenga la imagen.",
+        "location": "Lisboa",
+        "focusPoints": ["Lenguaje de retrato controlado", "Postura editorial", "Seleccion de stills premium"],
+        "tags": ["Retrato", "Identidad", "Minimal"]
+      },
+      "ugc-signal": {
+        "title": "Senal UGC",
+        "subtitle": "Contenido rapido y tactil que aun se siente autoral.",
+        "description": "Direccion UGC que no cae en formulas genericas. Encuadre, ritmo y cercania del producto se ajustan para confianza y repeticion de visualizacion.",
+        "location": "Europa",
+        "focusPoints": ["Ritmo nativo mobile", "Encuadre centrado en producto", "Cortes orientados a conversion"],
+        "tags": ["UGC", "Producto", "Social"]
+      }
+    }
+  },
+  "aboutPreview": {
+    "eyebrow": "El Creador",
+    "meta": "Perfil / alcance / sistema",
+    "ghost": "Perfil",
+    "title": "Construido entre instinto de calle, motion cinematografico y direccion creativa.",
+    "description": "Guiro trabaja como fotografo, videografo y director visual con una mirada premium para atmosfera, movimiento y sensibilidad de marca.",
+    "body": "Basado en Portugal, trabajando por Europa y mas alla, combina gusto independiente con una ejecucion comercialmente afilada.",
+    "readMore": "Leer Mas",
+    "collapse": "Cerrar",
+    "disciplines": "Disciplinas",
+    "reach": "Alcance Global",
+    "languages": "Idiomas de Trabajo",
+    "specs": "Setup Principal",
+    "disciplineDirection": "Direccion Creativa",
+    "disciplineMusic": "Sensibilidad Musical",
+    "portraitAlt": "Retrato de Guiro",
+    "disciplinesList": [
+      "Calle, retrato y sistemas de imagen fija con mirada cinematografica.",
+      "Visuales en movimiento para musica, reels, campanas y cortes narrativos.",
+      "Direccion creativa que alinea mood, encuadre, color y ritmo.",
+      "Trabajo comercial y UGC disenado para relevancia y claridad de marca.",
+      "Identidades visuales para artistas, portadas, clips y campanas atmosfericas.",
+      "Sensibilidad musical que afina ritmo, edicion y tiempo emocional."
+    ],
+    "tech": {
+      "cpu": "CPU",
+      "gpu": "GPU",
+      "camera": "Camara",
+      "gimbal": "Gimbal",
+      "audio": "Audio",
+      "storage": "Almacenamiento"
+    },
+    "stats": {
+      "views": "Views en YouTube",
+      "countries": "Paises de Clientes",
+      "languages": "Idiomas del Sitio",
+      "partnerships": "Alianzas Activas"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "meta": "Disponibilidad / canales directos",
+    "ghost": "Inicio",
+    "title": "Vamos a construir imagen que rechaza lo ordinario.",
+    "description": "Disponible para foto, motion, visuales para artistas, UGC y direccion creativa. Brief corto o produccion completa, todo empieza aqui.",
+    "primary": "Enviar Email",
+    "secondary": "Abrir Instagram",
+    "copy": "Copiar Email",
+    "copied": "Email Copiado",
+    "availability": "Disponibilidad",
+    "availabilityValue": "Base en Lisboa / producciones globales",
+    "reply": "Ventana habitual de respuesta: hasta 48h",
+    "channels": "Canales Preferidos",
+    "youtube": "YouTube",
+    "instagram": "Instagram",
+    "email": "Email"
+  }
+}

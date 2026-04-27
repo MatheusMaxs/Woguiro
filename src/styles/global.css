@@ -1,0 +1,81 @@
+@import './hero.css';
+@import './site-nav.css';
+@import './grain.css';
+@import './cursor.css';
+@import './loading.css';
+@import './home.css';
+
+:root {
+  color-scheme: dark;
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-accent: #1a1a1a;
+  --text-primary: #fafafa;
+  --text-secondary: #a0a0a0;
+  --text-tertiary: #666666;
+  --border: #222222;
+  --border-hover: #444444;
+  --font-heading: 'Inter', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --home-edge: clamp(1.5rem, 10vw, 12rem);
+  --page-margin: clamp(1.5rem, 5vw, 6rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+}
+
+body.has-custom-cursor,
+body.has-custom-cursor button,
+body.has-custom-cursor a {
+  cursor: none;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+html.is-scroll-locked,
+body.is-scroll-locked {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

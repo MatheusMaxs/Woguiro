@@ -1,0 +1,159 @@
+{
+  "seo": {
+    "title": "Woguiro - Фотограф и Режиссер | Португалия",
+    "description": "Фото и видео для тех, кто не принимает обычное. Лиссабон - по всему миру."
+  },
+  "hero": {
+    "title": "WOGUIRO",
+    "tagline": "Фото и видео для тех, кто не принимает обычное.",
+    "location": "Лиссабон-По всему миру",
+    "cta": "Запустить Проект",
+    "clockLabel": "Время Лиссабона",
+    "discover": "Открыть"
+  },
+  "loading": {
+    "label": "Вход в Архив",
+    "status": "Загружается независимое визуальное исследование"
+  },
+  "nav": {
+    "home": "Главная",
+    "siteNavigation": "Навигация сайта",
+    "heroNavigation": "Навигация hero",
+    "homeLabel": "Woguiro Главная",
+    "portfolio": "Портфолио",
+    "photography": "Фотография",
+    "videography": "Видеография",
+    "creator": "Автор",
+    "about": "Обо Мне",
+    "specs": "Тех. Спеки",
+    "connect": "Контакт",
+    "expertise": "Экспертиза",
+    "brands": "Бренды & UGC",
+    "artists": "Для Артистов"
+  },
+  "language": {
+    "selector": "Выбор языка"
+  },
+  "cursor": {
+    "view": "ВИД"
+  },
+  "works": {
+    "eyebrow": "Избранные Работы",
+    "meta": "Независимый визуальный архив",
+    "title": "Фото, motion и режиссура с идентичностью.",
+    "description": "Начальная кураторская подборка изображения, motion и коммерческого инстинкта. Каждый фокус открывает более глубокое редакционное чтение внутри homepage.",
+    "ghost": "Работы",
+    "focus": "Выбранный Фокус",
+    "viewAll": "Все Работы",
+    "collapse": "Закрыть Архив",
+    "openProject": "Открыть Фокус",
+    "available": "Архив Готов",
+    "curated": "Курация для homepage",
+    "filters": {
+      "all": "Все",
+      "photography": "Фотография",
+      "videography": "Видеография",
+      "brands": "Бренды & UGC",
+      "artists": "Для Артистов"
+    },
+    "items": {
+      "street-narrative": {
+        "title": "Уличный Нарратив",
+        "subtitle": "Свет, тишина и человеческая текстура внутри города.",
+        "description": "Направление still-image, построенное сначала вокруг атмосферы. Кадр остается минимальным, но каждый кроп несет напряжение, движение и premium editorial control.",
+        "location": "Лиссабон / Порту",
+        "focusPoints": ["Независимое визуальное исследование", "Высококонтрастные stills", "Кадры подготовлены для campaign cuts"],
+        "tags": ["Улица", "Портрет", "Editorial"]
+      },
+      "artist-motion-cut": {
+        "title": "Motion Cut для Артистов",
+        "subtitle": "Визуальный язык для артистов, которым нужен mood до шума.",
+        "description": "Motion-работа для музыки, performance и идентичности. Темп кинематографичен, цвет остается контролируемым, а финальный cut ощущается намеренным, не перегруженным.",
+        "location": "Португалия / Удаленно",
+        "focusPoints": ["Темп от артиста", "Кинематографическая грамматика движения", "Собрано для reels, clips и social edits"],
+        "tags": ["Музыка", "Режиссура", "Motion"]
+      },
+      "brand-pulse": {
+        "title": "Пульс Бренда",
+        "subtitle": "Коммерческий инстинкт, переведенный в четкий визуальный ритм.",
+        "description": "Более чистый commercial cut для брендов и UGC. Product framing, rhythm и call-to-action spacing получают ту же заботу, что и само изображение.",
+        "location": "Европа / Удаленно",
+        "focusPoints": ["Структура готова для бренда", "Быстрый захват внимания", "Cutdowns для paid и organic usage"],
+        "tags": ["UGC", "Commercial", "Conversion"]
+      },
+      "portrait-study": {
+        "title": "Портретное Исследование",
+        "subtitle": "Тишина, сдержанность и присутствие без визуального мусора.",
+        "description": "Портретные сессии, настроенные на идентичность и присутствие. Минимальные фоны, точный свет и сдержанная палитра дают выражению вести кадр.",
+        "location": "Лиссабон",
+        "focusPoints": ["Контролируемый портретный язык", "Editorial posture", "High-end selection of stills"],
+        "tags": ["Портрет", "Идентичность", "Минимал"]
+      },
+      "ugc-signal": {
+        "title": "UGC Сигнал",
+        "subtitle": "Быстрый, тактильный контент, который остается авторским.",
+        "description": "UGC direction, который не падает в generic formulas. Framing, rhythm и product proximity настраиваются для доверия и повторного просмотра.",
+        "location": "Европа",
+        "focusPoints": ["Mobile-native pacing", "Product-first framing", "Conversion-oriented cuts"],
+        "tags": ["UGC", "Продукт", "Social"]
+      }
+    }
+  },
+  "aboutPreview": {
+    "eyebrow": "Автор",
+    "meta": "Профиль / охват / система",
+    "ghost": "Профиль",
+    "title": "Построено между уличным инстинктом, кинематографичным motion и creative direction.",
+    "description": "Guiro работает как фотограф, видеограф и visual director с premium взглядом на атмосферу, движение и чувствительность бренда.",
+    "body": "Базируясь в Португалии и работая по Европе и за ее пределами, он соединяет независимый вкус с коммерчески точным исполнением.",
+    "readMore": "Читать Еще",
+    "collapse": "Закрыть",
+    "disciplines": "Дисциплины",
+    "reach": "Глобальный Охват",
+    "languages": "Рабочие Языки",
+    "specs": "Основной Setup",
+    "disciplineDirection": "Creative Direction",
+    "disciplineMusic": "Музыкальная Чувствительность",
+    "portraitAlt": "Портрет Guiro",
+    "disciplinesList": [
+      "Улица, портрет и still-image systems с кинематографичным взглядом.",
+      "Motion-led visuals для музыки, reels, кампаний и narrative cuts.",
+      "Creative direction, который выравнивает mood, framing, color и pace.",
+      "Commercial и UGC work, созданные для brand relevance и clarity.",
+      "Визуальные идентичности для артистов, covers, clips и атмосферных кампаний.",
+      "Музыкальная чувствительность, которая точит rhythm, edits и emotional timing."
+    ],
+    "tech": {
+      "cpu": "CPU",
+      "gpu": "GPU",
+      "camera": "Камера",
+      "gimbal": "Гимбал",
+      "audio": "Аудио",
+      "storage": "Хранилище"
+    },
+    "stats": {
+      "views": "Просмотры YouTube",
+      "countries": "Страны Клиентов",
+      "languages": "Языки Сайта",
+      "partnerships": "Активные Партнерства"
+    }
+  },
+  "contact": {
+    "eyebrow": "Контакт",
+    "meta": "Доступность / прямые каналы",
+    "ghost": "Старт",
+    "title": "Давайте создадим изображение, которое не принимает обычное.",
+    "description": "Доступен для фото, motion, visuals для артистов, UGC и creative direction. Короткий brief или полная production, все начинается здесь.",
+    "primary": "Отправить Email",
+    "secondary": "Открыть Instagram",
+    "copy": "Скопировать Email",
+    "copied": "Email Скопирован",
+    "availability": "Доступность",
+    "availabilityValue": "База в Лиссабоне / глобальные productions",
+    "reply": "Обычное окно ответа: до 48ч",
+    "channels": "Предпочтительные Каналы",
+    "youtube": "YouTube",
+    "instagram": "Instagram",
+    "email": "Email"
+  }
+}

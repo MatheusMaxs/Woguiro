@@ -1,0 +1,159 @@
+{
+  "seo": {
+    "title": "Woguiro - Photographer & Filmmaker | Portugal",
+    "description": "Photography and videography for those who refuse the ordinary. Lisbon - Worldwide."
+  },
+  "hero": {
+    "title": "WOGUIRO",
+    "tagline": "Photography & Videography for those who refuse the ordinary.",
+    "location": "Lisbon-Worldwide",
+    "cta": "Start a Project",
+    "clockLabel": "Lisbon Time",
+    "discover": "Discover"
+  },
+  "loading": {
+    "label": "Entering Archive",
+    "status": "Independent visual research loading"
+  },
+  "nav": {
+    "home": "Home",
+    "siteNavigation": "Site navigation",
+    "heroNavigation": "Hero navigation",
+    "homeLabel": "Woguiro Home",
+    "portfolio": "Portfolio",
+    "photography": "Photography",
+    "videography": "Videography",
+    "creator": "The Creator",
+    "about": "About Me",
+    "specs": "Tech Specs",
+    "connect": "Connect",
+    "expertise": "Expertise",
+    "brands": "Brands & UGC",
+    "artists": "For Artists"
+  },
+  "language": {
+    "selector": "Language selector"
+  },
+  "cursor": {
+    "view": "VIEW"
+  },
+  "works": {
+    "eyebrow": "Selected Works",
+    "meta": "Independent visual archive",
+    "title": "Photography, motion and direction with a point of view.",
+    "description": "A curated front page blend of still image, motion and commercial instinct. Each focus opens a deeper editorial read inside the homepage.",
+    "ghost": "WORKS",
+    "focus": "Selected Focus",
+    "viewAll": "View All Works",
+    "collapse": "Collapse Archive",
+    "openProject": "Open Focus",
+    "available": "Archive Ready",
+    "curated": "Curated for the homepage",
+    "filters": {
+      "all": "All",
+      "photography": "Photography",
+      "videography": "Videography",
+      "brands": "Brands & UGC",
+      "artists": "For Artists"
+    },
+    "items": {
+      "street-narrative": {
+        "title": "Street Narrative",
+        "subtitle": "Light, silence and human texture inside the city.",
+        "description": "A still-image direction built around atmosphere first. The frame stays minimal, but every crop carries tension, movement and premium editorial control.",
+        "location": "Lisbon / Porto",
+        "focusPoints": ["Independent visual research", "High-contrast stills", "Frames prepared for campaign cuts"],
+        "tags": ["Street", "Portrait", "Editorial"]
+      },
+      "artist-motion-cut": {
+        "title": "Artist Motion Cut",
+        "subtitle": "Visual language for artists who want mood before noise.",
+        "description": "Motion work shaped for music, performance and identity. The pacing is cinematic, the grading stays controlled and the final cut feels intentional instead of overloaded.",
+        "location": "Portugal / Remote",
+        "focusPoints": ["Artist-first pacing", "Cinematic motion grammar", "Built for reels, clips and social edits"],
+        "tags": ["Music", "Direction", "Motion"]
+      },
+      "brand-pulse": {
+        "title": "Brand Pulse",
+        "subtitle": "Commercial instinct translated into sharp visual rhythm.",
+        "description": "A cleaner commercial cut for brands and UGC work. Product framing, rhythm and call-to-action spacing are treated with the same care as the image itself.",
+        "location": "Europe / Remote",
+        "focusPoints": ["Brand-ready structure", "Fast attention capture", "Cutdowns for paid and organic usage"],
+        "tags": ["UGC", "Commercial", "Conversion"]
+      },
+      "portrait-study": {
+        "title": "Portrait Study",
+        "subtitle": "Stillness, restraint and presence with zero visual waste.",
+        "description": "Portrait sessions tuned to identity and presence. Minimal backgrounds, precise light and a restrained palette let expression do the heavy lifting.",
+        "location": "Lisbon",
+        "focusPoints": ["Controlled portrait language", "Editorial posture", "High-end still selection"],
+        "tags": ["Portrait", "Identity", "Minimal"]
+      },
+      "ugc-signal": {
+        "title": "UGC Signal",
+        "subtitle": "Fast, tactile content that still feels authored.",
+        "description": "UGC direction that does not fall into generic content formulas. Framing, rhythm and product proximity are tuned for trust and repeat watching.",
+        "location": "Europe",
+        "focusPoints": ["Mobile-native pacing", "Product-first framing", "Conversion-oriented cuts"],
+        "tags": ["UGC", "Product", "Social"]
+      }
+    }
+  },
+  "aboutPreview": {
+    "eyebrow": "The Creator",
+    "meta": "Profile / reach / systems",
+    "ghost": "Profile",
+    "title": "Built between street instinct, cinematic motion and creative direction.",
+    "description": "Guiro operates as a photographer, videographer and visual director with a premium eye for atmosphere, movement and brand sensitivity.",
+    "body": "Based in Portugal, working across Europe and beyond, he combines independent taste with execution that feels commercially sharp.",
+    "readMore": "Read More",
+    "collapse": "Collapse",
+    "disciplines": "Disciplines",
+    "reach": "Global Reach",
+    "languages": "Working Languages",
+    "specs": "Core Setup",
+    "disciplineDirection": "Creative Direction",
+    "disciplineMusic": "Music Sensibility",
+    "portraitAlt": "Guiro portrait",
+    "disciplinesList": [
+      "Street, portrait and still-image systems with a cinematic eye.",
+      "Motion-led visuals for music, reels, campaigns and narrative cuts.",
+      "Creative direction that aligns mood, framing, colour and pace.",
+      "Commercial and UGC work designed for brand relevance and clarity.",
+      "Visual identities for artists, covers, clips and atmosphere-heavy campaigns.",
+      "Music sensitivity that sharpens rhythm, edits and emotional timing."
+    ],
+    "tech": {
+      "cpu": "CPU",
+      "gpu": "GPU",
+      "camera": "Camera",
+      "gimbal": "Gimbal",
+      "audio": "Audio",
+      "storage": "Storage"
+    },
+    "stats": {
+      "views": "YouTube Views",
+      "countries": "Client Countries",
+      "languages": "Live Site Languages",
+      "partnerships": "Active Partnerships"
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "meta": "Availability / direct channels",
+    "ghost": "Start",
+    "title": "Let's build imagery that refuses the ordinary.",
+    "description": "Available for photo, motion, artist visuals, UGC and creative direction. Short brief or full production, both start here.",
+    "primary": "Send Email",
+    "secondary": "Open Instagram",
+    "copy": "Copy Email",
+    "copied": "Email Copied",
+    "availability": "Availability",
+    "availabilityValue": "Lisbon base / worldwide productions",
+    "reply": "Typical reply window: within 48h",
+    "channels": "Preferred Channels",
+    "youtube": "YouTube",
+    "instagram": "Instagram",
+    "email": "Email"
+  }
+}
