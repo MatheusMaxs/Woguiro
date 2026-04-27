@@ -122,6 +122,14 @@
   text-transform: uppercase;
   pointer-events: none;
   user-select: none;
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.8s var(--ease-out);
+}
+
+.section-shell:hover .section-ghost {
+  opacity: 0.08;
+  transform: translate3d(-0.18rem, 0, 0);
 }
 
 .section-ghost--left {
@@ -144,6 +152,10 @@
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+  transition:
+    color 0.36s var(--ease-out),
+    opacity 0.36s var(--ease-out),
+    transform 0.36s var(--ease-out);
 }
 
 .section-title {
@@ -155,6 +167,10 @@
   font-weight: 500;
   line-height: 0.95;
   letter-spacing: -0.06em;
+  transition:
+    color 0.4s var(--ease-out),
+    opacity 0.4s var(--ease-out),
+    transform 0.4s var(--ease-out);
 }
 
 .section-title--works {
@@ -173,6 +189,10 @@
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
+  transition:
+    color 0.36s var(--ease-out),
+    opacity 0.36s var(--ease-out),
+    transform 0.36s var(--ease-out);
 }
 
 .section-body--muted {
@@ -253,6 +273,17 @@
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition:
+    transform 0.28s var(--ease-out),
+    border-color 0.28s var(--ease-out),
+    background-color 0.28s var(--ease-out),
+    color 0.28s var(--ease-out);
+}
+
+.meta-pill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .meta-pill--strong {
@@ -312,6 +343,7 @@
   background: rgba(255, 255, 255, 0.94);
   border-color: rgba(255, 255, 255, 0.3);
   color: #060606;
+  transform: translateY(-1px);
 }
 
 .works-curation-note {
@@ -463,6 +495,14 @@
   font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 500;
   line-height: 1;
+  transition:
+    opacity 0.36s var(--ease-out),
+    transform 0.45s var(--ease-out);
+}
+
+.work-card--view-all:hover .view-all-card-symbol,
+.work-card--view-all:focus-within .view-all-card-symbol {
+  transform: rotate(90deg) scale(1.04);
 }
 
 .work-card-copy {
@@ -567,6 +607,17 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.45rem;
   background: rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.38s var(--ease-out),
+    background-color 0.38s var(--ease-out),
+    box-shadow 0.38s var(--ease-out),
+    transform 0.38s var(--ease-out);
+}
+
+.works-focus-panel:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 1.4rem 3.5rem rgba(0, 0, 0, 0.2);
 }
 
 .works-focus-layout {
@@ -608,6 +659,14 @@
   color: rgba(255, 255, 255, 0.66);
   font-size: clamp(1rem, 0.95vw, 1.2rem);
   line-height: 1.6;
+  transition:
+    color 0.3s var(--ease-out),
+    transform 0.3s var(--ease-out);
+}
+
+.works-focus-points li:hover {
+  color: rgba(255, 255, 255, 0.82);
+  transform: translateX(0.18rem);
 }
 
 .works-focus-points li::before {
@@ -795,6 +854,18 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.025);
+  transition:
+    border-color 0.34s var(--ease-out),
+    background-color 0.34s var(--ease-out),
+    box-shadow 0.34s var(--ease-out);
+}
+
+.about-core-specs:hover,
+.about-panel:hover,
+.contact-channel-panel:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: 0 1rem 2.6rem rgba(0, 0, 0, 0.16);
 }
 
 .about-spec-card {
@@ -832,6 +903,10 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.025);
+  transition:
+    border-color 0.34s var(--ease-out),
+    background-color 0.34s var(--ease-out),
+    box-shadow 0.34s var(--ease-out);
 }
 
 .about-discipline-grid,
@@ -914,6 +989,10 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   background: rgba(255, 255, 255, 0.025);
+  transition:
+    border-color 0.34s var(--ease-out),
+    background-color 0.34s var(--ease-out),
+    box-shadow 0.34s var(--ease-out);
 }
 
 .contact-channel-list {

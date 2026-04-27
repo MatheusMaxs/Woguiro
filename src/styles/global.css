@@ -21,6 +21,10 @@
   --home-edge: clamp(1.5rem, 10vw, 12rem);
   --page-margin: clamp(1.5rem, 5vw, 6rem);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 0.22s;
+  --motion-normal: 0.38s;
+  --motion-slow: 0.64s;
 }
 
 @media (min-width: 1024px) {
@@ -54,6 +58,15 @@ body.has-custom-cursor a {
 button,
 a {
   color: inherit;
+  transition:
+    color var(--motion-normal) var(--ease-out),
+    background-color var(--motion-normal) var(--ease-out),
+    border-color var(--motion-normal) var(--ease-out),
+    box-shadow var(--motion-normal) var(--ease-out),
+    opacity var(--motion-normal) var(--ease-out),
+    filter var(--motion-normal) var(--ease-out),
+    transform var(--motion-normal) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -77,5 +90,14 @@ body.is-scroll-locked {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }

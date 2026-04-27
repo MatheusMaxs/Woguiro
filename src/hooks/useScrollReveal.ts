@@ -9,7 +9,7 @@ export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
   useGSAP(
     () => {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        gsap.set('[data-reveal], [data-reveal-item]', { clearProps: 'all', opacity: 1 });
+        gsap.set('[data-reveal], [data-reveal-item]', { clearProps: 'all', filter: 'none', opacity: 1 });
         return;
       }
 
@@ -19,9 +19,12 @@ export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
       singles.forEach((element) => {
         gsap.from(element, {
           opacity: 0,
-          y: 32,
-          duration: 0.85,
+          y: 36,
+          scale: 0.985,
+          filter: 'blur(8px)',
+          duration: 1,
           ease: 'power3.out',
+          clearProps: 'filter,opacity,transform',
           scrollTrigger: {
             trigger: element,
             start: 'top 82%',
@@ -40,9 +43,12 @@ export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
         gsap.from(items, {
           opacity: 0,
           y: 34,
-          duration: 0.9,
-          stagger: 0.1,
+          scale: 0.985,
+          filter: 'blur(8px)',
+          duration: 0.95,
+          stagger: 0.08,
           ease: 'power3.out',
+          clearProps: 'filter,opacity,transform',
           scrollTrigger: {
             trigger: group,
             start: 'top 80%',

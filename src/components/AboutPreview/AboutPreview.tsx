@@ -100,7 +100,18 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
             <div className="about-stat-strip">
               {STAT_HIGHLIGHTS.map((stat) => (
                 <div key={stat.labelKey} className="about-stat-card">
-                  <span className="about-stat-value">{stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}</span>
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.span
+                      key={stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}
+                      className="about-stat-value"
+                      initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
+                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                      exit={{ opacity: 0, y: -8, filter: 'blur(5px)' }}
+                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      {stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}
+                    </motion.span>
+                  </AnimatePresence>
                   <span className="about-stat-label">{t(stat.labelKey)}</span>
                 </div>
               ))}

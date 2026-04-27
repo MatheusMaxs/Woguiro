@@ -1,4 +1,5 @@
-import { AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 
 import CustomCursor from '@/components/CustomCursor/CustomCursor';
@@ -19,13 +20,32 @@ function AnimatedRoutes() {
   );
 }
 
+function RouteScrollRestoration() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: reduceMotion ? 'auto' : 'smooth',
+    });
+  }, [pathname]);
+
+  return null;
+}
+
 export default function App() {
   return (
     <>
-      <BrowserRouter>
-        <SiteNav />
-        <AnimatedRoutes />
-      </BrowserRouter>
+      <MotionConfig reducedMotion="user" transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}>
+        <BrowserRouter>
+          <RouteScrollRestoration />
+          <SiteNav />
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </MotionConfig>
       <CustomCursor />
     </>
   );

@@ -45,7 +45,14 @@ function WorkCard({
   const location = t(`works.items.${work.slug}.location`, { defaultValue: work.location });
 
   return (
-    <motion.article layout className={`work-card${isSelected ? ' is-selected' : ''}`}>
+    <motion.article
+      layout
+      className={`work-card${isSelected ? ' is-selected' : ''}`}
+      initial={{ opacity: 0, y: 18, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -14, scale: 0.985 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+    >
       <button
         type="button"
         className="work-card-media"
@@ -89,7 +96,14 @@ function ViewAllCard() {
   const { t } = useTranslation();
 
   return (
-    <motion.article layout className="work-card work-card--view-all">
+    <motion.article
+      layout
+      className="work-card work-card--view-all"
+      initial={{ opacity: 0, y: 18, scale: 0.985 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: -14, scale: 0.985 }}
+      transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+    >
       <Link to="/works" className="work-card-media" data-cursor="view">
         <span className="work-card-index">04</span>
         <span className="view-all-card-symbol" aria-hidden="true">
@@ -188,57 +202,68 @@ export default function WorksPreview({
 
         {selectedWork ? (
           <motion.div layout className="works-focus-panel" data-reveal>
-            <div className="works-focus-layout">
-              <div className="works-focus-copy">
-                <div className="works-focus-meta-row">
-                  <span>{t('works.focus')}</span>
-                  <span>{`${t(selectedWork.mediumKey)} / ${t(selectedWork.audienceKey)}`}</span>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={selectedWork.slug}
+                className="works-focus-layout"
+                initial={{ opacity: 0, y: 18, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: -12, filter: 'blur(6px)' }}
+                transition={{ duration: 0.42, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="works-focus-copy">
+                  <div className="works-focus-meta-row">
+                    <span>{t('works.focus')}</span>
+                    <span>{`${t(selectedWork.mediumKey)} / ${t(selectedWork.audienceKey)}`}</span>
+                  </div>
+
+                  <h3 className="works-focus-title">{selectedTitle}</h3>
+                  <p className="works-focus-description">{selectedDescription}</p>
+
+                  <ul className="works-focus-points">
+                    {selectedWork.focusPoints.map((point, index) => (
+                      <li key={point}>{t(`works.items.${selectedWork.slug}.focusPoints.${index}`, { defaultValue: point })}</li>
+                    ))}
+                  </ul>
+
+                  <div className="works-focus-tags">
+                    {selectedWork.tags.map((tag, index) => (
+                      <span key={tag} className="meta-pill">
+                        {t(`works.items.${selectedWork.slug}.tags.${index}`, { defaultValue: tag })}
+                      </span>
+                    ))}
+                  </div>
+
                 </div>
 
-                <h3 className="works-focus-title">{selectedTitle}</h3>
-                <p className="works-focus-description">{selectedDescription}</p>
-
-                <ul className="works-focus-points">
-                  {selectedWork.focusPoints.map((point, index) => (
-                    <li key={point}>{t(`works.items.${selectedWork.slug}.focusPoints.${index}`, { defaultValue: point })}</li>
-                  ))}
-                </ul>
-
-                <div className="works-focus-tags">
-                  {selectedWork.tags.map((tag, index) => (
-                    <span key={tag} className="meta-pill">
-                      {t(`works.items.${selectedWork.slug}.tags.${index}`, { defaultValue: tag })}
-                    </span>
-                  ))}
+                <div className="works-focus-media" aria-hidden="true">
+                  <img
+                    src={selectedWork.image}
+                    alt=""
+                    loading="lazy"
+                    draggable={false}
+                    style={selectedWork.objectPosition ? { objectPosition: selectedWork.objectPosition } : undefined}
+                  />
                 </div>
-
-              </div>
-
-              <div className="works-focus-media" aria-hidden="true">
-                <img
-                  src={selectedWork.image}
-                  alt=""
-                  loading="lazy"
-                  draggable={false}
-                  style={selectedWork.objectPosition ? { objectPosition: selectedWork.objectPosition } : undefined}
-                />
-              </div>
-            </div>
+              </motion.div>
+            </AnimatePresence>
           </motion.div>
         ) : null}
 
         <div className="works-grid">
-          {curatedWorks.map((work, index) => (
-            <WorkCard
-              key={work.slug}
-              work={work}
-              index={index + 1}
-              isSelected={selectedSlug === work.slug}
-              onSelect={setSelectedSlug}
-            />
-          ))}
+          <AnimatePresence initial={false}>
+            {curatedWorks.map((work, index) => (
+              <WorkCard
+                key={work.slug}
+                work={work}
+                index={index + 1}
+                isSelected={selectedSlug === work.slug}
+                onSelect={setSelectedSlug}
+              />
+            ))}
 
-          <ViewAllCard />
+            <ViewAllCard key="view-all" />
+          </AnimatePresence>
         </div>
 
         <AnimatePresence initial={false}>
@@ -257,13 +282,16 @@ export default function WorksPreview({
               </div>
 
               <div className="works-archive-grid">
-                {archiveWorks.map((work) => (
-                  <button
+                {archiveWorks.map((work, index) => (
+                  <motion.button
                     key={work.slug}
                     type="button"
                     className={`archive-card${selectedSlug === work.slug ? ' is-selected' : ''}`}
                     data-cursor="view"
                     onClick={() => setSelectedSlug(work.slug)}
+                    initial={{ opacity: 0, y: 14, scale: 0.985 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.38, delay: index * 0.035, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <span className="archive-card-media">
                       <img
@@ -278,7 +306,7 @@ export default function WorksPreview({
                       <span className="archive-card-title">{t(`works.items.${work.slug}.title`, { defaultValue: work.title })}</span>
                       <span className="archive-card-subtitle">{t(work.audienceKey)}</span>
                     </span>
-                  </button>
+                  </motion.button>
                 ))}
               </div>
             </motion.div>
