@@ -109,7 +109,6 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
             <div className="about-core-specs" id="about-specs">
               <div className="about-core-specs-head">
                 <span>{t('aboutPreview.specs')}</span>
-                <span>{t('aboutPreview.languages')}</span>
               </div>
 
               <div className="about-core-specs-grid">
