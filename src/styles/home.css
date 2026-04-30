@@ -34,7 +34,6 @@
   border-radius: 1.8rem;
   background:
     radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.07), transparent 30%),
-    radial-gradient(circle at 86% 18%, rgba(136, 92, 255, 0.06), transparent 28%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.015) 24%, rgba(0, 0, 0, 0.18) 100%),
     rgba(10, 10, 10, 0.92);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
@@ -959,7 +958,7 @@
 .about-experience-card--primary {
   background:
     radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.09), transparent 36%),
-    linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(255, 255, 255, 0.025));
+    linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.025));
 }
 
 .about-experience-card span {
@@ -983,7 +982,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 1.2rem;
   background:
-    radial-gradient(circle at 0% 0%, rgba(139, 92, 246, 0.09), transparent 32%),
+    radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.055), transparent 32%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.018)),
     rgba(255, 255, 255, 0.025);
   transition:
@@ -1049,7 +1048,7 @@
 
 .about-panel--setup {
   background:
-    radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.13), transparent 34%),
+    radial-gradient(circle at 100% 0%, rgba(255, 255, 255, 0.055), transparent 34%),
     linear-gradient(135deg, rgba(17, 17, 17, 0.92), rgba(9, 9, 9, 0.74));
 }
 
@@ -1096,13 +1095,13 @@
 
 .about-panel--setup .about-spec-card:nth-child(4n + 2),
 .about-panel--setup .about-spec-card:nth-child(4n + 4) {
-  box-shadow: inset 3px 0 0 rgba(139, 92, 246, 0.95);
+  box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.16);
 }
 
 .about-panel--setup .about-spec-card:nth-child(4n + 2):hover,
 .about-panel--setup .about-spec-card:nth-child(4n + 4):hover {
   box-shadow:
-    inset 3px 0 0 rgba(139, 92, 246, 0.95),
+    inset 3px 0 0 rgba(255, 255, 255, 0.16),
     0 1rem 2.2rem rgba(0, 0, 0, 0.18);
 }
 
