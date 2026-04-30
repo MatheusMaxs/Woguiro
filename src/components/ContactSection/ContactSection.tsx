@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import copyIcon from '../../../assets/images/copy-svg.svg';
 import { CONTACT_EMAIL, CONTACT_LINKS } from '@/data/homeContent';
 
 function fallbackCopy(text: string) {
@@ -96,9 +97,7 @@ export default function ContactSection() {
                       <span>{t(link.labelKey)}</span>
                       <strong>
                         <span>{link.value}</span>
-                        <svg className="contact-copy-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                          <rect className="contact-copy-icon-box" x="5" y="5" width="14" height="14" rx="2" />
-                        </svg>
+                        <img className="contact-copy-icon" src={copyIcon} alt="" aria-hidden="true" draggable={false} />
                       </strong>
                     </button>
                   );
