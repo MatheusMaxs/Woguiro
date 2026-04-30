@@ -40,6 +40,7 @@ export interface StatHighlight {
 }
 
 export interface TechHighlight {
+  id: string;
   label: string;
   value: string;
 }
@@ -48,7 +49,11 @@ export interface ContactLink {
   href: string;
   labelKey: 'contact.instagram' | 'contact.youtube' | 'contact.email';
   value: string;
+  copyValue: string;
 }
+
+export const YOUTUBE_CHANNEL_URL = 'https://youtube.com/@WodavLyrics';
+export const EXPERIENCE_START_YEAR = 2021;
 
 export const FEATURED_WORKS: FeaturedWork[] = [
   {
@@ -136,44 +141,50 @@ export const FEATURED_WORKS: FeaturedWork[] = [
 export const DISCIPLINE_HIGHLIGHTS: DisciplineHighlight[] = [
   {
     labelKey: 'nav.photography',
-    description: 'Street, portrait and still-image systems with a cinematic eye.',
+    description: 'Olhar cinematografico focado em pessoas, retratos e paisagens que contam historias.',
   },
   {
     labelKey: 'nav.videography',
-    description: 'Motion-led visuals for music, reels, campaigns and narrative cuts.',
+    description: 'Narrativa visual com estetica cinematografica, captando emocoes, momentos e movimento.',
   },
   {
     labelKey: 'aboutPreview.disciplineDirection',
-    description: 'Creative direction that aligns mood, framing, colour and pace.',
+    description: 'Direcao com sensibilidade visual, construindo ritmo e proposito de identidade unica.',
   },
   {
     labelKey: 'nav.brands',
-    description: 'Commercial and UGC work designed for brand relevance and clarity.',
+    description: 'Criacao de conteudo para marcas e UGC com um olhar leve, criativo, transformando ideias em conexoes reais.',
   },
   {
     labelKey: 'nav.artists',
-    description: 'Visual identities for artists, covers, clips and atmosphere-heavy campaigns.',
+    description: 'Criacao de identidades visuais para artistas, capas e conteudos com estetica e intencao.',
   },
   {
     labelKey: 'aboutPreview.disciplineMusic',
-    description: 'Music sensitivity that sharpens rhythm, edits and emotional timing.',
+    description: 'Producao musical, captacao, mix e masterizacao de audio.',
   },
 ];
 
 export const STAT_HIGHLIGHTS: StatHighlight[] = [
-  { value: '130K+', labelKey: 'aboutPreview.stats.views' },
-  { value: '04+', labelKey: 'aboutPreview.stats.countries' },
+  { value: '656K+', labelKey: 'aboutPreview.stats.views' },
+  { value: '10+', labelKey: 'aboutPreview.stats.countries' },
   { value: '07', labelKey: 'aboutPreview.stats.languages' },
-  { value: '01', labelKey: 'aboutPreview.stats.partnerships' },
+  { value: '42', labelKey: 'aboutPreview.stats.partnerships' },
 ];
 
 export const TECH_HIGHLIGHTS: TechHighlight[] = [
-  { label: 'CPU', value: 'Ryzen 9 9950X3D' },
-  { label: 'GPU', value: 'RTX 5090 OC 32GB' },
-  { label: 'Camera', value: 'Sony a6700' },
-  { label: 'Gimbal', value: 'DJI Ronin RS4 Pro' },
-  { label: 'Audio', value: 'Rode NT1 Gen5' },
-  { label: 'Storage', value: '8TB NVMe' },
+  { id: 'cpu', label: 'CPU', value: 'Ryzen 9 9950X3D' },
+  { id: 'gpu', label: 'GPU', value: 'RTX 5090 OC 32GB' },
+  { id: 'motherboard', label: 'Motherboard', value: 'A confirmar' },
+  { id: 'ram', label: 'RAM', value: 'A confirmar' },
+  { id: 'camera', label: 'Camera', value: 'Sony a6700' },
+  { id: 'main-gimbal', label: 'Gimbal', value: 'DJI Ronin RS4 Pro' },
+  { id: 'ssd', label: 'SSD', value: 'A confirmar' },
+  { id: 'psu', label: 'PSU', value: 'A confirmar' },
+  { id: 'microphone', label: 'Microphone', value: 'Rode NT1 Gen5' },
+  { id: 'interface', label: 'Interface', value: 'Focusrite Scarlett 2i2 (Blue Limited Edition)' },
+  { id: 'phone', label: 'Phone', value: 'iPhone 17 Pro' },
+  { id: 'mobile-gimbal', label: 'Gimbal', value: 'ZHIYUN Smooth Q3' },
 ];
 
 export const WORKING_LANGUAGES = ['ES', 'EN', 'PT', 'IT', 'JP'];
@@ -185,16 +196,19 @@ export const CONTACT_LINKS: ContactLink[] = [
     href: 'mailto:woguiro@gmail.com',
     labelKey: 'contact.email',
     value: 'woguiro@gmail.com',
+    copyValue: 'woguiro@gmail.com',
   },
   {
     href: 'https://instagram.com/woguiro',
     labelKey: 'contact.instagram',
     value: '@woguiro',
+    copyValue: '@woguiro',
   },
   {
-    href: 'https://youtube.com/@WodavLyrics',
+    href: YOUTUBE_CHANNEL_URL,
     labelKey: 'contact.youtube',
     value: 'Wodav Lyrics',
+    copyValue: YOUTUBE_CHANNEL_URL,
   },
 ];
 

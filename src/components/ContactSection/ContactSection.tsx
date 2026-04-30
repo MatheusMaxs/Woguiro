@@ -17,17 +17,17 @@ function fallbackCopy(text: string) {
 
 export default function ContactSection() {
   const { t } = useTranslation();
-  const [copied, setCopied] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
 
-  const handleCopy = async () => {
+  const handleCopy = async (value: string, key: string) => {
     try {
-      await navigator.clipboard.writeText(CONTACT_EMAIL);
+      await navigator.clipboard.writeText(value);
     } catch {
-      fallbackCopy(CONTACT_EMAIL);
+      fallbackCopy(value);
     }
 
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    setCopiedKey(key);
+    window.setTimeout(() => setCopiedKey(null), 1800);
   };
 
   return (
@@ -75,25 +75,32 @@ export default function ContactSection() {
             <div className="contact-channel-panel">
               <div className="contact-channel-head">
                 <span>{t('contact.channels')}</span>
-                <button type="button" className="meta-link" data-cursor="link" onClick={handleCopy}>
-                  {copied ? t('contact.copied') : t('contact.copy')}
-                </button>
+                <span className="contact-copy-status" aria-live="polite">
+                  {copiedKey ? t('contact.copied') : ''}
+                </span>
               </div>
 
               <div className="contact-channel-list">
-                {CONTACT_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="contact-channel-link"
-                    target={link.href.startsWith('http') ? '_blank' : undefined}
-                    rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
-                    data-cursor="link"
-                  >
-                    <span>{t(link.labelKey)}</span>
-                    <strong>{link.value}</strong>
-                  </a>
-                ))}
+                {CONTACT_LINKS.map((link) => {
+                  const isCopied = copiedKey === link.labelKey;
+
+                  return (
+                    <button
+                      key={link.href}
+                      type="button"
+                      className={`contact-channel-link${isCopied ? ' is-copied' : ''}`}
+                      aria-label={`${t('contact.copy')} ${link.value}`}
+                      data-cursor="link"
+                      onClick={() => handleCopy(link.copyValue, link.labelKey)}
+                    >
+                      <span>{t(link.labelKey)}</span>
+                      <strong>
+                        <span>{link.value}</span>
+                        <span className="contact-copy-icon" aria-hidden="true" />
+                      </strong>
+                    </button>
+                  );
+                })}
               </div>
             </div>
           </div>

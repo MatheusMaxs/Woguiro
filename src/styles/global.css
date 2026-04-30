@@ -47,6 +47,9 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 body.has-custom-cursor,
@@ -67,6 +70,7 @@ a {
     filter var(--motion-normal) var(--ease-out),
     transform var(--motion-normal) var(--ease-out);
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 button {
@@ -76,6 +80,24 @@ button {
 img {
   max-width: 100%;
   display: block;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+video,
+canvas,
+svg {
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+::selection {
+  background: transparent;
+  color: inherit;
 }
 
 #root {

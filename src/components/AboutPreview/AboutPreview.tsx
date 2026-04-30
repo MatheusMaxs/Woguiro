@@ -5,9 +5,11 @@ import { useTranslation } from 'react-i18next';
 import {
   ABOUT_PORTRAIT,
   DISCIPLINE_HIGHLIGHTS,
+  EXPERIENCE_START_YEAR,
   STAT_HIGHLIGHTS,
   TECH_HIGHLIGHTS,
   WORKING_LANGUAGES,
+  YOUTUBE_CHANNEL_URL,
 } from '@/data/homeContent';
 
 interface AboutPreviewProps {
@@ -15,8 +17,8 @@ interface AboutPreviewProps {
   onToggleExpanded: () => void;
 }
 
-const YOUTUBE_VIEWS_FALLBACK = '130K+';
-const YOUTUBE_VIEWS_CACHE_KEY = 'woguiro-youtube-views';
+const YOUTUBE_VIEWS_FALLBACK = '656K+';
+const YOUTUBE_VIEWS_CACHE_KEY = 'woguiro-youtube-views-v2';
 const YOUTUBE_VIEWS_CACHE_TTL_MS = 12 * 60 * 60 * 1000;
 
 const formatStatCount = (value: number) => {
@@ -35,6 +37,7 @@ const formatStatCount = (value: number) => {
 export default function AboutPreview({ expanded, onToggleExpanded }: AboutPreviewProps) {
   const { t } = useTranslation();
   const [youtubeViews, setYoutubeViews] = useState(YOUTUBE_VIEWS_FALLBACK);
+  const experienceYears = Math.max(0, new Date().getFullYear() - EXPERIENCE_START_YEAR);
 
   useEffect(() => {
     const now = Date.now();
@@ -88,6 +91,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
           <div className="about-portrait-panel" data-reveal-item>
             <div className="about-portrait-frame">
               <img src={ABOUT_PORTRAIT} alt={t('aboutPreview.portraitAlt')} loading="lazy" draggable={false} />
+              <span className="about-portrait-caption">{t('aboutPreview.portraitCaption')}</span>
             </div>
           </div>
 
@@ -98,23 +102,62 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
             <p className="section-body section-body--muted">{t('aboutPreview.body')}</p>
 
             <div className="about-stat-strip">
-              {STAT_HIGHLIGHTS.map((stat) => (
-                <div key={stat.labelKey} className="about-stat-card">
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.span
-                      key={stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}
-                      className="about-stat-value"
-                      initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
-                      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                      exit={{ opacity: 0, y: -8, filter: 'blur(5px)' }}
-                      transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      {stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value}
-                    </motion.span>
-                  </AnimatePresence>
-                  <span className="about-stat-label">{t(stat.labelKey)}</span>
-                </div>
-              ))}
+              {STAT_HIGHLIGHTS.map((stat) => {
+                const statValue = stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value;
+                const statContent = (
+                  <>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.span
+                        key={statValue}
+                        className="about-stat-value"
+                        initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
+                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, y: -8, filter: 'blur(5px)' }}
+                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        {statValue}
+                      </motion.span>
+                    </AnimatePresence>
+                    <span className="about-stat-label">{t(stat.labelKey)}</span>
+                  </>
+                );
+
+                return stat.labelKey === 'aboutPreview.stats.views' ? (
+                  <a
+                    key={stat.labelKey}
+                    className="about-stat-card about-stat-card--link"
+                    href={YOUTUBE_CHANNEL_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    data-cursor="link"
+                  >
+                    {statContent}
+                  </a>
+                ) : (
+                  <div key={stat.labelKey} className="about-stat-card">
+                    {statContent}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="about-experience-grid">
+              <div className="about-experience-card about-experience-card--primary">
+                <strong>{t('aboutPreview.experience.years', { years: experienceYears })}</strong>
+                <span>{t('aboutPreview.experience.note', { startYear: EXPERIENCE_START_YEAR })}</span>
+              </div>
+              <div className="about-experience-card">
+                <span>{t('aboutPreview.experience.availabilityTitle')}</span>
+                <strong>{t('aboutPreview.experience.availabilityValue')}</strong>
+              </div>
+              <div className="about-experience-card">
+                <span>{t('aboutPreview.experience.languagesTitle')}</span>
+                <strong>{t('aboutPreview.experience.languagesValue')}</strong>
+              </div>
+              <div className="about-experience-card">
+                <span>{t('aboutPreview.experience.adminTitle')}</span>
+                <strong>{t('aboutPreview.experience.adminValue')}</strong>
+              </div>
             </div>
 
             <div className="about-core-specs" id="about-specs">
@@ -124,7 +167,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
 
               <div className="about-core-specs-grid">
                 {TECH_HIGHLIGHTS.slice(0, 4).map((item) => (
-                  <div key={item.label} className="about-spec-card">
+                  <div key={item.id} className="about-spec-card">
                     <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
                     <strong>{item.value}</strong>
                   </div>
@@ -150,7 +193,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
               exit={{ opacity: 0, height: 0, y: -16 }}
               transition={{ duration: 0.48, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="about-panel">
+              <div className="about-panel about-panel--disciplines">
                 <div className="about-panel-head">
                   <span>{t('aboutPreview.disciplines')}</span>
                   <span>{DISCIPLINE_HIGHLIGHTS.length}</span>
@@ -166,7 +209,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
                 </div>
               </div>
 
-              <div className="about-panel">
+              <div className="about-panel about-panel--setup">
                 <div className="about-panel-head">
                   <span>{t('aboutPreview.specs')}</span>
                   <span>{WORKING_LANGUAGES.join(' / ')}</span>
@@ -174,7 +217,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
 
                 <div className="about-full-specs-grid">
                   {TECH_HIGHLIGHTS.map((item) => (
-                    <div key={item.label} className="about-spec-card about-spec-card--dense">
+                    <div key={item.id} className="about-spec-card about-spec-card--dense">
                       <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
                       <strong>{item.value}</strong>
                     </div>

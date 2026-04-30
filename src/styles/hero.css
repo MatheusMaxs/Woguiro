@@ -395,6 +395,9 @@
   text-transform: uppercase;
   text-align: center;
   white-space: nowrap;
+  text-shadow:
+    0 0 18px rgba(255, 255, 255, 0.18),
+    0 0 46px rgba(255, 255, 255, 0.08);
 }
 
 .hero-title .char {
@@ -416,6 +419,7 @@
   font-weight: 500;
   line-height: 1.18;
   text-align: center;
+  text-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
 }
 
 .hero-tagline .word {
@@ -431,6 +435,7 @@
   line-height: 1;
   letter-spacing: -0.04em;
   text-align: center;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.16);
 }
 
 .corner-markers {
@@ -491,7 +496,8 @@
 .hero-cta {
   position: relative;
   z-index: 80;
-  display: inline-flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -524,6 +530,16 @@
   position: relative;
   z-index: 1;
   pointer-events: none;
+}
+
+.cta-text {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.cta-arrow {
+  grid-column: 3;
+  justify-self: start;
 }
 
 .cta-fill {
@@ -573,6 +589,11 @@
   border-color: var(--text-primary);
   transform: translateY(-2px);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.3);
+}
+
+.hero-cta:active {
+  transform: translateY(1px) scale(0.99);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
 }
 
 .hero-cta:hover .cta-fill,

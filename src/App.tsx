@@ -37,6 +37,31 @@ function RouteScrollRestoration() {
 }
 
 export default function App() {
+  useEffect(() => {
+    const isProtectedMedia = (target: EventTarget | null) =>
+      target instanceof Element && Boolean(target.closest('img, video, canvas'));
+
+    const handleContextMenu = (event: MouseEvent) => {
+      if (isProtectedMedia(event.target)) {
+        event.preventDefault();
+      }
+    };
+
+    const handleDragStart = (event: DragEvent) => {
+      if (isProtectedMedia(event.target)) {
+        event.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('dragstart', handleDragStart);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('dragstart', handleDragStart);
+    };
+  }, []);
+
   return (
     <>
       <MotionConfig reducedMotion="user" transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}>
