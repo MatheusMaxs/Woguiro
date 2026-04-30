@@ -103,8 +103,9 @@ export function useHeroTimeline(containerRef: RefObject<HTMLElement>) {
           '.hero-cta',
           {
             opacity: 0,
-            x: -32,
-            duration: 1.25,
+            y: 14,
+            duration: 1.05,
+            clearProps: 'transform,opacity',
           },
           0,
         )
