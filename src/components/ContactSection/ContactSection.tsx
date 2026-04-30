@@ -96,7 +96,9 @@ export default function ContactSection() {
                       <span>{t(link.labelKey)}</span>
                       <strong>
                         <span>{link.value}</span>
-                        <span className="contact-copy-icon" aria-hidden="true" />
+                        <svg className="contact-copy-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                          <rect className="contact-copy-icon-box" x="5" y="5" width="14" height="14" rx="2" />
+                        </svg>
                       </strong>
                     </button>
                   );

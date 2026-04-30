@@ -127,12 +127,14 @@
   pointer-events: none;
   user-select: none;
   transition:
+    color 0.6s var(--ease-out),
     opacity 0.6s var(--ease-out),
     transform 0.8s var(--ease-out);
 }
 
 .section-shell:hover .section-ghost {
-  opacity: 0.08;
+  color: rgba(255, 255, 255, 0.055);
+  opacity: 1;
   transform: translate3d(-0.18rem, 0, 0);
 }
 
@@ -1217,69 +1219,32 @@
 }
 
 .contact-copy-icon {
-  position: relative;
   flex: 0 0 auto;
-  width: 1.45rem;
-  height: 1.45rem;
-  border: 0;
-  opacity: 0.72;
+  width: 1rem;
+  height: 1rem;
+  color: rgba(255, 255, 255, 0.68);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  opacity: 0.82;
   transition:
+    color 0.24s var(--ease-out),
     opacity 0.24s var(--ease-out),
     transform 0.24s var(--ease-out);
 }
 
-.contact-copy-icon::before,
-.contact-copy-icon::after {
-  content: '';
-  position: absolute;
-  width: 0.95rem;
-  height: 0.95rem;
-  border-radius: 0.2rem;
-}
-
-.contact-copy-icon::before {
-  left: 0.12rem;
-  top: 0.12rem;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-}
-
-.contact-copy-icon::after {
-  right: 0.12rem;
-  bottom: 0.12rem;
-  width: 0.95rem;
-  height: 0.95rem;
-  border: 1px solid rgba(255, 255, 255, 0.64);
+.contact-copy-icon-box {
+  vector-effect: non-scaling-stroke;
 }
 
 .contact-channel-link:hover .contact-copy-icon,
 .contact-channel-link:focus-visible .contact-copy-icon,
 .contact-channel-link.is-copied .contact-copy-icon {
+  color: rgba(255, 255, 255, 0.92);
   opacity: 1;
   transform: translateY(-1px);
-}
-
-.contact-channel-link:hover .contact-copy-icon::after,
-.contact-channel-link:focus-visible .contact-copy-icon::after,
-.contact-channel-link.is-copied .contact-copy-icon::after {
-  border-color: rgba(255, 255, 255, 0.92);
-}
-
-.contact-channel-link.is-copied .contact-copy-icon::before {
-  content: 'OK';
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100%;
-  inset: 0;
-  border: 0;
-  color: var(--text-primary);
-  font-family: var(--font-mono);
-  font-size: 0.48rem;
-  letter-spacing: 0.08em;
-}
-
-.contact-channel-link.is-copied .contact-copy-icon::after {
-  opacity: 0;
 }
 
 @media (max-width: 920px) {
