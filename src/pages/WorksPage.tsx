@@ -4,12 +4,24 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
-import { PROJECT_FILTERS, WORK_PROJECTS, type ProjectFilter, type WorkProject } from '@/data/workProjects';
+import { PROJECT_FILTERS, WORK_PROJECTS, type ProjectFilter, type ProjectMedia, type WorkProject } from '@/data/workProjects';
 
 const revealItem = {
   hidden: { opacity: 0, y: 22, filter: 'blur(8px)' },
   visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
 };
+
+function MediaPreview({ media }: { media: ProjectMedia }) {
+  const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
+
+  if (media.mediaKind === 'video') {
+    return (
+      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload="metadata" draggable={false} style={style} />
+    );
+  }
+
+  return <img src={media.src} alt="" loading="lazy" draggable={false} style={style} />;
+}
 
 function ProjectMosaic({ project }: { project: WorkProject }) {
   const sideImage = project.images.find((work) => work.slug !== project.hero.slug) ?? project.hero;
@@ -18,13 +30,7 @@ function ProjectMosaic({ project }: { project: WorkProject }) {
     <div className="works-project-mosaic" aria-hidden="true">
       {[project.hero, sideImage].map((work, index) => (
         <span key={`${project.slug}-${work.slug}-${index}`} className={`works-project-mosaic-item works-project-mosaic-item--${index === 0 ? 'hero' : 'side'}`}>
-          <img
-            src={work.image}
-            alt=""
-            loading="lazy"
-            draggable={false}
-            style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
-          />
+          <MediaPreview media={work} />
           <span className="works-project-image-overlay">
             <span>{work.title}</span>
             <span>{project.category}</span>
@@ -122,7 +128,7 @@ export default function WorksPage() {
             <motion.div className="works-heading-grid" variants={revealItem}>
               <div className="section-heading-block">
                 <p className="section-kicker">Portfolio completo</p>
-                <h1 className="section-title section-title--works">Projetos agrupados, sem carrossel.</h1>
+                <h1 className="section-title section-title--works">Projetos agrupados.</h1>
                 <p className="section-body">
                   Cada bloco reune uma serie com galeria propria, descricao breve e pelo menos tres destaques de direcao visual.
                 </p>

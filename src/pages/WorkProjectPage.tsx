@@ -3,12 +3,35 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
-import { WORK_PROJECTS, type WorkProject } from '@/data/workProjects';
+import { WORK_PROJECTS, type ProjectMedia, type WorkProject } from '@/data/workProjects';
 
 const revealItem = {
   hidden: { opacity: 0, y: 22, filter: 'blur(8px)' },
   visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
 };
+
+function CaseMedia({ media, alt, controls = false }: { media: ProjectMedia; alt: string; controls?: boolean }) {
+  const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
+
+  if (media.mediaKind === 'video') {
+    return (
+      <video
+        src={media.src}
+        poster={media.poster}
+        muted={!controls}
+        loop={!controls}
+        playsInline
+        autoPlay={!controls}
+        controls={controls}
+        preload="metadata"
+        draggable={false}
+        style={style}
+      />
+    );
+  }
+
+  return <img src={media.src} alt={alt} loading="lazy" draggable={false} style={style} />;
+}
 
 function ProjectNotFound() {
   const { i18n } = useTranslation();
@@ -116,16 +139,11 @@ export default function WorkProjectPage() {
               <Link to="/works" className="ghost-button" data-cursor="link">
                 Voltar aos trabalhos
               </Link>
-              <span>{project.images.length} imagens no projeto</span>
+              <span>{project.images.length} midias no projeto</span>
             </motion.div>
 
             <motion.div className="project-case-hero" variants={revealItem}>
-              <img
-                src={project.hero.image}
-                alt={project.title}
-                draggable={false}
-                style={project.hero.objectPosition ? { objectPosition: project.hero.objectPosition } : undefined}
-              />
+              <CaseMedia media={project.hero} alt={project.title} />
               <div className="project-case-hero-copy">
                 <p>{project.category}</p>
                 <h1>{project.title}</h1>
@@ -157,13 +175,7 @@ export default function WorkProjectPage() {
 
             <motion.div className="project-case-editorial" variants={revealItem}>
               <div className="project-case-editorial-image">
-                <img
-                  src={secondaryImage.image}
-                  alt=""
-                  loading="lazy"
-                  draggable={false}
-                  style={secondaryImage.objectPosition ? { objectPosition: secondaryImage.objectPosition } : undefined}
-                />
+                <CaseMedia media={secondaryImage} alt="" />
               </div>
               <div className="project-case-editorial-copy">
                 <span>Direcao visual</span>
@@ -177,13 +189,7 @@ export default function WorkProjectPage() {
             <motion.div className="project-case-gallery" variants={revealItem}>
               {project.images.map((work, index) => (
                 <figure key={work.slug} className={`project-case-gallery-item project-case-gallery-item--${index + 1}`}>
-                  <img
-                    src={work.image}
-                    alt={work.title}
-                    loading="lazy"
-                    draggable={false}
-                    style={work.objectPosition ? { objectPosition: work.objectPosition } : undefined}
-                  />
+                  <CaseMedia media={work} alt={work.title} controls={work.mediaKind === 'video'} />
                   <figcaption>
                     <span>{String(index + 1).padStart(2, '0')}</span>
                     <strong>{work.title}</strong>
