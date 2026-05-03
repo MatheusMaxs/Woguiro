@@ -492,13 +492,16 @@
 
 .work-card-media img,
 .archive-card-media img {
-  opacity: 0;
+  opacity: 1;
   filter: saturate(0.94) contrast(1.04) brightness(0.84);
-  transition: transform 0.55s var(--ease-out), filter 0.55s var(--ease-out);
+  transition:
+    opacity 0.35s var(--ease-out),
+    transform 0.55s var(--ease-out),
+    filter 0.55s var(--ease-out);
 }
 
 .works-focus-media img {
-  opacity: 0;
+  opacity: 1;
 }
 
 .work-card-media:hover img,
