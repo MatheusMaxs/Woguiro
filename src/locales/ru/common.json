@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Фотограф и Режиссер | Португалия",
+    "title": "Woguiro",
     "description": "Фото и видео для тех, кто не принимает обычное. Лиссабон - по всему миру."
   },
   "hero": {
@@ -115,6 +115,7 @@
     "disciplineDirection": "Creative Direction",
     "disciplineMusic": "Музыкальная Чувствительность",
     "portraitAlt": "Портрет Guiro",
+    "portraitCaption": "Guilherme Anjos",
     "disciplinesList": [
       "Улица, портрет и still-image systems с кинематографичным взглядом.",
       "Motion-led visuals для музыки, reels, кампаний и narrative cuts.",
@@ -126,10 +127,24 @@
     "tech": {
       "cpu": "CPU",
       "gpu": "GPU",
+      "motherboard": "Motherboard",
+      "ram": "RAM",
       "camera": "Камера",
       "gimbal": "Гимбал",
-      "audio": "Аудио",
-      "storage": "Хранилище"
+      "ssd": "SSD",
+      "monitors": "Мониторы",
+      "microphone": "Микрофон",
+      "interface": "Интерфейс",
+      "phone": "Телефон"
+    },
+    "experience": {
+      "yearsLabel": "лет опыта",
+      "availabilityTitle": "Физически доступен для",
+      "availabilityValue": "ЕС, США, Азия",
+      "languagesTitle": "Языковые навыки",
+      "languagesValue": "PT / EN / ES / IT / JP",
+      "adminTitle": "Администрация",
+      "adminValue": "Natalia Anjos"
     },
     "stats": {
       "views": "Просмотры YouTube",
@@ -150,7 +165,8 @@
     "copied": "Email Скопирован",
     "availability": "Доступность",
     "availabilityValue": "База в Лиссабоне / глобальные productions",
-    "reply": "Обычное окно ответа: до 48ч",
+    "replyPrefix": "Обычное окно ответа:",
+    "replyHighlight": "до 48ч",
     "channels": "Предпочтительные Каналы",
     "youtube": "YouTube",
     "instagram": "Instagram",

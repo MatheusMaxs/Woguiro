@@ -25,7 +25,7 @@ export default function WorksPage() {
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} />
-        <title>{`${t('works.viewAll')} - Woguiro`}</title>
+        <title>Woguiro</title>
         <meta name="description" content={t('works.description')} />
       </Helmet>
 

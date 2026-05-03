@@ -20,6 +20,20 @@ interface AboutPreviewProps {
 const YOUTUBE_VIEWS_FALLBACK = '656K+';
 const YOUTUBE_VIEWS_CACHE_KEY = 'woguiro-youtube-views-v2';
 const YOUTUBE_VIEWS_CACHE_TTL_MS = 12 * 60 * 60 * 1000;
+const TECH_GROUP_CLASS_BY_ID: Record<string, string> = {
+  cpu: 'about-spec-card--blue',
+  gpu: 'about-spec-card--blue',
+  motherboard: 'about-spec-card--violet',
+  ram: 'about-spec-card--violet',
+  camera: 'about-spec-card--teal',
+  'main-gimbal': 'about-spec-card--teal',
+  ssd: 'about-spec-card--amber',
+  monitors: 'about-spec-card--amber',
+  microphone: 'about-spec-card--cyan',
+  interface: 'about-spec-card--cyan',
+  phone: 'about-spec-card--green',
+  'mobile-gimbal': 'about-spec-card--green',
+};
 
 const formatStatCount = (value: number) => {
   if (value >= 1_000_000) {
@@ -143,8 +157,8 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
 
             <div className="about-experience-grid">
               <div className="about-experience-card about-experience-card--primary">
-                <strong>{t('aboutPreview.experience.years', { years: experienceYears })}</strong>
-                <span>{t('aboutPreview.experience.note', { startYear: EXPERIENCE_START_YEAR })}</span>
+                <strong className="about-experience-years">{experienceYears}</strong>
+                <span>{t('aboutPreview.experience.yearsLabel')}</span>
               </div>
               <div className="about-experience-card">
                 <span>{t('aboutPreview.experience.availabilityTitle')}</span>
@@ -157,21 +171,6 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
               <div className="about-experience-card">
                 <span>{t('aboutPreview.experience.adminTitle')}</span>
                 <strong>{t('aboutPreview.experience.adminValue')}</strong>
-              </div>
-            </div>
-
-            <div className="about-core-specs" id="about-specs">
-              <div className="about-core-specs-head">
-                <span>{t('aboutPreview.specs')}</span>
-              </div>
-
-              <div className="about-core-specs-grid">
-                {TECH_HIGHLIGHTS.slice(0, 4).map((item) => (
-                  <div key={item.id} className="about-spec-card">
-                    <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
-                    <strong>{item.value}</strong>
-                  </div>
-                ))}
               </div>
             </div>
 
@@ -217,7 +216,10 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
 
                 <div className="about-full-specs-grid">
                   {TECH_HIGHLIGHTS.map((item) => (
-                    <div key={item.id} className="about-spec-card about-spec-card--dense">
+                    <div
+                      key={item.id}
+                      className={`about-spec-card about-spec-card--dense ${TECH_GROUP_CLASS_BY_ID[item.id] ?? ''}`.trim()}
+                    >
                       <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
                       <strong>{item.value}</strong>
                     </div>

@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Fotograf & Filmemacher | Portugal",
+    "title": "Woguiro",
     "description": "Fotografie und Video fur alle, die das Gewohnliche ablehnen. Lissabon - Weltweit."
   },
   "hero": {
@@ -115,6 +115,7 @@
     "disciplineDirection": "Creative Direction",
     "disciplineMusic": "Musikalische Sensibilitat",
     "portraitAlt": "Guiro Portrait",
+    "portraitCaption": "Guilherme Anjos",
     "disciplinesList": [
       "Street, Portrait und Still-Image-Systeme mit cinematografischem Auge.",
       "Motion-gefuhrte Visuals fur Musik, Reels, Kampagnen und narrative Cuts.",
@@ -126,10 +127,24 @@
     "tech": {
       "cpu": "CPU",
       "gpu": "GPU",
+      "motherboard": "Motherboard",
+      "ram": "RAM",
       "camera": "Kamera",
       "gimbal": "Gimbal",
-      "audio": "Audio",
-      "storage": "Speicher"
+      "ssd": "SSD",
+      "monitors": "Monitore",
+      "microphone": "Mikrofon",
+      "interface": "Interface",
+      "phone": "Telefon"
+    },
+    "experience": {
+      "yearsLabel": "jahre erfahrung",
+      "availabilityTitle": "Physisch verfugbar fur",
+      "availabilityValue": "EU, USA, Asien",
+      "languagesTitle": "Sprachkenntnisse",
+      "languagesValue": "PT / EN / ES / IT / JP",
+      "adminTitle": "Administration",
+      "adminValue": "Natalia Anjos"
     },
     "stats": {
       "views": "YouTube Views",
@@ -150,7 +165,8 @@
     "copied": "Email Kopiert",
     "availability": "Verfugbarkeit",
     "availabilityValue": "Lissabon Base / globale Produktionen",
-    "reply": "Ubliche Antwortzeit: bis zu 48h",
+    "replyPrefix": "Ubliche Antwortzeit:",
+    "replyHighlight": "bis zu 48h",
     "channels": "Bevorzugte Kanale",
     "youtube": "YouTube",
     "instagram": "Instagram",

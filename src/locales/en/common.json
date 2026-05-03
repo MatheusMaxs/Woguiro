@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Photographer & Filmmaker | Portugal",
+    "title": "Woguiro",
     "description": "Photography and videography for those who refuse the ordinary. Lisbon - Worldwide."
   },
   "hero": {
@@ -132,14 +132,13 @@
       "camera": "Camera",
       "gimbal": "Gimbal",
       "ssd": "SSD",
-      "psu": "PSU",
+      "monitors": "Monitors",
       "microphone": "Microphone",
       "interface": "Interface",
       "phone": "Phone"
     },
     "experience": {
-      "years": "Years of experience: {{years}}",
-      "note": "Updates automatically from the start year: {{startYear}}",
+      "yearsLabel": "years of experience",
       "availabilityTitle": "Physically available for",
       "availabilityValue": "EU, USA, Asia",
       "languagesTitle": "Language Skills",
@@ -166,7 +165,8 @@
     "copied": "Copied",
     "availability": "Availability",
     "availabilityValue": "Lisbon base - worldwide productions",
-    "reply": "Typical reply window: within 48h",
+    "replyPrefix": "Typical reply window:",
+    "replyHighlight": "within 48h",
     "channels": "Preferred Channels",
     "youtube": "YouTube",
     "instagram": "Instagram",

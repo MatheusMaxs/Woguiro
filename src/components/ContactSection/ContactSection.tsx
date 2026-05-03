@@ -70,7 +70,11 @@ export default function ContactSection() {
             <div className="contact-info-card">
               <span className="contact-info-label">{t('contact.availability')}</span>
               <strong className="contact-info-value">{t('contact.availabilityValue')}</strong>
-              <p className="contact-info-note">{t('contact.reply')}</p>
+              <p className="contact-info-note">
+                <span className="contact-status-dot" aria-hidden="true" />
+                <span>{t('contact.replyPrefix')}</span>
+                <strong className="contact-reply-highlight">{t('contact.replyHighlight')}</strong>
+              </p>
             </div>
 
             <div className="contact-channel-panel">
@@ -86,20 +90,32 @@ export default function ContactSection() {
                   const isCopied = copiedKey === link.labelKey;
 
                   return (
-                    <button
-                      key={link.href}
-                      type="button"
-                      className={`contact-channel-link${isCopied ? ' is-copied' : ''}`}
-                      aria-label={`${t('contact.copy')} ${link.value}`}
-                      data-cursor="link"
-                      onClick={() => handleCopy(link.copyValue, link.labelKey)}
-                    >
-                      <span>{t(link.labelKey)}</span>
-                      <strong>
-                        <span>{link.value}</span>
+                    <div key={link.href} className={`contact-channel-item${isCopied ? ' is-copied' : ''}`}>
+                      <a
+                        href={link.href}
+                        className="contact-channel-link"
+                        target={link.href.startsWith('http') ? '_blank' : undefined}
+                        rel={link.href.startsWith('http') ? 'noreferrer' : undefined}
+                        data-cursor="link"
+                      >
+                        <span>{t(link.labelKey)}</span>
+                        <strong>{link.value}</strong>
+                      </a>
+
+                      <button
+                        type="button"
+                        className="contact-copy-button"
+                        aria-label={`${t('contact.copy')} ${link.value}`}
+                        data-cursor="link"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          handleCopy(link.copyValue, link.labelKey);
+                        }}
+                      >
                         <img className="contact-copy-icon" src={copyIcon} alt="" aria-hidden="true" draggable={false} />
-                      </strong>
-                    </button>
+                      </button>
+                    </div>
                   );
                 })}
               </div>

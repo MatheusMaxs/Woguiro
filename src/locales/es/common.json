@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Fotografo & Videografo | Portugal",
+    "title": "Woguiro",
     "description": "Fotografia y videografia para quienes rechazan lo ordinario. Lisboa - Mundial."
   },
   "hero": {
@@ -115,6 +115,7 @@
     "disciplineDirection": "Direccion Creativa",
     "disciplineMusic": "Sensibilidad Musical",
     "portraitAlt": "Retrato de Guiro",
+    "portraitCaption": "Guilherme Anjos",
     "disciplinesList": [
       "Calle, retrato y sistemas de imagen fija con mirada cinematografica.",
       "Visuales en movimiento para musica, reels, campanas y cortes narrativos.",
@@ -126,10 +127,24 @@
     "tech": {
       "cpu": "CPU",
       "gpu": "GPU",
+      "motherboard": "Motherboard",
+      "ram": "RAM",
       "camera": "Camara",
       "gimbal": "Gimbal",
-      "audio": "Audio",
-      "storage": "Almacenamiento"
+      "ssd": "SSD",
+      "monitors": "Monitores",
+      "microphone": "Microfono",
+      "interface": "Interface",
+      "phone": "Telefono"
+    },
+    "experience": {
+      "yearsLabel": "anos de experiencia",
+      "availabilityTitle": "Disponible fisicamente para",
+      "availabilityValue": "UE, EUA, Asia",
+      "languagesTitle": "Competencias Linguisticas",
+      "languagesValue": "PT / EN / ES / IT / JP",
+      "adminTitle": "Administracion",
+      "adminValue": "Natalia Anjos"
     },
     "stats": {
       "views": "Views en YouTube",
@@ -150,7 +165,8 @@
     "copied": "Email Copiado",
     "availability": "Disponibilidad",
     "availabilityValue": "Base en Lisboa / producciones globales",
-    "reply": "Ventana habitual de respuesta: hasta 48h",
+    "replyPrefix": "Ventana habitual de respuesta:",
+    "replyHighlight": "hasta 48h",
     "channels": "Canales Preferidos",
     "youtube": "YouTube",
     "instagram": "Instagram",

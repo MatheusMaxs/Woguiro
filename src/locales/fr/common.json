@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Photographe & Realisateur | Portugal",
+    "title": "Woguiro",
     "description": "Photo et video pour ceux qui refusent l'ordinaire. Lisbonne - Monde entier."
   },
   "hero": {
@@ -115,6 +115,7 @@
     "disciplineDirection": "Direction Creative",
     "disciplineMusic": "Sensibilite Musicale",
     "portraitAlt": "Portrait de Guiro",
+    "portraitCaption": "Guilherme Anjos",
     "disciplinesList": [
       "Rue, portrait et systemes d'image fixe avec un oeil cinematographique.",
       "Visuels motion pour musique, reels, campagnes et coupes narratives.",
@@ -126,10 +127,24 @@
     "tech": {
       "cpu": "CPU",
       "gpu": "GPU",
+      "motherboard": "Motherboard",
+      "ram": "RAM",
       "camera": "Camera",
       "gimbal": "Gimbal",
-      "audio": "Audio",
-      "storage": "Stockage"
+      "ssd": "SSD",
+      "monitors": "Moniteurs",
+      "microphone": "Microphone",
+      "interface": "Interface",
+      "phone": "Telephone"
+    },
+    "experience": {
+      "yearsLabel": "annees d'experience",
+      "availabilityTitle": "Disponible physiquement pour",
+      "availabilityValue": "UE, USA, Asie",
+      "languagesTitle": "Competences Linguistiques",
+      "languagesValue": "PT / EN / ES / IT / JP",
+      "adminTitle": "Administration",
+      "adminValue": "Natalia Anjos"
     },
     "stats": {
       "views": "Vues YouTube",
@@ -150,7 +165,8 @@
     "copied": "Email Copie",
     "availability": "Disponibilite",
     "availabilityValue": "Base a Lisbonne / productions globales",
-    "reply": "Delai habituel de reponse: jusqu'a 48h",
+    "replyPrefix": "Delai habituel de reponse:",
+    "replyHighlight": "jusqu'a 48h",
     "channels": "Canaux Preferes",
     "youtube": "YouTube",
     "instagram": "Instagram",

@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "Woguiro - Fotografo & Videografo | Portugal",
+    "title": "Woguiro",
     "description": "Fotografia e videografia para quem recusa o comum. Lisboa - Mundo."
   },
   "hero": {
@@ -132,14 +132,13 @@
       "camera": "Camera",
       "gimbal": "Gimbal",
       "ssd": "SSD",
-      "psu": "PSU",
+      "monitors": "Monitores",
       "microphone": "Microfone",
       "interface": "Interface",
       "phone": "Telefone"
     },
     "experience": {
-      "years": "Anos de experiência: {{years}}",
-      "note": "Atualiza automaticamente com base no ano de início: {{startYear}}",
+      "yearsLabel": "anos de experiência",
       "availabilityTitle": "Disponível fisicamente para",
       "availabilityValue": "UE, EUA, Ásia",
       "languagesTitle": "Competências Linguísticas",
@@ -166,7 +165,8 @@
     "copied": "Copiado",
     "availability": "Disponibilidade",
     "availabilityValue": "Base em Lisboa - Produções globais",
-    "reply": "Janela de resposta habitual: ate 48h",
+    "replyPrefix": "Janela de resposta habitual:",
+    "replyHighlight": "ate 48h",
     "channels": "Canais Preferidos",
     "youtube": "YouTube",
     "instagram": "Instagram",
