@@ -382,14 +382,14 @@ export const WORK_PROJECTS: WorkProject[] = [
       'Detalhes de ambiente para reforcar identidade de marca',
     ],
     images: [
-      fromWork('francesinha-service'),
+      fromWork('francesinha-shelf-detail'),
       fromWork('francesinha-hand-cut'),
       fromWork('francesinha-table-study'),
       fromWork('francesinha-top-frame'),
       fromWork('francesinha-plate-close'),
-      fromWork('francesinha-shelf-detail'),
+      fromWork('francesinha-service'),
     ],
-    hero: fromWork('francesinha-service'),
+    hero: fromWork('francesinha-shelf-detail'),
   },
   {
     slug: 'my-iced-product-study',

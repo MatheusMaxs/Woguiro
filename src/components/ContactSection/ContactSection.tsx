@@ -123,6 +123,8 @@ export default function ContactSection() {
           </div>
         </div>
       </div>
+
+      <p className="site-credit">created by Maxs</p>
     </section>
   );
 }

@@ -99,7 +99,7 @@ export default function WorkProjectPage() {
 
   const previousProject = WORK_PROJECTS[(projectIndex - 1 + WORK_PROJECTS.length) % WORK_PROJECTS.length];
   const nextProject = WORK_PROJECTS[(projectIndex + 1) % WORK_PROJECTS.length];
-  const secondaryImage = project.images[1] ?? project.hero;
+  const secondaryImage = project.images.find((item) => item.slug !== project.hero.slug && item.src !== project.hero.src);
 
   return (
     <motion.main
@@ -124,7 +124,7 @@ export default function WorkProjectPage() {
           animate="visible"
           variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } } }}
         >
-          <div className="section-shell project-case-shell">
+          <div className="section-shell project-case-shell" data-project-slug={project.slug}>
             <div className="section-ghost" aria-hidden="true">
               CASE
             </div>
@@ -173,18 +173,20 @@ export default function WorkProjectPage() {
               </div>
             </motion.div>
 
-            <motion.div className="project-case-editorial" variants={revealItem}>
-              <div className="project-case-editorial-image">
-                <CaseMedia media={secondaryImage} alt="" />
-              </div>
-              <div className="project-case-editorial-copy">
-                <span>Direcao visual</span>
-                <p>
-                  A selecao organiza o projeto como narrativa: primeiro impacto, contexto, detalhe e ritmo. Cada imagem foi tratada como parte do mesmo
-                  sistema visual, sem perder o caracter individual de cada frame.
-                </p>
-              </div>
-            </motion.div>
+            {secondaryImage ? (
+              <motion.div className="project-case-editorial" variants={revealItem}>
+                <div className="project-case-editorial-image">
+                  <CaseMedia media={secondaryImage} alt="" />
+                </div>
+                <div className="project-case-editorial-copy">
+                  <span>Direcao visual</span>
+                  <p>
+                    A selecao organiza o projeto como narrativa: primeiro impacto, contexto, detalhe e ritmo. Cada imagem foi tratada como parte do mesmo
+                    sistema visual, sem perder o caracter individual de cada frame.
+                  </p>
+                </div>
+              </motion.div>
+            ) : null}
 
             <motion.div className="project-case-gallery" variants={revealItem}>
               {project.images.map((work, index) => (
