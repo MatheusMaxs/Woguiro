@@ -1163,7 +1163,7 @@
 .about-panel--setup .about-spec-card--dense {
   min-height: 6.05rem;
   padding: 0.9rem 1rem;
-  border-radius: 1rem;
+  border-radius: 0.82rem;
   gap: 0.25rem;
 }
 
@@ -1173,7 +1173,7 @@
 }
 
 .about-panel--setup .about-spec-card--dense strong {
-  font-size: clamp(0.74rem, 0.78vw, 0.92rem);
+  font-size: clamp(.76rem, .78vw, .72rem);
   line-height: 1.18;
 }
 
