@@ -57,6 +57,150 @@
       "artists": "Para Artistas"
     },
     "items": {
+      "street-ponte-de-lima": {
+        "title": "Frame de Rua em Ponte de Lima",
+        "subtitle": "Um momento publico silencioso em luz quente de fim de tarde.",
+        "description": "Street photography observada em Ponte de Lima, construida em gesto, distancia e arquitetura banhada pelo sol. O frame mantem a conversa intima sem perder a textura publica a volta.",
+        "location": "Ponte de Lima",
+        "focusPoints": ["Gesto humano observado", "Atmosfera quente de luz natural", "Corte editorial numa cena publica"],
+        "tags": ["Rua", "Ponte de Lima", "Candid"]
+      },
+      "francesinha-service": {
+        "title": "Servico de Francesinha",
+        "subtitle": "Textura de comida, movimento de mesa e sombra cinematografica.",
+        "description": "Um frame de comida focado nas maos, no molho e no ritual da mesa. A imagem mantem o apetite tatico enquanto usa escuridao e corte para tornar a cena intencional.",
+        "location": "Portugal",
+        "focusPoints": ["Maos e servico como narrativa", "Mood comercial low-key", "Direcao de comida guiada por textura"],
+        "tags": ["Comida", "Restaurante", "Detalhe"]
+      },
+      "ponte-de-lima-bridge": {
+        "title": "Ponte de Lima Bridge",
+        "subtitle": "Arcos de pedra, calma do rio e escala de paisagem.",
+        "description": "Um frame de paisagem que trata a ponte como estrutura e ritmo. Agua, montanhas e arcos de pedra seguram um tempo visual calmo para turismo, editorial ou narrativa de lugar.",
+        "location": "Ponte de Lima",
+        "focusPoints": ["Composicao guiada pelo lugar", "Camadas limpas de rio e montanha", "Atmosfera pronta para turismo"],
+        "tags": ["Paisagem", "Arquitetura", "Rio"]
+      },
+      "animals-porco": {
+        "title": "Porco",
+        "subtitle": "Estudo animal rural com textura direta de luz natural.",
+        "description": "Um frame animal limpo focado em escala, comportamento e luz do dia. A composicao mantem o sujeito no ambiente sem encenar demais o momento.",
+        "location": "Portugal",
+        "focusPoints": ["Comportamento natural", "Contexto ambiental", "Enquadramento documental neutro"],
+        "tags": ["Animais", "Rural", "Luz natural"]
+      },
+      "animals-poodle": {
+        "title": "Poodle",
+        "subtitle": "Retrato pet com carater, tensao da trela e contraste limpo.",
+        "description": "Um retrato pet vertical que mantem o cao expressivo e grafico. O corte usa a trela e o chao de cimento como estrutura simples em volta do sujeito.",
+        "location": "Portugal",
+        "focusPoints": ["Enquadramento pet focado no sujeito", "Controle simples de fundo", "Corte guiado por personalidade"],
+        "tags": ["Animais", "Pet", "Retrato"]
+      },
+      "animals-cocker-spaniel": {
+        "title": "Cocker Spaniel",
+        "subtitle": "Expressao suave e textura quente num retrato animal proximo.",
+        "description": "Um retrato animal proximo com atencao na expressao, textura do pelo e luz suave. O frame mantem o tom gentil sem perder definicao no sujeito.",
+        "location": "Portugal",
+        "focusPoints": ["Mood quente de retrato", "Detalhe de pelo e olhar", "Presenca calma do sujeito"],
+        "tags": ["Animais", "Cao", "Retrato"]
+      },
+      "animals-border-collie": {
+        "title": "Border Collie",
+        "subtitle": "Energia de perfil captada em luz dura.",
+        "description": "Um retrato de cao moldado por movimento, perfil e contraste limpo. A imagem mantem o animal alerta e vivo enquanto segura um corte editorial simples.",
+        "location": "Portugal",
+        "focusPoints": ["Composicao guiada por perfil", "Contraste exterior nitido", "Energia sem ruido visual"],
+        "tags": ["Animais", "Cao", "Acao"]
+      },
+      "animals-gato": {
+        "title": "Gato",
+        "subtitle": "Um frame felino escondido dentro de sombra verde densa.",
+        "description": "Um estudo animal construido pela descoberta. Folhas e sombra criam camadas, deixando o gato surgir em silencio em vez de virar um retrato encenado.",
+        "location": "Portugal",
+        "focusPoints": ["Enquadramento natural em camadas", "Sujeito escondido no ambiente", "Mood animal documental"],
+        "tags": ["Animais", "Gato", "Sombra"]
+      },
+      "francesinha-shelf-detail": {
+        "title": "Detalhe de Prateleira",
+        "subtitle": "Still life comercial com latas, dourado e pouca luz.",
+        "description": "Um detalhe de restaurante que transforma cultura de mesa em identidade visual. Formas de produto, acentos dourados e prateleira escura criam um still life comercial compacto.",
+        "location": "Portugal",
+        "focusPoints": ["Detalhe atmosferico de restaurante", "Ritmo de produto e objeto", "Frame compacto de identidade"],
+        "tags": ["Comida", "Detalhe de Marca", "Interior"]
+      },
+      "francesinha-table-study": {
+        "title": "Estudo de Mesa Francesinha",
+        "subtitle": "Composicao mais aberta em volta de molho e contexto de mesa.",
+        "description": "Um estudo de comida empratada com contexto suficiente para parecer vivido. O frame equilibra apetite, ritmo de mesa e luz quente de restaurante.",
+        "location": "Portugal",
+        "focusPoints": ["Clareza comercial de comida", "Atmosfera quente de mesa", "Contexto sem distracao"],
+        "tags": ["Comida", "Restaurante", "Mesa"]
+      },
+      "francesinha-top-frame": {
+        "title": "Francesinha de Cima",
+        "subtitle": "Geometria grafica do prato e cor do molho vista de cima.",
+        "description": "Um frame de comida orientado de cima, com forma forte do prato e cor do molho. O corte torna o prato imediatamente legivel para menus, social posts ou identidade de restaurante.",
+        "location": "Portugal",
+        "focusPoints": ["Leitura imediata do prato", "Estrutura grafica superior", "Contraste quente entre molho e prato"],
+        "tags": ["Comida", "Menu", "Grafico"]
+      },
+      "francesinha-plate-close": {
+        "title": "Close de Prato Francesinha",
+        "subtitle": "Um corte denso construido por molho, sombra e apetite.",
+        "description": "Uma imagem comercial de comida proxima que assume densidade. O prato, a sombra e o molho carregam o frame sem precisar de ruido extra de styling.",
+        "location": "Portugal",
+        "focusPoints": ["Close guiado por apetite", "Atmosfera escura de restaurante", "Controle de textura e forma"],
+        "tags": ["Comida", "Close-up", "Textura"]
+      },
+      "francesinha-hand-cut": {
+        "title": "Corte com Maos Francesinha",
+        "subtitle": "As maos entram no frame e transformam servico em historia.",
+        "description": "Um segundo angulo de servico onde a acao humana vira o gancho comercial. Maos, talheres e prato criam uma imagem de comida mais narrativa.",
+        "location": "Portugal",
+        "focusPoints": ["Acao humana dentro da comida", "Storytelling guiado por servico", "Close para cortes sociais"],
+        "tags": ["Comida", "Maos", "Servico"]
+      },
+      "planta-white-flowers": {
+        "title": "Flores Brancas",
+        "subtitle": "Pequenas flores brancas suspensas sobre textura violeta profunda.",
+        "description": "Um frame botanico construido por repeticao, contraste e ritmo negativo. As flores pequenas permanecem delicadas enquanto o fundo escuro da peso grafico a imagem.",
+        "location": "Portugal",
+        "focusPoints": ["Repeticao botanica grafica", "Detalhe floral de alto contraste", "Padrao natural silencioso"],
+        "tags": ["Botanico", "Flores", "Textura"]
+      },
+      "planta-primavera": {
+        "title": "Primavera",
+        "subtitle": "Camadas verdes de primavera vistas de cima.",
+        "description": "Um detalhe de paisagem de primavera moldado por verdes em camadas e distancia. O frame funciona como estudo ambiental mais suave dentro do arquivo fotografico de 2026.",
+        "location": "Portugal",
+        "focusPoints": ["Textura verde em camadas", "Distancia ambiental suave", "Atmosfera sazonal"],
+        "tags": ["Botanico", "Primavera", "Paisagem"]
+      },
+      "planta-prunus-serrulata": {
+        "title": "Prunus Serrulata",
+        "subtitle": "Copa de flores rosa contra uma rua discreta.",
+        "description": "Um frame botanico vertical onde a copa florida carrega quase toda a imagem. O fundo continua presente, mas secundario, dando enfase editorial limpa as flores.",
+        "location": "Portugal",
+        "focusPoints": ["Composicao guiada por flores", "Corte editorial vertical", "Fundo urbano suave"],
+        "tags": ["Botanico", "Floracao", "Rua"]
+      },
+      "ponte-de-lima-flag-line": {
+        "title": "Linha da Bandeira em Ponte de Lima",
+        "subtitle": "Um corte grafico da ponte contra ceu azul limpo.",
+        "description": "Um frame minimo de arquitetura em Ponte de Lima. A diagonal da ponte, a bandeira e o ceu azul criam um detalhe de lugar grafico com forte espaco negativo.",
+        "location": "Ponte de Lima",
+        "focusPoints": ["Espaco negativo grafico", "Linha arquitetonica diagonal", "Detalhe turistico limpo"],
+        "tags": ["Arquitetura", "Minimal", "Lugar"]
+      },
+      "ponte-de-lima-alameda": {
+        "title": "Alameda de Ponte de Lima",
+        "subtitle": "Um frame vertical de caminhada sob arvores de inverno.",
+        "description": "Um frame de rua arborizada com profundidade, ritmo e escala humana. Peoes e ciclistas dao movimento a avenida sem roubar a atmosfera calma.",
+        "location": "Ponte de Lima",
+        "focusPoints": ["Profundidade entre arvores", "Escala humana na paisagem", "Ritmo calmo de caminhada"],
+        "tags": ["Rua", "Paisagem", "Ponte de Lima"]
+      },
       "street-narrative": {
         "title": "Narrativa de Rua",
         "subtitle": "Luz, silencio e textura humana dentro da cidade.",
