@@ -12,10 +12,12 @@ const revealItem = {
 };
 
 function ProjectMosaic({ project }: { project: WorkProject }) {
+  const sideImage = project.images.find((work) => work.slug !== project.hero.slug) ?? project.hero;
+
   return (
     <div className="works-project-mosaic" aria-hidden="true">
-      {project.images.slice(0, 5).map((work, index) => (
-        <span key={work.slug} className={`works-project-mosaic-item works-project-mosaic-item--${index + 1}`}>
+      {[project.hero, sideImage].map((work, index) => (
+        <span key={`${project.slug}-${work.slug}-${index}`} className={`works-project-mosaic-item works-project-mosaic-item--${index === 0 ? 'hero' : 'side'}`}>
           <img
             src={work.image}
             alt=""
