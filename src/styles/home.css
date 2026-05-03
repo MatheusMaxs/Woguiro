@@ -546,17 +546,52 @@
 .work-card--view-all .work-card-media {
   display: grid;
   place-items: center;
+  isolation: isolate;
+  background: #080808;
+}
+
+.work-card--view-all .work-card-index {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.work-card--view-all .work-card-media .view-all-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  transform: scale(1.08);
+  filter: blur(14px) saturate(0.82) contrast(1.08) brightness(0.48);
+  opacity: 0.82;
+  will-change: transform, filter;
+}
+
+.view-all-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 255, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.66));
+  pointer-events: none;
 }
 
 .view-all-card-symbol {
-  color: #060606;
+  position: relative;
+  z-index: 2;
+  color: #fffdf6;
   font-family: var(--font-heading);
   font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 500;
   line-height: 1;
+  text-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.45);
   transition:
     opacity 0.36s var(--ease-out),
     transform 0.45s var(--ease-out);
+}
+
+.work-card--view-all .work-card-media:hover .view-all-card-image,
+.work-card--view-all .work-card-media:focus-visible .view-all-card-image {
+  transform: scale(1.12);
+  filter: blur(14px) saturate(0.9) contrast(1.08) brightness(0.54);
 }
 
 .work-card--view-all:hover .view-all-card-symbol,

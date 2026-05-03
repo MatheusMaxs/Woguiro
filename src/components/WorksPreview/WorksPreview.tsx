@@ -11,21 +11,33 @@ interface WorksPreviewProps {
   onFilterChange: (filter: WorkFilter) => void;
 }
 
-function selectCuratedWorks(filter: WorkFilter) {
+function getFilterMatches(filter: WorkFilter) {
+  return filter === 'all'
+    ? FEATURED_WORKS
+    : FEATURED_WORKS.filter((work) => work.filters.includes(filter));
+}
+
+function getFocusPool(filter: WorkFilter) {
   const matchedWorks =
     filter === 'all'
       ? FEATURED_WORKS
       : FEATURED_WORKS.filter((work) => work.filters.includes(filter));
 
-  if (matchedWorks.length >= 3) {
-    return matchedWorks.slice(0, 3);
+  return matchedWorks.length > 0 ? matchedWorks : FEATURED_WORKS;
+}
+
+function selectCuratedWorks(filter: WorkFilter, selectedSlug: string) {
+  const visibleWorks = getFocusPool(filter).filter((work) => work.slug !== selectedSlug);
+
+  if (visibleWorks.length >= 3) {
+    return visibleWorks.slice(0, 3);
   }
 
   const fallbackWorks = FEATURED_WORKS.filter(
-    (work) => !matchedWorks.some((matchedWork) => matchedWork.slug === work.slug),
+    (work) => work.slug !== selectedSlug && !visibleWorks.some((visibleWork) => visibleWork.slug === work.slug),
   );
 
-  return [...matchedWorks, ...fallbackWorks].slice(0, 3);
+  return [...visibleWorks, ...fallbackWorks].slice(0, 3);
 }
 
 function WorkCard({
@@ -94,6 +106,8 @@ function WorkCard({
 
 function ViewAllCard() {
   const { t } = useTranslation();
+  const [previewWork] = useState(() => FEATURED_WORKS[Math.floor(Math.random() * FEATURED_WORKS.length)]);
+  const previewTitle = t(`works.items.${previewWork.slug}.title`, { defaultValue: previewWork.title });
 
   return (
     <motion.article
@@ -104,7 +118,16 @@ function ViewAllCard() {
       exit={{ opacity: 0, y: -14, scale: 0.985 }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-      <Link to="/works" className="work-card-media" data-cursor="view">
+      <Link to="/works" className="work-card-media" data-cursor="view" aria-label={`${t('works.viewAll')} - ${previewTitle}`}>
+        <img
+          className="view-all-card-image"
+          src={previewWork.image}
+          alt=""
+          loading="lazy"
+          draggable={false}
+          style={previewWork.objectPosition ? { objectPosition: previewWork.objectPosition } : undefined}
+        />
+        <span className="view-all-card-overlay" aria-hidden="true" />
         <span className="work-card-index">04</span>
         <span className="view-all-card-symbol" aria-hidden="true">
           +
@@ -139,20 +162,18 @@ export default function WorksPreview({
   onFilterChange,
 }: WorksPreviewProps) {
   const { t } = useTranslation();
-  const curatedWorks = useMemo(() => selectCuratedWorks(activeFilter), [activeFilter]);
-  const archiveWorks = useMemo(
-    () => (activeFilter === 'all' ? FEATURED_WORKS : FEATURED_WORKS.filter((work) => work.filters.includes(activeFilter))),
-    [activeFilter],
-  );
-  const [selectedSlug, setSelectedSlug] = useState(curatedWorks[0]?.slug ?? FEATURED_WORKS[0].slug);
+  const focusPool = useMemo(() => getFocusPool(activeFilter), [activeFilter]);
+  const archiveWorks = useMemo(() => getFilterMatches(activeFilter), [activeFilter]);
+  const [selectedSlug, setSelectedSlug] = useState(FEATURED_WORKS[0].slug);
+  const selectedWork = focusPool.find((work) => work.slug === selectedSlug) ?? focusPool[0] ?? FEATURED_WORKS[0];
+  const curatedWorks = useMemo(() => selectCuratedWorks(activeFilter, selectedWork.slug), [activeFilter, selectedWork.slug]);
 
   useEffect(() => {
-    if (!curatedWorks.some((work) => work.slug === selectedSlug)) {
-      setSelectedSlug(curatedWorks[0]?.slug ?? FEATURED_WORKS[0].slug);
+    if (selectedWork.slug !== selectedSlug) {
+      setSelectedSlug(selectedWork.slug);
     }
-  }, [curatedWorks, selectedSlug]);
+  }, [selectedSlug, selectedWork.slug]);
 
-  const selectedWork = FEATURED_WORKS.find((work) => work.slug === selectedSlug) ?? curatedWorks[0];
   const selectedTitle = selectedWork
     ? t(`works.items.${selectedWork.slug}.title`, { defaultValue: selectedWork.title })
     : '';
