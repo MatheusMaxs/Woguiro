@@ -1,10 +1,13 @@
 import { useEffect } from 'react';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 
+import faviconUrl from '../assets/images/favicon.svg';
 import CustomCursor from '@/components/CustomCursor/CustomCursor';
 import SiteNav from '@/components/SiteNav';
 import HomePage from '@/pages/HomePage';
+import WorkProjectPage from '@/pages/WorkProjectPage';
 import WorksPage from '@/pages/WorksPage';
 
 function AnimatedRoutes() {
@@ -15,6 +18,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<WorksPage />} />
+        <Route path="/works/:projectSlug" element={<WorkProjectPage />} />
       </Routes>
     </AnimatePresence>
   );
@@ -65,6 +69,9 @@ export default function App() {
   return (
     <>
       <MotionConfig reducedMotion="user" transition={{ duration: 0.52, ease: [0.16, 1, 0.3, 1] }}>
+        <Helmet>
+          <link rel="icon" type="image/svg+xml" href={faviconUrl} />
+        </Helmet>
         <BrowserRouter>
           <RouteScrollRestoration />
           <SiteNav />

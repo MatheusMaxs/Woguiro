@@ -170,7 +170,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
               </div>
               <div className="about-experience-card">
                 <span>{t('aboutPreview.experience.adminTitle')}</span>
-                <strong>{t('aboutPreview.experience.adminValue')}</strong>
+                <strong className="about-admin-name">{t('aboutPreview.experience.adminValue')}</strong>
               </div>
             </div>
 
