@@ -157,8 +157,8 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
 
             <div className="about-experience-grid">
               <div className="about-experience-card about-experience-card--primary">
-                <strong className="about-experience-years">{experienceYears}</strong>
                 <span>{t('aboutPreview.experience.yearsLabel')}</span>
+                <strong className="about-experience-years">{experienceYears}</strong>
               </div>
               <div className="about-experience-card">
                 <span>{t('aboutPreview.experience.availabilityTitle')}</span>
