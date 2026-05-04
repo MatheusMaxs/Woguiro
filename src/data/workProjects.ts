@@ -387,7 +387,6 @@ export const WORK_PROJECTS: WorkProject[] = [
       fromWork('francesinha-table-study'),
       fromWork('francesinha-top-frame'),
       fromWork('francesinha-plate-close'),
-      fromWork('francesinha-service'),
     ],
     hero: fromWork('francesinha-shelf-detail'),
   },
