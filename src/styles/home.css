@@ -1003,8 +1003,8 @@
 
 .works-project-mosaic--count-1 {
   justify-self: end;
-  width: clamp(12.5rem, 21vw, 18rem);
-  height: clamp(12.5rem, 21vw, 18rem);
+  width: clamp(10.5rem, 13vw, 12.5rem);
+  height: clamp(10.5rem, 13vw, 12.5rem);
 }
 
 .works-project-mosaic-item,
@@ -2099,8 +2099,8 @@
 
   .works-project-mosaic--count-1 {
     justify-self: start;
-    width: min(100%, clamp(8rem, 52vw, 12rem));
-    height: min(100vw, clamp(8rem, 52vw, 12rem));
+    width: min(100%, clamp(10rem, 46vw, 12rem));
+    height: min(100vw, clamp(10rem, 46vw, 12rem));
   }
 
   .works-project-mosaic .works-project-mosaic-item {
