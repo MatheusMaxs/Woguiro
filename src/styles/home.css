@@ -1001,12 +1001,6 @@
   min-height: 0;
 }
 
-.works-project-mosaic--count-1 {
-  justify-self: end;
-  width: clamp(10.5rem, 13vw, 12.5rem);
-  height: clamp(10.5rem, 13vw, 12.5rem);
-}
-
 .works-project-mosaic-item,
 .project-case-gallery-item,
 .project-case-hero,
@@ -2095,12 +2089,6 @@
     grid-auto-rows: clamp(6.5rem, 30vw, 9rem);
     height: auto;
     min-height: 0;
-  }
-
-  .works-project-mosaic--count-1 {
-    justify-self: start;
-    width: min(100%, clamp(10rem, 46vw, 12rem));
-    height: min(100vw, clamp(10rem, 46vw, 12rem));
   }
 
   .works-project-mosaic .works-project-mosaic-item {
