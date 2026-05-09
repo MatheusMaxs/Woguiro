@@ -21,7 +21,8 @@
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.44) 18%, rgba(0, 0, 0, 0.08) 42%, rgba(0, 0, 0, 0.5) 100%),
     radial-gradient(circle at 56% 44%, rgba(255, 255, 255, 0.1), transparent 20%),
-    radial-gradient(circle at 58% 48%, rgba(112, 13, 13, 0.08), transparent 24%);
+    radial-gradient(circle at 58% 48%, rgba(112, 13, 13, 0.12), transparent 24%),
+    radial-gradient(circle at 28% 68%, rgba(119, 78, 255, 0.12), transparent 26%);
 }
 
 .hero::after {
@@ -49,7 +50,7 @@
   display: block;
   object-fit: cover;
   object-position: 58% 18%;
-  filter: saturate(0.92) contrast(1.08) brightness(0.78);
+  filter: saturate(1.04) contrast(1.08) brightness(0.84);
   user-select: none;
   pointer-events: none;
 }
@@ -498,8 +499,7 @@
 .hero-cta {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
@@ -510,8 +510,12 @@
   padding: 0.88rem 1.05rem;
   border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 0.45rem;
-  background: rgba(7, 7, 7, 0.84);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(155, 114, 255, 0.14), transparent 55%),
+    rgba(7, 7, 7, 0.84);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.22),
+    0 0 26px rgba(155, 114, 255, 0.12);
   color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(0.98rem, 1vw, 1.12rem);
@@ -537,20 +541,19 @@
 }
 
 .cta-text {
-  grid-column: 2;
   justify-self: center;
 }
 
 .cta-arrow {
-  grid-column: 3;
-  justify-self: start;
+  position: absolute;
+  right: 1.05rem;
 }
 
 .cta-fill {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: rgba(255, 255, 255, 0.94);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(213, 229, 255, 0.96));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.4s var(--ease-out);
@@ -671,7 +674,7 @@
 
   .hero-bg-image-media {
     object-position: center 16%;
-    filter: saturate(0.96) contrast(1.06) brightness(0.75);
+    filter: saturate(1.04) contrast(1.06) brightness(0.8);
   }
 
   .hero-navbar {

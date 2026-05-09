@@ -19,6 +19,9 @@ function fallbackCopy(text: string) {
 export default function ContactSection() {
   const { t } = useTranslation();
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const emailSubject = encodeURIComponent('Novo projeto Woguiro');
+  const emailBody = encodeURIComponent('Ola Woguiro, quero iniciar um projeto.\n\nTipo de projeto:\nPrazo:\nLocal:\nMensagem:');
+  const webMailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${emailSubject}&body=${emailBody}`;
 
   const handleCopy = async (value: string, key: string) => {
     try {
@@ -51,7 +54,7 @@ export default function ContactSection() {
             <p className="section-body">{t('contact.description')}</p>
 
             <div className="contact-action-row">
-              <a className="primary-button" href={`mailto:${CONTACT_EMAIL}`} data-cursor="link">
+              <a className="primary-button contact-primary-button" href={webMailUrl} target="_blank" rel="noreferrer" data-cursor="link">
                 {t('contact.primary')}
               </a>
               <a

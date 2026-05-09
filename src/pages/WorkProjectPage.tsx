@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +11,17 @@ const revealItem = {
   visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
 };
 
-function CaseMedia({ media, alt, controls = false }: { media: ProjectMedia; alt: string; controls?: boolean }) {
+function CaseMedia({
+  media,
+  alt,
+  controls = false,
+  autoPlay = !controls,
+}: {
+  media: ProjectMedia;
+  alt: string;
+  controls?: boolean;
+  autoPlay?: boolean;
+}) {
   const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
 
   if (media.mediaKind === 'video') {
@@ -21,9 +32,11 @@ function CaseMedia({ media, alt, controls = false }: { media: ProjectMedia; alt:
         muted={!controls}
         loop={!controls}
         playsInline
-        autoPlay={!controls}
+        autoPlay={autoPlay}
         controls={controls}
-        preload="metadata"
+        controlsList="nodownload noplaybackrate noremoteplayback"
+        disablePictureInPicture
+        preload={controls ? 'auto' : 'metadata'}
         draggable={false}
         style={style}
       />
@@ -31,6 +44,65 @@ function CaseMedia({ media, alt, controls = false }: { media: ProjectMedia; alt:
   }
 
   return <img src={media.src} alt={alt} loading="lazy" draggable={false} style={style} />;
+}
+
+function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose: () => void }) {
+  useEffect(() => {
+    if (!media) {
+      return;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.body.classList.add('is-scroll-locked');
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.classList.remove('is-scroll-locked');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [media, onClose]);
+
+  if (!media) {
+    return null;
+  }
+
+  return (
+    <motion.div
+      className="media-lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label={media.title}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <button type="button" className="media-lightbox-backdrop" aria-label="Fechar midia" onClick={onClose} />
+      <motion.div
+        className="media-lightbox-panel"
+        initial={{ opacity: 0, y: 28, scale: 0.96, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: 18, scale: 0.98, filter: 'blur(6px)' }}
+        transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <button type="button" className="media-lightbox-close" data-cursor="link" onClick={onClose}>
+          Fechar
+        </button>
+        <div className="media-lightbox-frame">
+          <CaseMedia media={media} alt={media.title} controls={media.mediaKind === 'video'} autoPlay />
+        </div>
+        <div className="media-lightbox-caption">
+          <span>{media.mediaKind === 'video' ? 'Video com som' : 'Imagem ampliada'}</span>
+          <strong>{media.title}</strong>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
 }
 
 function ProjectNotFound() {
@@ -90,6 +162,7 @@ function ProjectMeta({ project }: { project: WorkProject }) {
 export default function WorkProjectPage() {
   const { projectSlug } = useParams();
   const { i18n } = useTranslation();
+  const [activeMedia, setActiveMedia] = useState<ProjectMedia | null>(null);
   const projectIndex = WORK_PROJECTS.findIndex((item) => item.slug === projectSlug);
   const project = projectIndex >= 0 ? WORK_PROJECTS[projectIndex] : undefined;
 
@@ -143,7 +216,10 @@ export default function WorkProjectPage() {
             </motion.div>
 
             <motion.div className="project-case-hero" variants={revealItem}>
-              <CaseMedia media={project.hero} alt={project.title} />
+              <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(project.hero)}>
+                <CaseMedia media={project.hero} alt={project.title} />
+                <span className="project-case-media-hint">Abrir grande</span>
+              </button>
               <div className="project-case-hero-copy">
                 <p>{project.category}</p>
                 <h1>{project.title}</h1>
@@ -176,7 +252,10 @@ export default function WorkProjectPage() {
             {secondaryImage ? (
               <motion.div className="project-case-editorial" variants={revealItem}>
                 <div className="project-case-editorial-image">
-                  <CaseMedia media={secondaryImage} alt="" />
+                  <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(secondaryImage)}>
+                    <CaseMedia media={secondaryImage} alt="" />
+                    <span className="project-case-media-hint">Abrir grande</span>
+                  </button>
                 </div>
                 <div className="project-case-editorial-copy">
                   <span>Direcao visual</span>
@@ -191,7 +270,10 @@ export default function WorkProjectPage() {
             <motion.div className="project-case-gallery" variants={revealItem}>
               {project.images.map((work, index) => (
                 <figure key={work.slug} className={`project-case-gallery-item project-case-gallery-item--${index + 1}`}>
-                  <CaseMedia media={work} alt={work.title} controls={work.mediaKind === 'video'} />
+                  <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(work)}>
+                    <CaseMedia media={work} alt={work.title} />
+                    <span className="project-case-media-hint">{work.mediaKind === 'video' ? 'Abrir com som' : 'Abrir grande'}</span>
+                  </button>
                   <figcaption>
                     <span>{String(index + 1).padStart(2, '0')}</span>
                     <strong>{work.title}</strong>
@@ -211,6 +293,7 @@ export default function WorkProjectPage() {
           </div>
         </motion.section>
       </div>
+      <MediaLightbox media={activeMedia} onClose={() => setActiveMedia(null)} />
     </motion.main>
   );
 }

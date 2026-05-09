@@ -18,7 +18,7 @@
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-  --home-edge: clamp(1.5rem, 10vw, 12rem);
+  --home-edge: clamp(1rem, 6vw, 9rem);
   --page-margin: clamp(1.5rem, 5vw, 6rem);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
@@ -29,7 +29,7 @@
 
 @media (min-width: 1024px) {
   :root {
-    font-size: 8px;
+    font-size: clamp(8px, 0.52vw, 10px);
   }
 }
 
@@ -39,6 +39,8 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: clamp(1rem, 4vw, 3rem);
+  text-size-adjust: 100%;
 }
 
 body {

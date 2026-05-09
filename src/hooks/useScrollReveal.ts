@@ -19,15 +19,17 @@ export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
       singles.forEach((element) => {
         gsap.from(element, {
           opacity: 0,
-          y: 36,
-          scale: 0.985,
-          filter: 'blur(8px)',
-          duration: 1,
-          ease: 'power3.out',
+          y: 54,
+          scale: 0.975,
+          rotateX: 4,
+          transformOrigin: '50% 70%',
+          filter: 'blur(12px)',
+          duration: 1.18,
+          ease: 'power4.out',
           clearProps: 'filter,opacity,transform',
           scrollTrigger: {
             trigger: element,
-            start: 'top 82%',
+            start: 'top 84%',
             once: true,
           },
         });
@@ -42,20 +44,27 @@ export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
 
         gsap.from(items, {
           opacity: 0,
-          y: 34,
-          scale: 0.985,
-          filter: 'blur(8px)',
-          duration: 0.95,
-          stagger: 0.08,
-          ease: 'power3.out',
+          y: 44,
+          scale: 0.975,
+          rotateX: 3,
+          transformOrigin: '50% 70%',
+          filter: 'blur(10px)',
+          duration: 1.05,
+          stagger: 0.075,
+          ease: 'power4.out',
           clearProps: 'filter,opacity,transform',
           scrollTrigger: {
             trigger: group,
-            start: 'top 80%',
+            start: 'top 82%',
             once: true,
           },
         });
       });
+
+      const refresh = () => ScrollTrigger.refresh();
+      window.addEventListener('load', refresh, { once: true });
+
+      return () => window.removeEventListener('load', refresh);
     },
     { scope: containerRef },
   );

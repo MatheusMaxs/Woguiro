@@ -314,7 +314,7 @@ const ruanFootballMedia = [
   ),
 ];
 
-export const WORK_PROJECTS: WorkProject[] = [
+const WORK_PROJECT_ITEMS: WorkProject[] = [
   {
     slug: 'ponte-de-lima-street-archive',
     title: 'Ponte de Lima Street Archive',
@@ -544,4 +544,18 @@ export const WORK_PROJECTS: WorkProject[] = [
     images: grindsetMedia,
     hero: grindsetMedia[0],
   },
+];
+
+const PROJECT_ORDER = [
+  'livraria-cultural-session',
+  'ugc-video-pack',
+  'grindset-editing-study',
+  'coca-cola-compal-motion-loops',
+];
+
+export const WORK_PROJECTS: WorkProject[] = [
+  ...PROJECT_ORDER.map((slug) => WORK_PROJECT_ITEMS.find((project) => project.slug === slug)).filter(
+    (project): project is WorkProject => Boolean(project),
+  ),
+  ...WORK_PROJECT_ITEMS.filter((project) => !PROJECT_ORDER.includes(project.slug)),
 ];

@@ -8,10 +8,34 @@ const TITLE = 'WOGUIRO';
 
 gsap.registerPlugin(useGSAP);
 
+function hasSeenLoading() {
+  if (typeof window === 'undefined') {
+    return false;
+  }
+
+  try {
+    return window.sessionStorage.getItem(STORAGE_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function markLoadingSeen() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  try {
+    window.sessionStorage.setItem(STORAGE_KEY, 'true');
+  } catch {
+    // Storage can be blocked in private or hardened browsers; never keep the loader stuck.
+  }
+}
+
 export default function LoadingScreen() {
   const { t } = useTranslation();
   const overlayRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(() => window.sessionStorage.getItem(STORAGE_KEY) !== 'true');
+  const [isVisible, setIsVisible] = useState(() => !hasSeenLoading());
 
   useEffect(() => {
     if (!isVisible) {
@@ -33,14 +57,24 @@ export default function LoadingScreen() {
         return;
       }
 
+      let completed = false;
       const completeLoading = () => {
-        window.sessionStorage.setItem(STORAGE_KEY, 'true');
+        if (completed) {
+          return;
+        }
+
+        completed = true;
+        markLoadingSeen();
         setIsVisible(false);
       };
+      const failSafeTimeout = window.setTimeout(completeLoading, 4200);
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const timeoutId = window.setTimeout(completeLoading, 220);
-        return () => window.clearTimeout(timeoutId);
+        return () => {
+          window.clearTimeout(timeoutId);
+          window.clearTimeout(failSafeTimeout);
+        };
       }
 
       const titleChars = gsap.utils.toArray<HTMLElement>('.loading-screen-char');
@@ -79,7 +113,10 @@ export default function LoadingScreen() {
           ease: 'power4.inOut',
         }, '+=0.58');
 
-      return () => timeline.kill();
+      return () => {
+        window.clearTimeout(failSafeTimeout);
+        timeline.kill();
+      };
     },
     { scope: overlayRef, dependencies: [isVisible] },
   );

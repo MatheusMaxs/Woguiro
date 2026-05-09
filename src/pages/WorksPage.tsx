@@ -16,7 +16,7 @@ function MediaPreview({ media }: { media: ProjectMedia }) {
 
   if (media.mediaKind === 'video') {
     return (
-      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload="metadata" draggable={false} style={style} />
+      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload="auto" draggable={false} style={style} />
     );
   }
 

@@ -6,7 +6,9 @@ import { useTranslation } from 'react-i18next';
 import AboutPreview from '@/components/AboutPreview/AboutPreview';
 import Hero from '@/components/Hero/Hero';
 import ContactSection from '@/components/ContactSection/ContactSection';
+import FloatingAtmosphere from '@/components/FloatingAtmosphere/FloatingAtmosphere';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
+import PartnershipsSection from '@/components/PartnershipsSection/PartnershipsSection';
 import WorksPreview from '@/components/WorksPreview/WorksPreview';
 import { type WorkFilter } from '@/data/homeContent';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
@@ -65,12 +67,14 @@ export default function HomePage() {
       <Hero onNavigate={handleNavigate} />
 
       <div className="home-sections">
+        <FloatingAtmosphere />
         <WorksPreview
           activeFilter={activeFilter}
           archiveOpen={archiveOpen}
           onFilterChange={setActiveFilter}
         />
         <AboutPreview expanded={aboutExpanded} onToggleExpanded={() => setAboutExpanded((current) => !current)} />
+        <PartnershipsSection />
         <ContactSection />
       </div>
     </motion.main>
