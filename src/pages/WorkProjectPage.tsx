@@ -47,6 +47,9 @@ function CaseMedia({
 }
 
 function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose: () => void }) {
+  const { t } = useTranslation();
+  const mediaTitle = media ? t(`portfolioMedia.${media.slug}.title`, { defaultValue: media.title }) : '';
+
   useEffect(() => {
     if (!media) {
       return;
@@ -76,13 +79,13 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
       className="media-lightbox"
       role="dialog"
       aria-modal="true"
-      aria-label={media.title}
+      aria-label={mediaTitle}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
     >
-      <button type="button" className="media-lightbox-backdrop" aria-label="Fechar midia" onClick={onClose} />
+      <button type="button" className="media-lightbox-backdrop" aria-label={t('projectCase.closeMedia')} onClick={onClose} />
       <motion.div
         className="media-lightbox-panel"
         initial={{ opacity: 0, y: 28, scale: 0.96, filter: 'blur(8px)' }}
@@ -91,14 +94,14 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
         transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
       >
         <button type="button" className="media-lightbox-close" data-cursor="link" onClick={onClose}>
-          Fechar
+          {t('projectCase.close')}
         </button>
         <div className="media-lightbox-frame">
-          <CaseMedia media={media} alt={media.title} controls={media.mediaKind === 'video'} autoPlay />
+          <CaseMedia media={media} alt={mediaTitle} controls={media.mediaKind === 'video'} autoPlay />
         </div>
         <div className="media-lightbox-caption">
-          <span>{media.mediaKind === 'video' ? 'Video com som' : 'Imagem ampliada'}</span>
-          <strong>{media.title}</strong>
+          <span>{media.mediaKind === 'video' ? t('projectCase.videoWithSound') : t('projectCase.enlargedImage')}</span>
+          <strong>{mediaTitle}</strong>
         </div>
       </motion.div>
     </motion.div>
@@ -106,7 +109,7 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
 }
 
 function ProjectNotFound() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <motion.main
@@ -119,17 +122,17 @@ function ProjectNotFound() {
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} />
-        <title>Woguiro - Projeto nao encontrado</title>
+        <title>{t('projectCase.notFoundTitle')}</title>
       </Helmet>
 
       <div className="home-sections">
         <section className="home-section">
           <div className="section-shell project-case-shell">
             <div className="project-case-empty">
-              <p className="section-kicker">Projeto indisponivel</p>
-              <h1 className="section-title section-title--works">Este case nao existe no arquivo.</h1>
+              <p className="section-kicker">{t('projectCase.unavailable')}</p>
+              <h1 className="section-title section-title--works">{t('projectCase.missingTitle')}</h1>
               <Link to="/works" className="ghost-button" data-cursor="link">
-                Voltar aos trabalhos
+                {t('projectCase.backToWorks')}
               </Link>
             </div>
           </div>
@@ -140,18 +143,19 @@ function ProjectNotFound() {
 }
 
 function ProjectMeta({ project }: { project: WorkProject }) {
+  const { t } = useTranslation();
   const metaItems = [
-    ['Categoria', project.category],
-    ['Data', project.date],
-    ['Cliente', project.client],
-    ['Local', project.location],
+    ['category', t(`portfolioProjects.${project.slug}.category`, { defaultValue: project.category })],
+    ['date', t(`portfolioProjects.${project.slug}.date`, { defaultValue: project.date })],
+    ['client', t(`portfolioProjects.${project.slug}.client`, { defaultValue: project.client })],
+    ['location', t(`portfolioProjects.${project.slug}.location`, { defaultValue: project.location })],
   ];
 
   return (
     <div className="project-case-meta-grid">
       {metaItems.map(([label, value]) => (
         <div key={label} className="project-case-meta-card">
-          <span>{label}</span>
+          <span>{t(`projectCase.${label}`)}</span>
           <strong>{value}</strong>
         </div>
       ))}
@@ -161,7 +165,7 @@ function ProjectMeta({ project }: { project: WorkProject }) {
 
 export default function WorkProjectPage() {
   const { projectSlug } = useParams();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [activeMedia, setActiveMedia] = useState<ProjectMedia | null>(null);
   const projectIndex = WORK_PROJECTS.findIndex((item) => item.slug === projectSlug);
   const project = projectIndex >= 0 ? WORK_PROJECTS[projectIndex] : undefined;
@@ -173,6 +177,14 @@ export default function WorkProjectPage() {
   const previousProject = WORK_PROJECTS[(projectIndex - 1 + WORK_PROJECTS.length) % WORK_PROJECTS.length];
   const nextProject = WORK_PROJECTS[(projectIndex + 1) % WORK_PROJECTS.length];
   const secondaryImage = project.images.find((item) => item.slug !== project.hero.slug && item.src !== project.hero.src);
+  const projectTitle = t(`portfolioProjects.${project.slug}.title`, { defaultValue: project.title });
+  const projectSubtitle = t(`portfolioProjects.${project.slug}.subtitle`, { defaultValue: project.subtitle });
+  const projectDescription = t(`portfolioProjects.${project.slug}.description`, { defaultValue: project.description });
+  const projectStory = t(`portfolioProjects.${project.slug}.story`, { defaultValue: project.story });
+  const projectCategory = t(`portfolioProjects.${project.slug}.category`, { defaultValue: project.category });
+  const projectDate = t(`portfolioProjects.${project.slug}.date`, { defaultValue: project.date });
+  const previousProjectTitle = t(`portfolioProjects.${previousProject.slug}.title`, { defaultValue: previousProject.title });
+  const nextProjectTitle = t(`portfolioProjects.${nextProject.slug}.title`, { defaultValue: nextProject.title });
 
   return (
     <motion.main
@@ -186,8 +198,8 @@ export default function WorkProjectPage() {
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} />
-        <title>{`Woguiro - ${project.title}`}</title>
-        <meta name="description" content={project.description} />
+        <title>{`Woguiro - ${projectTitle}`}</title>
+        <meta name="description" content={projectDescription} />
       </Helmet>
 
       <div className="home-sections">
@@ -199,31 +211,31 @@ export default function WorkProjectPage() {
         >
           <div className="section-shell project-case-shell" data-project-slug={project.slug}>
             <div className="section-ghost" aria-hidden="true">
-              CASE
+              {t('projectCase.ghost')}
             </div>
 
             <motion.div className="section-meta-row" variants={revealItem}>
-              <span>Case study</span>
-              <span>{project.category}</span>
-              <span>{project.date}</span>
+              <span>{t('projectCase.caseStudy')}</span>
+              <span>{projectCategory}</span>
+              <span>{projectDate}</span>
             </motion.div>
 
             <motion.div className="project-case-topbar" variants={revealItem}>
               <Link to="/works" className="ghost-button" data-cursor="link">
-                Voltar aos trabalhos
+                {t('projectCase.backToWorks')}
               </Link>
-              <span>{project.images.length} midias no projeto</span>
+              <span>{t('projectCase.mediaCount', { count: project.images.length })}</span>
             </motion.div>
 
             <motion.div className="project-case-hero" variants={revealItem}>
               <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(project.hero)}>
-                <CaseMedia media={project.hero} alt={project.title} />
-                <span className="project-case-media-hint">Abrir grande</span>
+                <CaseMedia media={project.hero} alt={projectTitle} />
+                <span className="project-case-media-hint">{t('projectCase.openLarge')}</span>
               </button>
               <div className="project-case-hero-copy">
-                <p>{project.category}</p>
-                <h1>{project.title}</h1>
-                <span>{project.subtitle}</span>
+                <p>{projectCategory}</p>
+                <h1>{projectTitle}</h1>
+                <span>{projectSubtitle}</span>
               </div>
             </motion.div>
 
@@ -233,17 +245,17 @@ export default function WorkProjectPage() {
 
             <motion.div className="project-case-story-grid" variants={revealItem}>
               <div className="project-case-story-copy">
-                <p className="section-kicker">Descricao do projeto</p>
-                <h2>{project.subtitle}</h2>
-                <p>{project.description}</p>
-                <p>{project.story}</p>
+                <p className="section-kicker">{t('projectCase.description')}</p>
+                <h2>{projectSubtitle}</h2>
+                <p>{projectDescription}</p>
+                <p>{projectStory}</p>
               </div>
 
               <div className="project-case-highlights-panel">
-                <span>Destaques</span>
+                <span>{t('projectCase.highlights')}</span>
                 <ul>
-                  {project.highlights.map((highlight) => (
-                    <li key={highlight}>{highlight}</li>
+                  {project.highlights.map((highlight, index) => (
+                    <li key={highlight}>{t(`portfolioProjects.${project.slug}.highlights.${index}`, { defaultValue: highlight })}</li>
                   ))}
                 </ul>
               </div>
@@ -254,15 +266,12 @@ export default function WorkProjectPage() {
                 <div className="project-case-editorial-image">
                   <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(secondaryImage)}>
                     <CaseMedia media={secondaryImage} alt="" />
-                    <span className="project-case-media-hint">Abrir grande</span>
+                    <span className="project-case-media-hint">{t('projectCase.openLarge')}</span>
                   </button>
                 </div>
                 <div className="project-case-editorial-copy">
-                  <span>Direcao visual</span>
-                  <p>
-                    A selecao organiza o projeto como narrativa: primeiro impacto, contexto, detalhe e ritmo. Cada imagem foi tratada como parte do mesmo
-                    sistema visual, sem perder o caracter individual de cada frame.
-                  </p>
+                  <span>{t('projectCase.visualDirection')}</span>
+                  <p>{t('projectCase.visualDirectionBody')}</p>
                 </div>
               </motion.div>
             ) : null}
@@ -271,23 +280,23 @@ export default function WorkProjectPage() {
               {project.images.map((work, index) => (
                 <figure key={work.slug} className={`project-case-gallery-item project-case-gallery-item--${index + 1}`}>
                   <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(work)}>
-                    <CaseMedia media={work} alt={work.title} />
-                    <span className="project-case-media-hint">{work.mediaKind === 'video' ? 'Abrir com som' : 'Abrir grande'}</span>
+                    <CaseMedia media={work} alt={t(`portfolioMedia.${work.slug}.title`, { defaultValue: work.title })} />
+                    <span className="project-case-media-hint">{work.mediaKind === 'video' ? t('projectCase.openWithSound') : t('projectCase.openLarge')}</span>
                   </button>
                   <figcaption>
                     <span>{String(index + 1).padStart(2, '0')}</span>
-                    <strong>{work.title}</strong>
+                    <strong>{t(`portfolioMedia.${work.slug}.title`, { defaultValue: work.title })}</strong>
                   </figcaption>
                 </figure>
               ))}
             </motion.div>
 
-            <motion.nav className="project-case-nav" variants={revealItem} aria-label="Navegacao entre projetos">
+            <motion.nav className="project-case-nav" variants={revealItem} aria-label={t('projectCase.navLabel')}>
               <Link to={`/works/${previousProject.slug}`} className="ghost-button" data-cursor="link">
-                ← {previousProject.title}
+                ← {previousProjectTitle}
               </Link>
               <Link to={`/works/${nextProject.slug}`} className="primary-button" data-cursor="link">
-                {nextProject.title} →
+                {nextProjectTitle} →
               </Link>
             </motion.nav>
           </div>

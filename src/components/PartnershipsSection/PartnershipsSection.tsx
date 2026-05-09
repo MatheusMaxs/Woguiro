@@ -1,49 +1,35 @@
-const PARTNERSHIP_CARDS = [
-  {
-    label: 'Marcas',
-    title: 'Conteudo comercial com linguagem autoral.',
-    body: 'Fotografia, UGC, produto e motion pensados para campanhas organicas ou pagas sem perder identidade visual.',
-  },
-  {
-    label: 'Artistas',
-    title: 'Imagem, ritmo e narrativa para lancamentos.',
-    body: 'Capas, reels, videos curtos e direcao visual para artistas que precisam de presenca consistente.',
-  },
-  {
-    label: 'Producoes',
-    title: 'Colaboracoes flexiveis para equipas criativas.',
-    body: 'Captacao, edicao, direcao e apoio visual remoto ou presencial, com entregas preparadas para multiplas plataformas.',
-  },
-];
+import { useTranslation } from 'react-i18next';
+
+const PARTNERSHIP_CARD_COUNT = 3;
 
 export default function PartnershipsSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="home-section partnerships-section" id="partnerships-section">
       <div className="section-shell partnerships-shell">
         <div className="section-ghost section-ghost--left" aria-hidden="true">
-          Allies
+          {t('partnerships.ghost')}
         </div>
 
         <div className="section-meta-row" data-reveal>
-          <span>Parcerias</span>
-          <span>Marcas / artistas / equipas</span>
-          <span>Colaboracao ativa</span>
+          <span>{t('partnerships.metaStart')}</span>
+          <span>{t('partnerships.metaMiddle')}</span>
+          <span>{t('partnerships.metaEnd')}</span>
         </div>
 
         <div className="partnerships-heading" data-reveal>
-          <p className="section-kicker">Secao de parcerias</p>
-          <h2 className="section-title section-title--works">Projetos que crescem com direcao visual.</h2>
-          <p className="section-body">
-            Aberto a parcerias com marcas, artistas e equipas que procuram imagem cinematografica, conteudo social e uma estetica consistente do conceito ao corte final.
-          </p>
+          <p className="section-kicker">{t('partnerships.kicker')}</p>
+          <h2 className="section-title section-title--works">{t('partnerships.title')}</h2>
+          <p className="section-body">{t('partnerships.description')}</p>
         </div>
 
         <div className="partnerships-grid" data-reveal-group>
-          {PARTNERSHIP_CARDS.map((card, index) => (
-            <article key={card.label} className="partnership-card" data-reveal-item>
-              <span>{String(index + 1).padStart(2, '0')} / {card.label}</span>
-              <h3>{card.title}</h3>
-              <p>{card.body}</p>
+          {Array.from({ length: PARTNERSHIP_CARD_COUNT }, (_, index) => (
+            <article key={index} className="partnership-card" data-reveal-item>
+              <span>{String(index + 1).padStart(2, '0')} / {t(`partnerships.cards.${index}.label`)}</span>
+              <h3>{t(`partnerships.cards.${index}.title`)}</h3>
+              <p>{t(`partnerships.cards.${index}.body`)}</p>
             </article>
           ))}
         </div>

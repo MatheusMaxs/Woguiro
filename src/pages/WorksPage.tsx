@@ -24,6 +24,7 @@ function MediaPreview({ media }: { media: ProjectMedia }) {
 }
 
 function ProjectMosaic({ project }: { project: WorkProject }) {
+  const { t } = useTranslation();
   const previewMedia = [project.hero, ...project.images.filter((work) => work.slug !== project.hero.slug)]
     .filter((work, index, items) => items.findIndex((item) => item.slug === work.slug || item.src === work.src) === index)
     .slice(0, 4);
@@ -34,8 +35,8 @@ function ProjectMosaic({ project }: { project: WorkProject }) {
         <span key={`${project.slug}-${work.slug}-${index}`} className={`works-project-mosaic-item works-project-mosaic-item--${index + 1}`}>
           <MediaPreview media={work} />
           <span className="works-project-image-overlay">
-            <span>{work.title}</span>
-            <span>{project.category}</span>
+            <span>{t(`portfolioMedia.${work.slug}.title`, { defaultValue: work.title })}</span>
+            <span>{t(`portfolioProjects.${project.slug}.category`, { defaultValue: project.category })}</span>
           </span>
         </span>
       ))}
@@ -44,6 +45,15 @@ function ProjectMosaic({ project }: { project: WorkProject }) {
 }
 
 function ProjectCard({ project, index }: { project: WorkProject; index: number }) {
+  const { t } = useTranslation();
+  const title = t(`portfolioProjects.${project.slug}.title`, { defaultValue: project.title });
+  const description = t(`portfolioProjects.${project.slug}.description`, { defaultValue: project.description });
+  const category = t(`portfolioProjects.${project.slug}.category`, { defaultValue: project.category });
+  const date = t(`portfolioProjects.${project.slug}.date`, { defaultValue: project.date });
+  const highlights = project.highlights.map((highlight, highlightIndex) =>
+    t(`portfolioProjects.${project.slug}.highlights.${highlightIndex}`, { defaultValue: highlight }),
+  );
+
   return (
     <motion.article
       className="works-project-card"
@@ -53,27 +63,27 @@ function ProjectCard({ project, index }: { project: WorkProject; index: number }
       <Link
         to={`/works/${project.slug}`}
         className="works-project-hit-area"
-        aria-label={`Abrir projeto ${project.title}`}
+        aria-label={t('worksPage.openProjectLabel', { project: title })}
         data-cursor="view"
       />
 
       <div className="works-project-copy">
         <div className="works-project-meta-row">
-          <span>{project.date}</span>
-          <span>{project.category}</span>
+          <span>{date}</span>
+          <span>{category}</span>
         </div>
 
-        <h2 className="works-project-title">{project.title}</h2>
-        <p className="works-project-description">{project.description}</p>
+        <h2 className="works-project-title">{title}</h2>
+        <p className="works-project-description">{description}</p>
 
         <ul className="works-project-highlights">
-          {project.highlights.map((highlight) => (
+          {highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>
           ))}
         </ul>
 
         <span className="pill-button works-project-cta" aria-hidden="true">
-          Abrir projeto
+          {t('worksPage.openProject')}
         </span>
       </div>
 
@@ -105,7 +115,7 @@ export default function WorksPage() {
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} />
-        <title>Woguiro - Works</title>
+        <title>{t('worksPage.title')}</title>
         <meta name="description" content={t('works.description')} />
       </Helmet>
 
@@ -124,20 +134,18 @@ export default function WorksPage() {
             <motion.div className="section-meta-row" variants={revealItem}>
               <span>{t('works.viewAll')}</span>
               <span>{t('works.meta')}</span>
-              <span>{`${filteredProjects.length} projetos`}</span>
+              <span>{t('worksPage.projectCount', { count: filteredProjects.length })}</span>
             </motion.div>
 
             <motion.div className="works-heading-grid" variants={revealItem}>
               <div className="section-heading-block">
-                <p className="section-kicker">Portfolio completo</p>
-                <h1 className="section-title section-title--works">Projetos agrupados.</h1>
-                <p className="section-body">
-                  Cada bloco reune uma serie com galeria propria, descricao breve e pelo menos tres destaques de direcao visual.
-                </p>
+                <p className="section-kicker">{t('worksPage.kicker')}</p>
+                <h1 className="section-title section-title--works">{t('worksPage.heading')}</h1>
+                <p className="section-body">{t('worksPage.body')}</p>
               </div>
 
               <div className="works-filter-column">
-                <div className="works-filter-row" role="toolbar" aria-label="Filtros de projeto">
+                <div className="works-filter-row" role="toolbar" aria-label={t('worksPage.filterLabel')}>
                   {PROJECT_FILTERS.map((filter) => (
                     <button
                       key={filter.id}
@@ -147,7 +155,7 @@ export default function WorksPage() {
                       data-cursor="link"
                       onClick={() => setActiveFilter(filter.id)}
                     >
-                      {filter.label}
+                      {t(`worksPage.filters.${filter.id}`, { defaultValue: filter.label })}
                     </button>
                   ))}
                 </div>
@@ -163,8 +171,8 @@ export default function WorksPage() {
                 filteredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)
               ) : (
                 <div className="works-project-empty">
-                  <span>Arquivo em preparacao</span>
-                  <p>Este filtro ainda nao tem um projeto publicado. Volta em Todos para ver a selecao completa.</p>
+                  <span>{t('worksPage.emptyTitle')}</span>
+                  <p>{t('worksPage.emptyBody')}</p>
                 </div>
               )}
             </motion.div>

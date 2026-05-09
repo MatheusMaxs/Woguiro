@@ -19,8 +19,8 @@ function fallbackCopy(text: string) {
 export default function ContactSection() {
   const { t } = useTranslation();
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
-  const emailSubject = encodeURIComponent('Novo projeto Woguiro');
-  const emailBody = encodeURIComponent('Ola Woguiro, quero iniciar um projeto.\n\nTipo de projeto:\nPrazo:\nLocal:\nMensagem:');
+  const emailSubject = encodeURIComponent(t('contact.emailSubject'));
+  const emailBody = encodeURIComponent(t('contact.emailBody'));
   const webMailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${emailSubject}&body=${emailBody}`;
 
   const handleCopy = async (value: string, key: string) => {
@@ -127,7 +127,7 @@ export default function ContactSection() {
         </div>
       </div>
 
-      <p className="site-credit">created by Maxs</p>
+      <p className="site-credit">{t('credit.createdBy')}</p>
     </section>
   );
 }
