@@ -1086,6 +1086,30 @@
   min-height: 0;
 }
 
+.works-project-mosaic--vertical-strip {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.works-project-mosaic--vertical-strip.works-project-mosaic--count-1 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.works-project-mosaic--vertical-strip.works-project-mosaic--count-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.works-project-mosaic--vertical-strip.works-project-mosaic--count-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.works-project-mosaic--vertical-strip.works-project-mosaic--count-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.works-project-mosaic--vertical-strip.works-project-mosaic--count-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
 .works-project-mosaic-item,
 .project-case-gallery-item,
 .project-case-hero,
@@ -1146,6 +1170,11 @@
   grid-row: 2;
 }
 
+.works-project-mosaic--vertical-strip .works-project-mosaic-item {
+  grid-column: auto;
+  grid-row: 1;
+}
+
 .works-project-mosaic-item img,
 .works-project-mosaic-item video,
 .project-case-hero img,
@@ -1175,6 +1204,10 @@
   background: #050505;
   object-fit: contain;
   filter: saturate(1.08) contrast(1.02) brightness(1);
+}
+
+.works-project-mosaic--vertical-strip .works-project-mosaic-item video {
+  object-fit: cover;
 }
 
 .works-project-card:hover .works-project-mosaic-item img,
@@ -2344,6 +2377,32 @@
     height: clamp(15rem, 42vw, 22rem);
   }
 
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item {
+    grid-row: auto;
+  }
+
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--1,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--2,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--3 {
+    grid-column: auto;
+    grid-row: 1;
+  }
+
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--4 {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--5 {
+    grid-column: 3;
+    grid-row: 2;
+  }
+
   .works-secondary-stack {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2432,11 +2491,26 @@
     grid-row: auto;
   }
 
+  .works-project-mosaic--vertical-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: clamp(10rem, 48vw, 15rem);
+  }
+
   .works-project-mosaic--count-1 .works-project-mosaic-item--1,
   .works-project-mosaic--count-3 .works-project-mosaic-item--1,
   .works-project-mosaic--count-4 .works-project-mosaic-item--1,
   .works-project-mosaic--count-4 .works-project-mosaic-item--4 {
     grid-column: span 2;
+  }
+
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-1 .works-project-mosaic-item--1,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-3 .works-project-mosaic-item--1,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-4 .works-project-mosaic-item--1,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-4 .works-project-mosaic-item--4,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--1,
+  .works-project-mosaic--vertical-strip.works-project-mosaic--count-5 .works-project-mosaic-item--4 {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .project-case-hero {

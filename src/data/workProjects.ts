@@ -57,6 +57,7 @@ export interface WorkProject {
   highlights: string[];
   images: ProjectMedia[];
   hero: ProjectMedia;
+  previewLayout?: 'editorial' | 'vertical-strip';
 }
 
 export const PROJECT_FILTERS: Array<{ id: ProjectFilter; label: string }> = [
@@ -389,6 +390,7 @@ const WORK_PROJECT_ITEMS: WorkProject[] = [
       fromWork('francesinha-plate-close'),
     ],
     hero: fromWork('francesinha-shelf-detail'),
+    previewLayout: 'editorial',
   },
   {
     slug: 'my-iced-product-study',
@@ -501,6 +503,7 @@ const WORK_PROJECT_ITEMS: WorkProject[] = [
     ],
     images: cocaColaCompalMedia,
     hero: cocaColaCompalMedia[0],
+    previewLayout: 'vertical-strip',
   },
   {
     slug: 'ugc-video-pack',
@@ -522,6 +525,7 @@ const WORK_PROJECT_ITEMS: WorkProject[] = [
     ],
     images: ugcMedia,
     hero: ugcMedia[0],
+    previewLayout: 'vertical-strip',
   },
   {
     slug: 'grindset-editing-study',

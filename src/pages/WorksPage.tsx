@@ -25,12 +25,16 @@ function MediaPreview({ media }: { media: ProjectMedia }) {
 
 function ProjectMosaic({ project }: { project: WorkProject }) {
   const { t } = useTranslation();
+  const previewLayout = project.previewLayout ?? 'editorial';
   const previewMedia = [project.hero, ...project.images.filter((work) => work.slug !== project.hero.slug)]
     .filter((work, index, items) => items.findIndex((item) => item.slug === work.slug || item.src === work.src) === index)
-    .slice(0, 4);
+    .slice(0, previewLayout === 'vertical-strip' ? 5 : 4);
 
   return (
-    <div className={`works-project-mosaic works-project-mosaic--count-${previewMedia.length}`} aria-hidden="true">
+    <div
+      className={`works-project-mosaic works-project-mosaic--${previewLayout} works-project-mosaic--count-${previewMedia.length}`}
+      aria-hidden="true"
+    >
       {previewMedia.map((work, index) => (
         <span key={`${project.slug}-${work.slug}-${index}`} className={`works-project-mosaic-item works-project-mosaic-item--${index + 1}`}>
           <MediaPreview media={work} />
