@@ -1,34 +1,33 @@
 import { FEATURED_WORKS } from '@/data/homeContent';
 
-import animalsGatito from '../../assets/images-e-videos/port-2026-web/animals-gatito.jpg';
+import animalsGatito from '../../assets/images-e-videos/port-2026-web/animals-gatito.webp';
 import cocaColaLoop from '../../assets/images-e-videos/port-2026-web/coca-cola-loop.mp4';
-import cocaColaLoopPoster from '../../assets/images-e-videos/port-2026-web/coca-cola-loop-poster.jpg';
-import compalLoop from '../../assets/images-e-videos/port-2026-web/compal-loop.mp4';
-import compalLoopPoster from '../../assets/images-e-videos/port-2026-web/compal-loop-poster.jpg';
+import cocaColaLoopPoster from '../../assets/images-e-videos/port-2026-web/coca-cola-loop-poster.webp';
+import compalLoop from '../../assets/images-e-videos/port-2026-web/compal-loop.webp';
 import grindsetVideo from '../../assets/images-e-videos/port-2026-web/grindset-2.mp4';
-import grindsetPoster from '../../assets/images-e-videos/port-2026-web/grindset-2-poster.jpg';
-import livrariaDecoracaoPadre from '../../assets/images-e-videos/port-2026-web/livraria-decoracao-padre.jpg';
-import livrariaLivrosPrincipais from '../../assets/images-e-videos/port-2026-web/livraria-livros-principais.jpg';
-import livrariaLivrosSecundarios from '../../assets/images-e-videos/port-2026-web/livraria-livros-secundarios.jpg';
-import livrariaObra from '../../assets/images-e-videos/port-2026-web/livraria-obra.jpg';
-import livrariaRua from '../../assets/images-e-videos/port-2026-web/livraria-rua-da-livrearia.jpg';
+import grindsetPoster from '../../assets/images-e-videos/port-2026-web/grindset-2-poster.webp';
+import livrariaDecoracaoPadre from '../../assets/images-e-videos/port-2026-web/livraria-decoracao-padre.webp';
+import livrariaLivrosPrincipais from '../../assets/images-e-videos/port-2026-web/livraria-livros-principais.webp';
+import livrariaLivrosSecundarios from '../../assets/images-e-videos/port-2026-web/livraria-livros-secundarios.webp';
+import livrariaObra from '../../assets/images-e-videos/port-2026-web/livraria-obra.webp';
+import livrariaRua from '../../assets/images-e-videos/port-2026-web/livraria-rua-da-livrearia.webp';
 import livrariaSessao from '../../assets/images-e-videos/port-2026-web/livraria-sessao.mp4';
-import livrariaSessaoPoster from '../../assets/images-e-videos/port-2026-web/livraria-sessao-poster.jpg';
-import myIcedAsh02703 from '../../assets/images-e-videos/port-2026-web/my-iced-ash02703.jpg';
-import myIcedB2 from '../../assets/images-e-videos/port-2026-web/my-iced-b2.jpg';
-import myIcedC2 from '../../assets/images-e-videos/port-2026-web/my-iced-c2.jpg';
-import ponteDeLimaAsh01207 from '../../assets/images-e-videos/port-2026-web/ponte-de-lima-ash01207.jpg';
-import ruanJogador from '../../assets/images-e-videos/port-2026-web/ruan-jogador.jpg';
+import livrariaSessaoPoster from '../../assets/images-e-videos/port-2026-web/livraria-sessao-poster.webp';
+import myIcedAsh02703 from '../../assets/images-e-videos/port-2026-web/my-iced-ash02703.webp';
+import myIcedB2 from '../../assets/images-e-videos/port-2026-web/my-iced-b2.webp';
+import myIcedC2 from '../../assets/images-e-videos/port-2026-web/my-iced-c2.webp';
+import ponteDeLimaAsh01207 from '../../assets/images-e-videos/port-2026-web/ponte-de-lima-ash01207.webp';
+import ruanJogador from '../../assets/images-e-videos/port-2026-web/ruan-jogador.webp';
 import ugcBabesPapesAi1 from '../../assets/images-e-videos/port-2026-web/ugc-babes-papes-ai-1.mp4';
-import ugcBabesPapesAi1Poster from '../../assets/images-e-videos/port-2026-web/ugc-babes-papes-ai-1-poster.jpg';
+import ugcBabesPapesAi1Poster from '../../assets/images-e-videos/port-2026-web/ugc-babes-papes-ai-1-poster.webp';
 import ugcBabespapes1 from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-1.mp4';
-import ugcBabespapes1Poster from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-1-poster.jpg';
+import ugcBabespapes1Poster from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-1-poster.webp';
 import ugcBabespapesAi from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-ai.mp4';
-import ugcBabespapesAiPoster from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-ai-poster.jpg';
+import ugcBabespapesAiPoster from '../../assets/images-e-videos/port-2026-web/ugc-babespapes-ai-poster.webp';
 import ugcMisterTuga from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga.mp4';
-import ugcMisterTugaPoster from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga-poster.jpg';
+import ugcMisterTugaPoster from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga-poster.webp';
 import ugcMisterTuga2 from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga-2.mp4';
-import ugcMisterTuga2Poster from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga-2-poster.jpg';
+import ugcMisterTuga2Poster from '../../assets/images-e-videos/port-2026-web/ugc-mister-tuga-2-poster.webp';
 
 export type ProjectFilter = 'all' | 'street' | 'portraits' | 'brands' | 'video' | 'ugc' | 'music';
 
@@ -233,13 +232,12 @@ const cocaColaCompalMedia = [
     cocaColaLoopPoster,
     'center center',
   ),
-  video(
+  photo(
     'compal-loop',
     'Compal Loop',
     'A compact animated drink loop for social usage.',
     'A lightweight conversion from the original GIF workflow, prepared as web video for performance.',
     compalLoop,
-    compalLoopPoster,
     'center center',
   ),
 ];
