@@ -1,4 +1,4 @@
-import heroVideo from '../../../assets/images/Video-Glitch.mp4';
+import heroVideo from '../../../assets/images/arte woguiro animado v1.mp4';
 
 export default function HeroBackground() {
   return (
