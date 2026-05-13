@@ -49,7 +49,9 @@ interface HeroNavbarProps {
 export default function HeroNavbar({ onNavigate }: HeroNavbarProps) {
   const { t } = useTranslation();
   const navRef = useRef<HTMLElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const [openColumn, setOpenColumn] = useState<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const handlePointerDown = (event: PointerEvent) => {
@@ -61,6 +63,7 @@ export default function HeroNavbar({ onNavigate }: HeroNavbarProps) {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setOpenColumn(null);
+        setMobileOpen(false);
       }
     };
 
@@ -73,8 +76,38 @@ export default function HeroNavbar({ onNavigate }: HeroNavbarProps) {
     };
   }, []);
 
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('is-scroll-locked');
+    } else {
+      document.body.classList.remove('is-scroll-locked');
+    }
+  }, [mobileOpen]);
+
+  function handleNavigate(link: HeroNavLink) {
+    setOpenColumn(null);
+    setMobileOpen(false);
+    onNavigate({
+      targetId: link.targetId,
+      filter: link.filter,
+      expandArchive: link.expandArchive,
+      expandAbout: link.expandAbout,
+    });
+  }
+
   return (
     <nav ref={navRef} className="hero-navbar parallax-layer-nav" aria-label={t('nav.heroNavigation')}>
+      <button
+        type="button"
+        className={`hero-hamburger${mobileOpen ? ' is-open' : ''}`}
+        aria-label={t('nav.siteNavigation')}
+        aria-expanded={mobileOpen}
+        onClick={() => setMobileOpen((v) => !v)}
+      >
+        <span className="hero-hamburger-line" />
+        <span className="hero-hamburger-line" />
+      </button>
+
       {navColumns.map((column, index) => {
         const panelId = `hero-nav-panel-${index}`;
         const isOpen = openColumn === index;
@@ -97,15 +130,7 @@ export default function HeroNavbar({ onNavigate }: HeroNavbarProps) {
                   type="button"
                   className="nav-link"
                   data-cursor="link"
-                  onClick={() => {
-                    setOpenColumn(null);
-                    onNavigate({
-                      targetId: link.targetId,
-                      filter: link.filter,
-                      expandArchive: link.expandArchive,
-                      expandAbout: link.expandAbout,
-                    });
-                  }}
+                  onClick={() => handleNavigate(link)}
                 >
                   <span className="nav-link-prefix" aria-hidden="true">
                     L.
@@ -117,6 +142,28 @@ export default function HeroNavbar({ onNavigate }: HeroNavbarProps) {
           </ul>
         </div>
       )})}
+
+      <div ref={menuRef} className={`hero-mobile-menu${mobileOpen ? ' is-open' : ''}`} role="dialog" aria-modal="true" aria-label={t('nav.siteNavigation')}>
+        <div className="hero-mobile-menu-panel">
+          {navColumns.map((column) => (
+            <div key={column.title} className="hero-mobile-group">
+              <span className="hero-mobile-group-title">{t(column.title)}</span>
+              {column.links.map((link) => (
+                <button
+                  key={link.label}
+                  type="button"
+                  className="hero-mobile-link"
+                  data-cursor="link"
+                  onClick={() => handleNavigate(link)}
+                >
+                  <span className="nav-link-prefix" aria-hidden="true">L.</span>
+                  <span>{t(link.label)}</span>
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
     </nav>
   );
 }
