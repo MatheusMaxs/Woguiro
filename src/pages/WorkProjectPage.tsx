@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
@@ -74,7 +75,7 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
     return null;
   }
 
-  return (
+  return createPortal(
     <motion.div
       className="media-lightbox"
       role="dialog"
@@ -104,7 +105,8 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
           <strong>{mediaTitle}</strong>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body
   );
 }
 
