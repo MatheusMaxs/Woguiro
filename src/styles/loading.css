@@ -70,3 +70,18 @@
     letter-spacing: 0.12em;
   }
 }
+
+@media (max-width: 480px) {
+  .loading-screen-panel {
+    gap: 0.85rem;
+    padding: 1rem;
+  }
+
+  .loading-screen-title {
+    font-size: clamp(2rem, 11vw, 3rem);
+  }
+
+  .loading-screen-topline {
+    gap: 0.5rem;
+  }
+}

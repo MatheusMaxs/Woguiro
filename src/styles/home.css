@@ -2563,6 +2563,13 @@
     min-height: min(62svh, 34rem);
   }
 
+  .media-lightbox-close {
+    top: 0.6rem;
+    right: 0.6rem;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.78rem;
+  }
+
   .media-lightbox-caption {
     align-items: flex-start;
     flex-direction: column;
@@ -2599,6 +2606,112 @@
 
   .floating-orb {
     opacity: 0.36;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-sections {
+    gap: 0.85rem;
+  }
+
+  .home-section {
+    padding-inline: 0.5rem;
+  }
+
+  .section-shell {
+    padding: 0.85rem;
+    border-radius: 1rem;
+  }
+
+  .section-ghost {
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: clamp(2.8rem, 17vw, 3.8rem);
+  }
+
+  .section-title {
+    font-size: clamp(1.35rem, 8vw, 1.7rem);
+  }
+
+  .section-body,
+  .work-card-subtitle,
+  .works-focus-description,
+  .about-discipline-card p,
+  .contact-info-note,
+  .contact-channel-link span,
+  .about-stat-label,
+  .about-spec-card span {
+    font-size: 0.85rem;
+  }
+
+  .section-meta-row {
+    gap: 0.2rem;
+  }
+
+  .section-meta-row span {
+    font-size: 0.78rem;
+  }
+
+  .works-project-mosaic {
+    grid-auto-rows: clamp(6rem, 34vw, 8rem);
+  }
+
+  .works-project-mosaic--vertical-strip {
+    grid-auto-rows: clamp(7rem, 48vw, 10rem);
+  }
+
+  .project-case-hero {
+    height: clamp(16rem, 82vw, 22rem);
+  }
+
+  .project-case-hero-copy h1 {
+    font-size: clamp(1.8rem, 16vw, 2.4rem);
+  }
+
+  .project-case-gallery {
+    grid-auto-rows: clamp(11rem, 70vw, 14rem);
+  }
+
+  .media-lightbox-frame {
+    min-height: min(50svh, 24rem);
+  }
+
+  .media-lightbox-frame img,
+  .media-lightbox-frame video {
+    max-height: min(60svh, 30rem);
+  }
+
+  .media-lightbox-close {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.72rem;
+  }
+
+  .section-kicker {
+    font-size: 0.68rem;
+  }
+
+  .pill-button,
+  .primary-button,
+  .ghost-button,
+  .meta-link {
+    font-size: 0.82rem;
+  }
+
+  .works-archive-item figcaption strong {
+    font-size: 0.82rem;
+  }
+
+  .works-archive-item figcaption span {
+    font-size: 0.65rem;
+  }
+
+  .about-stat-value {
+    font-size: 1.2rem;
+  }
+
+  .contact-channel-link {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.85rem;
   }
 }
 
