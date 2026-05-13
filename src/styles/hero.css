@@ -22,7 +22,7 @@
     linear-gradient(180deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.44) 18%, rgba(0, 0, 0, 0.08) 42%, rgba(0, 0, 0, 0.5) 100%),
     radial-gradient(circle at 56% 44%, rgba(255, 255, 255, 0.1), transparent 20%),
     radial-gradient(circle at 58% 48%, rgba(112, 13, 13, 0.12), transparent 24%),
-    radial-gradient(circle at 28% 68%, rgba(119, 78, 255, 0.12), transparent 26%);
+    radial-gradient(circle at 28% 68%, rgba(100, 200, 255, 0.06), transparent 26%);
 }
 
 .hero::after {
@@ -515,11 +515,11 @@
   border: 1px solid rgba(255, 255, 255, 0.26);
   border-radius: 0.45rem;
   background:
-    radial-gradient(circle at 50% 0%, rgba(155, 114, 255, 0.14), transparent 55%),
+    radial-gradient(circle at 50% 0%, rgba(100, 200, 255, 0.06), transparent 55%),
     rgba(7, 7, 7, 0.84);
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.22),
-    0 0 26px rgba(155, 114, 255, 0.12);
+    0 0 26px rgba(100, 200, 255, 0.06);
   color: var(--text-primary);
   font-family: var(--font-heading);
   font-size: clamp(0.98rem, 1vw, 1.12rem);
