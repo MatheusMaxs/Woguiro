@@ -889,6 +889,16 @@
     justify-self: start;
   }
 
+  .hero-utilities {
+    left: auto;
+    justify-content: flex-end;
+    gap: 0.7rem;
+  }
+
+  .hero-clock {
+    justify-items: center;
+  }
+
   .hero-copy-frame {
     padding-inline: 1.05rem;
   }
@@ -927,8 +937,9 @@
   }
 
   .hero-utilities {
-    left: 0.85rem;
+    left: auto;
     right: 0.85rem;
+    justify-content: flex-end;
     gap: 0.6rem;
   }
 
