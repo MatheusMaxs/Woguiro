@@ -1,4 +1,4 @@
-type Locale = 'en' | 'pt' | 'es' | 'fr' | 'de' | 'it' | 'ru';
+type Locale = 'en' | 'pt' | 'es' | 'fr' | 'de' | 'it' | 'ru' | 'ar';
 
 function project(
   title: string,
@@ -211,6 +211,36 @@ const mediaTitleOverrides: Record<Locale, Partial<Record<keyof typeof baseMediaT
     'planta-primavera': 'Весна',
     'coca-cola-loop': 'Луп Coca Cola',
     'compal-loop': 'Луп Compal'
+  },
+  ar: {
+    'street-ponte-de-lima': 'لقطة شارع في بونتي دي ليما',
+    'ponte-de-lima-bridge': 'جسر بونتي دي ليما',
+    'ponte-de-lima-river-line': 'خط النهر في بونتي دي ليما',
+    'ponte-de-lima-flag-line': 'خط العلم في بونتي دي ليما',
+    'livraria-livros-principais': 'الكتب الرئيسية',
+    'livraria-livros-secundarios': 'الكتب الثانوية',
+    'livraria-obra': 'تفاصيل العمل الفني',
+    'livraria-rua': 'شارع المكتبة',
+    'livraria-decoracao-padre': 'تفاصيل زخرفة Padre',
+    'livraria-sessao': 'جلسة Livrearia',
+    'francesinha-shelf-detail': 'تفاصيل رف المطعم',
+    'francesinha-hand-cut': 'قطع فرانسيسينها باليد',
+    'francesinha-table-study': 'دراسة طاولة فرانسيسينها',
+    'francesinha-top-frame': 'فرانسيسينها من الأعلى',
+    'francesinha-plate-close': 'لقطة قريبة لطبق فرانسيسينها',
+    'my-iced-ash02703': 'دراسة سكب My Iced',
+    'my-iced-b2': 'تفاصيل My Iced B2',
+    'ruan-jogador': 'روان لاعب كرة القدم',
+    'animals-poodle': 'كلب بودل',
+    'animals-cocker-spaniel': 'كوكر سبانيل',
+    'animals-border-collie': 'بوردر كولي',
+    'animals-gato': 'قط',
+    'animals-gatito': 'قط صغير',
+    'animals-porco': 'خنزير',
+    'planta-white-flowers': 'زهور بيضاء',
+    'planta-primavera': 'دراسة الربيع',
+    'coca-cola-loop': 'لوب كوكا كولا',
+    'compal-loop': 'لوب كومبال'
   }
 };
 
@@ -344,6 +374,26 @@ const featuredWorkTitles: Record<Locale, Record<string, string>> = {
     'planta-prunus-serrulata': 'Prunus Serrulata',
     'ponte-de-lima-flag-line': 'Линия флага в Понте-де-Лима',
     'ponte-de-lima-alameda': 'Аллея Понте-де-Лима'
+  },
+  ar: {
+    'street-ponte-de-lima': 'لقطة شارع في بونتي دي ليما',
+    'francesinha-service': 'خدمة فرانسيسينها',
+    'ponte-de-lima-bridge': 'جسر بونتي دي ليما',
+    'animals-porco': 'خنزير',
+    'animals-poodle': 'بودل',
+    'animals-cocker-spaniel': 'كوكر سبانيل',
+    'animals-border-collie': 'بوردر كولي',
+    'animals-gato': 'قط',
+    'francesinha-shelf-detail': 'تفاصيل رف المطعم',
+    'francesinha-table-study': 'دراسة طاولة فرانسيسينها',
+    'francesinha-top-frame': 'فرانسيسينها من الأعلى',
+    'francesinha-plate-close': 'لقطة قريبة لطبق فرانسيسينها',
+    'francesinha-hand-cut': 'قطع فرانسيسينها باليد',
+    'planta-white-flowers': 'زهور بيضاء',
+    'planta-primavera': 'دراسة الربيع',
+    'planta-prunus-serrulata': 'Prunus Serrulata',
+    'ponte-de-lima-flag-line': 'خط العلم في بونتي دي ليما',
+    'ponte-de-lima-alameda': 'ألاميدا بونتي دي ليما'
   }
 };
 
@@ -354,14 +404,15 @@ const workItemCopy = {
   fr: { subtitle: 'Image selectionnee de l archive visuelle 2026.', description: 'Une piece curatee de l archive 2026, preparee pour le portfolio avec une direction visuelle coherente.', focusPoints: ['Direction visuelle', 'Cadrage editorial', 'Selection prete pour portfolio'], tags: ['Archive', '2026', 'Portfolio'] },
   de: { subtitle: 'Ausgewaehlter Frame aus dem visuellen Archiv 2026.', description: 'Ein kuratiertes Stueck aus dem Archiv 2026, fuer Portfolio-Ansicht mit konsistenter visueller Richtung vorbereitet.', focusPoints: ['Visuelle Richtung', 'Editoriales Framing', 'Portfolio-bereite Auswahl'], tags: ['Archiv', '2026', 'Portfolio'] },
   it: { subtitle: 'Frame selezionato dall archivio visivo 2026.', description: 'Un pezzo curato dall archivio 2026, preparato per portfolio con direzione visiva coerente.', focusPoints: ['Direzione visiva', 'Inquadratura editoriale', 'Selezione pronta per portfolio'], tags: ['Archivio', '2026', 'Portfolio'] },
-  ru: { subtitle: 'Выбранный кадр из визуального архива 2026.', description: 'Кураторская работа из архива 2026, подготовленная для портфолио с единым визуальным направлением.', focusPoints: ['Визуальное направление', 'Редакционный кадр', 'Выбор для портфолио'], tags: ['Архив', '2026', 'Портфолио'] }
+  ru: { subtitle: 'Выбранный кадр из визуального архива 2026.', description: 'Кураторская работа из архива 2026, подготовленная для портфолио с единым визуальным направлением.', focusPoints: ['Визуальное направление', 'Редакционный кадр', 'Выбор для портфолио'], tags: ['Архив', '2026', 'Портфолио'] },
+  ar: { subtitle: 'إطار مختار من الأرشيف البصري 2026.', description: 'قطعة منسقة من أرشيف 2026، محضرة لعرض المعرض باتجاه بصري متناسق.', focusPoints: ['اتجاه بصري', 'تأطير تحريري', 'اختيار جاهز للمعرض'], tags: ['أرشيف', '2026', 'معرض'] }
 } as const;
 
 const workLocations: Record<string, Partial<Record<Locale, string>>> = {
-  'street-ponte-de-lima': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима' },
-  'ponte-de-lima-bridge': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима' },
-  'ponte-de-lima-flag-line': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима' },
-  'ponte-de-lima-alameda': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима' }
+  'street-ponte-de-lima': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима', ar: 'بونتي دي ليما' },
+  'ponte-de-lima-bridge': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима', ar: 'بونتي دي ليما' },
+  'ponte-de-lima-flag-line': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима', ar: 'بونتي دي ليما' },
+  'ponte-de-lima-alameda': { en: 'Ponte de Lima', es: 'Ponte de Lima', fr: 'Ponte de Lima', de: 'Ponte de Lima', it: 'Ponte de Lima', ru: 'Понте-де-Лима', ar: 'بونتي دي ليما' }
 };
 
 const featuredWorkItems = Object.fromEntries(
@@ -374,7 +425,7 @@ const featuredWorkItems = Object.fromEntries(
           title,
           subtitle: workItemCopy[language].subtitle,
           description: workItemCopy[language].description,
-          location: workLocations[slug]?.[language] ?? (language === 'it' ? 'Portogallo' : language === 'ru' ? 'Португалия' : 'Portugal'),
+          location: workLocations[slug]?.[language] ?? (language === 'it' ? 'Portogallo' : language === 'ru' ? 'Португалия' : language === 'ar' ? 'البرتغال' : 'Portugal'),
           focusPoints: workItemCopy[language].focusPoints,
           tags: workItemCopy[language].tags
         }
@@ -467,6 +518,18 @@ const portfolioProjects = {
     'coca-cola-compal-motion-loops': project('Motion loops Coca Cola & Compal', 'Короткие продуктовые лупы для быстрого social impact.', 'Видеопроект с лупами Coca Cola и Compal, переведенный в легкое web video без потери читаемости бренда.', 'Сырой материал обработан как motion-проект и превращен в оптимизированные web-клипы с сохранением лупа, цвета и узнаваемости продукта.', '2026', 'Coca Cola / Compal', 'Португалия', 'Видео / Бренды', ['Продуктовые лупы для web и social', 'Узнаваемость бренда через короткое движение', 'Оптимизированная конверсия из raw GIF/MP4']),
     'ugc-video-pack': project('UGC Video Pack', 'Пять вертикальных версий для брендов, AI-тестов и social proof.', 'Набор UGC-видео с Mister Tuga и BabesPapes, включая AI-вариации и mobile-native версии.', 'Пак объединяет вертикальные клипы с разным ритмом для тестов hooks, форматов и повторения сообщения.', '2026', 'Mister Tuga / BabesPapes', 'Португалия', 'UGC / Видео', ['Пять вертикальных версий в одном кейсе', 'Традиционные и AI-вариации для креативного теста', 'Mobile-first формат с оптимизированной загрузкой']),
     'grindset-editing-study': project('Исследование монтажа Grindset', 'Квадратный монтаж с энергией, ритмом и social impact.', 'Проект video editing с быстрыми склейками, визуальной энергией и структурой для social consumption.', 'Grindset 2 представляет направление монтажа в портфолио: сильный ритм, мгновенная читаемость и прямая эстетика.', '2026', 'Video Editing', 'Португалия', 'Видео / Монтаж', ['Быстрый pacing для short-form content', 'Квадратный формат готов для social', 'Монтажное исследование с фокусом на визуальный impact'])
+  },
+  ar: {
+    'ponte-de-lima-street-archive': project('أرشيف شارع بونتي دي ليما', 'الشارع، الحجم البشري والهندسة في أرشيف مكان مضيء.', 'مشروع وثائقي في بونتي دي ليما يجمع بين الإيماءة البشرية والمناظر الطبيعية والتفاصيل المعمارية بإيقاع تحريري هادئ.', 'تتأمل السلسلة بونتي دي ليما دون تمثيل المدينة، متنقلة بين محادثات شارع هادئة، خطوط الجسر، نسيج الأشجار والنهر كوقفة بصرية.', 'أبريل 2026', 'أرشيف مستقل', 'بونتي دي ليما، البرتغال', 'شارع / مناظر طبيعية', ['لحظات بشرية مرصودة دون تكلف', 'الهندسة والمناظر كهيكل سردي', 'قص عمودي وأفقي جاهز للمعرض التحريري']),
+    'livraria-cultural-session': project('جلسة Livrearia الثقافية', 'كتب، فن وشارع في فضاء مستقل في بونتي دي ليما.', 'جلسة تصوير وحركة لـ Livrearia، تسلط الضوء على الأجواء الحميمة والتفاصيل المعمارية والهوية الثقافية.', 'تم المشروع في Livrearia، فضاء مستقل في لارغو دا ماتريز كملتقى بين الكتب والفن والثقافة بنهج بصري معاصر.', '2026', 'Livrearia', 'بونتي دي ليما، البرتغال', 'علامات / ثقافة', ['سرد بصري معاصر لفضاء ثقافي', 'تفاصيل الكتب والفن والداخلية كهوية العلامة', 'تصوير وحركة مجتمعان في صفحة مشروع كاملة']),
+    'francesinha-restaurant-study': project('دراسة مطعم فرانسيسينها', 'طعام، طاولة وهوية تجارية في إضاءة منخفضة.', 'سلسلة تصوير طعام مصممة لتحويل طقوس الفرانسيسينها إلى سرد بصري للمطعم.', 'يتعامل المشروع مع الطعام كتجربة وليس مجرد منتج. الطاولة، الأيدي، الصلصة والأشياء المحيطة تبني قراءة علامة أكثر كثافة.', 'مارس 2026', 'مطعم / محتوى تجاري', 'البرتغال', 'علامات / طعام', ['إخراج طعام بنسيج وفعل بشري', 'إطارات قريبة للتواصل والقوائم الرقمية', 'تفاصيل البيئة تعزز هوية العلامة']),
+    'my-iced-product-study': project('دراسة منتج My Iced', 'منتج بارد، نسيج وقراءة تجارية مباشرة.', 'سلسلة تجارية مصغرة لـ My Iced تركز على وضوح المنتج، التكثف، السطح وقصص جاهزة للتواصل الاجتماعي.', 'يضع الاتجاه البصري المنتج في مركز الإطار ويستخدم النسيج البارد والقرب والتكوين النظيف لتعزيز الرغبة والتمييز.', '2026', 'My Iced', 'البرتغال', 'علامات / منتج', ['منتج مقروء في ثوانٍ', 'تفاصيل باردة ملموسة للتواصل الاجتماعي', 'تكوينات تجارية خفيفة وقابلة لإعادة الاستخدام']),
+    'ruan-football-player': project('روان لاعب كرة قدم', 'بورتريه عمودي للهوية الرياضية والحضور الشخصي.', 'دراسة بورتريه رياضي تركز على الحضور والوضعية والقراءة الفورية للرياضي.', 'يضع الإطار روان كشخصية مركزية ويستخدم لغة مباشرة للمعرض الشخصي وملف الرياضي والتواصل الرياضي.', '2026', 'Ruan', 'البرتغال', 'بورتريه / رياضة', ['بورتريه عمودي بحضور رياضي', 'تكوين نظيف للهوية الشخصية', 'قراءة تحريرية موجهة للرياضة والملف المهني']),
+    'animal-portrait-studies': project('دراسات بورتريه حيواني', 'بورتريهات حيوانية بشخصية، نسيج وبيئة.', 'مجموعة بورتريهات حيوانية تتنقل بين القرب، السلوك والسياق الطبيعي.', 'بُنيت السلسلة من ملاحظة سريعة وقصص نظيفة، تبحث عن التعبير والإيماءة والنسيج والحجم بدلاً من الوضعيات المصطنعة.', '2026', 'أرشيف مستقل', 'البرتغال', 'بورتريه / حيوانات', ['بورتريهات موجهة بالسلوك الحقيقي', 'مزيج من اللقطة القريبة والملف والبيئة الطبيعية', 'اختيار بقراءة تحريرية وعاطفية']),
+    'botanical-season-studies': project('دراسات موسمية نباتية', 'زهور، ربيع ونسيج طبيعي في تكوينات صامتة.', 'دراسة نباتية تركز على التكرار واللون والأجواء الموسمية، مع صور معدة للقراءة التحريرية.', 'يختصر المشهد إلى تفاصيل نباتية وإيقاع بصري، يعمل كاستراحة خفيفة ورسومية وتأملية داخل المعرض.', 'ربيع 2026', 'أرشيف مستقل', 'البرتغال', 'طبيعة / نباتي', ['تكوينات نباتية بإيقاع رسومي', 'تباين بين التفاصيل واللون والفضاء الطبيعي', 'صور خفيفة للاستخدام التحريري والجوي']),
+    'coca-cola-compal-motion-loops': project('لوبات حركة كوكا كولا و كومبال', 'لوبات منتج قصيرة لتأثير سريع على التواصل الاجتماعي.', 'مشروع فيديو مع لوبات كوكا كولا وكومبال، محول إلى فيديو ويب خفيف دون فقدان قراءة العلامة.', 'تمت معالجة المادة الخام كمشروع حركة وتحويلها إلى مقاطع ويب عالية الأداء مع الحفاظ على اللوب واللون وتمييز المنتج.', '2026', 'Coca Cola / Compal', 'البرتغال', 'فيديو / علامات', ['لوبات منتج معدة للويب والتواصل الاجتماعي', 'تمييز العلامة من خلال حركة قصيرة', 'تحويل محسن من GIF/MP4 خام']),
+    'ugc-video-pack': project('حزمة فيديو UGC', 'خمس قصص عمودية للعلامات واختبارات AI والدليل الاجتماعي.', 'مجموعة فيديوهات UGC مع Mister Tuga و BabesPapes، تتضمن تنويعات AI وقصص أصلية للجوال.', 'تضم الحزمة مقاطع عمودية بإيقاعات مختلفة، مصممة للعلامات التي تحتاج لاختبار الخطافات والصيغ وتكرار الرسالة.', '2026', 'Mister Tuga / BabesPapes', 'البرتغال', 'UGC / فيديو', ['خمس قصص عمودية مجمعة في حالة واحدة', 'تنويعات تقليدية و AI للاختبار الإبداعي', 'صيغة جوال أولاً مع تحميل محسن']),
+    'grindset-editing-study': project('دراسة مونتاج Grindset', 'مونتاج مربع بطاقة وإيقاع وتأثير اجتماعي.', 'مشروع مونتاج فيديو يركز على القص السريع والطاقة البصرية وهيكل مصمم للاستهلاك الاجتماعي.', 'يمثل Grindset 2 مجال المونتاج داخل المعرض، محافظاً على إيقاع قوي وقراءة فورية وجمالية مباشرة.', '2026', 'Video Editing', 'البرتغال', 'فيديو / مونتاج', ['إيقاع سريع للمحتوى القصير', 'صيغة مربعة جاهزة للتواصل الاجتماعي', 'دراسة مونتاج تركز على التأثير البصري'])
   }
 };
 
@@ -553,5 +616,15 @@ export const sharedTranslations = {
     works: { items: featuredWorkItems.ru },
     portfolioProjects: portfolioProjects.ru,
     portfolioMedia: portfolioMedia.ru
+  },
+  ar: {
+    worksPage: { title: 'Woguiro - الأعمال', kicker: 'المعرض الكامل', heading: 'مشاريع مجمعة.', body: 'كل كتلة تجمع سلسلة بمعرضها الخاص ووصف قصير وثلاثة اتجاهات بصرية بارزة على الأقل.', projectCount: '{{count}} مشروع', filterLabel: 'مرشحات المشروع', openProject: 'فتح المشروع', openProjectLabel: 'فتح المشروع {{project}}', emptyTitle: 'الأرشيف قيد التحضير', emptyBody: 'هذا المرشح لا يحتوي على مشروع منشور بعد. عد إلى الكل لرؤية المجموعة الكاملة.', filters: { all: 'الكل', street: 'شارع', portraits: 'بورتريه', brands: 'علامات', video: 'فيديو', ugc: 'UGC', music: 'موسيقى' } },
+    projectCase: { ghost: 'حالة', notFoundTitle: 'Woguiro - المشروع غير موجود', unavailable: 'المشروع غير متاح', missingTitle: 'هذه الحالة غير موجودة في الأرشيف.', backToWorks: 'العودة إلى الأعمال', caseStudy: 'دراسة حالة', mediaCount: '{{count}} وسائط في المشروع', description: 'وصف المشروع', highlights: 'أبرز النقاط', visualDirection: 'اتجاه بصري', visualDirectionBody: 'الاختيار ينظم المشروع كسرد: أول انطباع، سياق، تفاصيل وإيقاع. كل صورة عولجت كجزء من النظام البصري نفسه دون فقدان الطابع الفردي لكل إطار.', navLabel: 'التنقل بين المشاريع', category: 'التصنيف', date: 'التاريخ', client: 'العميل', location: 'الموقع', openLarge: 'فتح كبير', openWithSound: 'فتح مع الصوت', closeMedia: 'إغلاق الوسائط', close: 'إغلاق', enlargedImage: 'صورة مكبرة', videoWithSound: 'فيديو مع الصوت' },
+    partnerships: { metaStart: 'شراكات', metaMiddle: 'علامات / فنانين / فرق', metaEnd: 'تعاون نشط', ghost: 'حلفاء', kicker: 'قسم الشراكات', title: 'مشاريع تنمو من خلال الاتجاه البصري.', description: 'مفتوح للشراكات مع العلامات التجارية والفنانين والفرق التي تبحث عن صور سينمائية ومحتوى اجتماعي وجمالية متسقة من المفهوم إلى المقطع النهائي.', cards: [{ label: 'علامات', title: 'محتوى تجاري بلغة مؤلفة.', body: 'تصوير، UGC، منتج وحركة مصممة لحملات عضوية أو مدفوعة دون فقدان الهوية البصرية.' }, { label: 'فنانين', title: 'صورة، إيقاع وسرد للإصدارات.', body: 'أغلفة، ريلز، فيديوهات قصيرة وإخراج بصري لفنانين يحتاجون لحضور متسق.' }, { label: 'إنتاج', title: 'تعاون مرن للفرق الإبداعية.', body: 'تصوير، مونتاج، إخراج ودعم بصري عن بعد أو حضوري، مع تسليمات معدة لمنصات متعددة.' }] },
+    credit: { createdBy: 'منشور بواسطة Maxs' },
+    contact: { emailSubject: 'مشروع Woguiro جديد', emailBody: 'مرحباً Woguiro، أريد بدء مشروع.\n\nنوع المشروع:\nالموعد النهائي:\nالموقع:\nالرسالة:' },
+    works: { items: featuredWorkItems.ar },
+    portfolioProjects: portfolioProjects.ar,
+    portfolioMedia: portfolioMedia.ar
   }
 } as const;

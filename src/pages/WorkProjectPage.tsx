@@ -123,7 +123,7 @@ function ProjectNotFound() {
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
     >
       <Helmet>
-        <html lang={i18n.resolvedLanguage ?? 'en'} />
+        <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{t('projectCase.notFoundTitle')}</title>
       </Helmet>
 
@@ -199,7 +199,7 @@ export default function WorkProjectPage() {
       style={{ willChange: 'opacity, transform, filter' }}
     >
       <Helmet>
-        <html lang={i18n.resolvedLanguage ?? 'en'} />
+        <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{`Woguiro - ${projectTitle}`}</title>
         <meta name="description" content={projectDescription} />
       </Helmet>

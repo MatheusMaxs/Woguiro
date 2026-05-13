@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
-const languages = ['en', 'pt', 'es', 'fr', 'it', 'de', 'ru'] as const;
+const languages = ['en', 'pt', 'es', 'fr', 'it', 'de', 'ru', 'ar'] as const;
 const smoothEase = [0.16, 1, 0.3, 1] as const;
 
 const menuVariants: Variants = {

@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+import ar from '@/locales/ar/common.json';
 import de from '@/locales/de/common.json';
 import en from '@/locales/en/common.json';
 import es from '@/locales/es/common.json';
@@ -37,6 +38,7 @@ function mergeTranslations<T extends TranslationTree>(base: T, additions: Transl
 }
 
 const resources = {
+  ar: { translation: mergeTranslations(ar, sharedTranslations.ar) },
   de: { translation: mergeTranslations(de, sharedTranslations.de) },
   en: { translation: mergeTranslations(en, sharedTranslations.en) },
   es: { translation: mergeTranslations(es, sharedTranslations.es) },
@@ -45,6 +47,8 @@ const resources = {
   pt: { translation: mergeTranslations(pt, sharedTranslations.pt) },
   ru: { translation: mergeTranslations(ru, sharedTranslations.ru) },
 } as const;
+
+const rtlLanguages = new Set(['ar']);
 
 const storedLanguage = window.localStorage.getItem('woguiro-language');
 const browserLanguage = navigator.language.slice(0, 2).toLowerCase();
@@ -68,8 +72,10 @@ void i18n.use(initReactI18next).init({
 i18n.on('languageChanged', (language) => {
   window.localStorage.setItem('woguiro-language', language);
   document.documentElement.lang = language;
+  document.documentElement.dir = rtlLanguages.has(language) ? 'rtl' : 'ltr';
 });
 
 document.documentElement.lang = initialLanguage;
+document.documentElement.dir = rtlLanguages.has(initialLanguage) ? 'rtl' : 'ltr';
 
 export default i18n;

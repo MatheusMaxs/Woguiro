@@ -118,7 +118,7 @@ export default function WorksPage() {
       style={{ willChange: 'opacity, transform, filter' }}
     >
       <Helmet>
-        <html lang={i18n.resolvedLanguage ?? 'en'} />
+        <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{t('worksPage.title')}</title>
         <meta name="description" content={t('works.description')} />
       </Helmet>
