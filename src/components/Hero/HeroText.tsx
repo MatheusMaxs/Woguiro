@@ -14,7 +14,7 @@ export default function HeroText() {
         <div className="hero-copy">
           <h1 className="hero-title" aria-label={title}>
             {Array.from(title).map((character, index) => (
-              <span key={`${character}-${index}`} className="char" aria-hidden="true">
+              <span key={`${character}-${index}`} className="char" aria-hidden="true" style={{ '--char-index': index } as React.CSSProperties}>
                 {character === ' ' ? '\u00A0' : character}
               </span>
             ))}
@@ -22,7 +22,7 @@ export default function HeroText() {
           <p className="hero-location">{t('hero.location')}</p>
           <p className="hero-tagline">
             {taglineWords.map((word, index) => (
-              <span key={`${word}-${index}`} className="word">
+              <span key={`${word}-${index}`} className="word" style={{ '--word-index': index } as React.CSSProperties}>
                 {word}
               </span>
             ))}

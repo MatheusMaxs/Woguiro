@@ -59,6 +59,54 @@
   display: inline-block;
 }
 
+.loading-screen-line {
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: loadingLine 0.7s 0s both var(--ease-out);
+}
+
+.loading-screen-char {
+  opacity: 0;
+  animation: loadingChar 0.55s calc(0.08s + var(--char-index, 0) * 0.05s) both var(--ease-out);
+}
+
+.loading-screen-subtitle {
+  opacity: 0;
+  animation: loadingSubtitle 0.45s 0.38s both var(--ease-soft);
+}
+
+@keyframes loadingLine {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes loadingChar {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes loadingSubtitle {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen-line,
+  .loading-screen-char,
+  .loading-screen-subtitle {
+    animation: none;
+  }
+
+  .loading-screen-line {
+    transform: scaleX(1);
+  }
+
+  .loading-screen-char,
+  .loading-screen-subtitle {
+    opacity: 1;
+  }
+}
+
 @media (max-width: 640px) {
   .loading-screen-topline {
     gap: 0.7rem;
