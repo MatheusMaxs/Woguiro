@@ -8,8 +8,8 @@ import { Link, useParams } from 'react-router-dom';
 import { WORK_PROJECTS, type ProjectMedia, type WorkProject } from '@/data/workProjects';
 
 const revealItem = {
-  hidden: { opacity: 0, y: 22, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0 },
 };
 
 function CaseMedia({
@@ -17,11 +17,13 @@ function CaseMedia({
   alt,
   controls = false,
   autoPlay = !controls,
+  priority = false,
 }: {
   media: ProjectMedia;
   alt: string;
   controls?: boolean;
   autoPlay?: boolean;
+  priority?: boolean;
 }) {
   const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
 
@@ -37,14 +39,20 @@ function CaseMedia({
         controls={controls}
         controlsList="nodownload noplaybackrate noremoteplayback"
         disablePictureInPicture
-        preload={controls ? 'auto' : 'metadata'}
+        preload={priority ? 'auto' : 'none'}
         draggable={false}
         style={style}
       />
     );
   }
 
-  return <img src={media.src} alt={alt} loading="lazy" draggable={false} style={style} />;
+  return (
+    <picture>
+      {media.srcAvif && <source srcSet={media.srcAvif} type="image/avif" />}
+      <source srcSet={media.src} type="image/webp" />
+      <img src={media.src} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
+    </picture>
+  );
 }
 
 function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose: () => void }) {
@@ -89,9 +97,9 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
       <button type="button" className="media-lightbox-backdrop" aria-label={t('projectCase.closeMedia')} onClick={onClose} />
       <motion.div
         className="media-lightbox-panel"
-        initial={{ opacity: 0, y: 28, scale: 0.96, filter: 'blur(8px)' }}
-        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, y: 18, scale: 0.98, filter: 'blur(6px)' }}
+        initial={{ opacity: 0, y: 28, scale: 0.96 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 18, scale: 0.98 }}
         transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
       >
         <button type="button" className="media-lightbox-close" data-cursor="link" onClick={onClose}>
@@ -112,19 +120,23 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
 
 function ProjectNotFound() {
   const { t, i18n } = useTranslation();
+  const { projectSlug } = useParams();
 
   return (
     <motion.main
       className="home-page works-page project-case-page"
       id="main-content"
-      initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={{ opacity: 0, y: -22, filter: 'blur(8px)' }}
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -22 }}
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{t('projectCase.notFoundTitle')}</title>
+        <meta name="description" content={t('projectCase.unavailable')} />
+        <link rel="canonical" href={`https://www.woguiro.com/works/${projectSlug}`} />
+        <meta name="robots" content="noindex" />
       </Helmet>
 
       <div className="home-sections">
@@ -192,16 +204,27 @@ export default function WorkProjectPage() {
     <motion.main
       className="home-page works-page project-case-page"
       id="main-content"
-      initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={{ opacity: 0, y: -22, filter: 'blur(8px)' }}
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -22 }}
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-      style={{ willChange: 'opacity, transform, filter' }}
+      style={{ willChange: 'opacity, transform' }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{`Woguiro - ${projectTitle}`}</title>
         <meta name="description" content={projectDescription} />
+        <link rel="canonical" href={`https://www.woguiro.com/works/${project.slug}`} />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://www.woguiro.com/works/${project.slug}`} />
+        <meta property="og:title" content={`Woguiro - ${projectTitle}`} />
+        <meta property="og:description" content={projectDescription} />
+        <meta property="og:image" content={project.hero.src} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`Woguiro - ${projectTitle}`} />
+        <meta name="twitter:description" content={projectDescription} />
+        <meta name="twitter:image" content={project.hero.src} />
       </Helmet>
 
       <div className="home-sections">
@@ -231,7 +254,7 @@ export default function WorkProjectPage() {
 
             <motion.div className="project-case-hero" variants={revealItem}>
               <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(project.hero)}>
-                <CaseMedia media={project.hero} alt={projectTitle} />
+                <CaseMedia media={project.hero} alt={projectTitle} priority />
                 <span className="project-case-media-hint">{t('projectCase.openLarge')}</span>
               </button>
               <div className="project-case-hero-copy">

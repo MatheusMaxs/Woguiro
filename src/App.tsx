@@ -1,14 +1,15 @@
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { AnimatePresence, MotionConfig } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 
 import faviconUrl from '../assets/images/favicon.svg';
-import CustomCursor from '@/components/CustomCursor/CustomCursor';
 import SiteNav from '@/components/SiteNav';
 import HomePage from '@/pages/HomePage';
 import WorkProjectPage from '@/pages/WorkProjectPage';
 import WorksPage from '@/pages/WorksPage';
+
+const CustomCursor = lazy(() => import('@/components/CustomCursor/CustomCursor'));
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -78,7 +79,9 @@ export default function App() {
           <AnimatedRoutes />
         </BrowserRouter>
       </MotionConfig>
-      <CustomCursor />
+      <Suspense fallback={null}>
+        <CustomCursor />
+      </Suspense>
     </>
   );
 }

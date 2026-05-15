@@ -67,7 +67,7 @@ export default function LoadingScreen() {
         markLoadingSeen();
         setIsVisible(false);
       };
-      const failSafeTimeout = window.setTimeout(completeLoading, 4200);
+      const failSafeTimeout = window.setTimeout(completeLoading, 1500);
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const timeoutId = window.setTimeout(completeLoading, 220);

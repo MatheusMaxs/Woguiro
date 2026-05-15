@@ -7,20 +7,26 @@ import { Link } from 'react-router-dom';
 import { PROJECT_FILTERS, WORK_PROJECTS, type ProjectFilter, type ProjectMedia, type WorkProject } from '@/data/workProjects';
 
 const revealItem = {
-  hidden: { opacity: 0, y: 22, filter: 'blur(8px)' },
-  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0 },
 };
 
-function MediaPreview({ media }: { media: ProjectMedia }) {
+function MediaPreview({ media, priority = false }: { media: ProjectMedia; priority?: boolean }) {
   const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
 
   if (media.mediaKind === 'video') {
     return (
-      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload="auto" draggable={false} style={style} />
+      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload={priority ? 'auto' : 'none'} draggable={false} style={style} />
     );
   }
 
-  return <img src={media.src} alt="" loading="lazy" draggable={false} style={style} />;
+  return (
+    <picture>
+      {media.srcAvif && <source srcSet={media.srcAvif} type="image/avif" />}
+      <source srcSet={media.src} type="image/webp" />
+      <img src={media.src} alt="" loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
+    </picture>
+  );
 }
 
 function ProjectMosaic({ project }: { project: WorkProject }) {
@@ -37,7 +43,7 @@ function ProjectMosaic({ project }: { project: WorkProject }) {
     >
       {previewMedia.map((work, index) => (
         <span key={`${project.slug}-${work.slug}-${index}`} className={`works-project-mosaic-item works-project-mosaic-item--${index + 1}`}>
-          <MediaPreview media={work} />
+          <MediaPreview media={work} priority={index === 0} />
           <span className="works-project-image-overlay">
             <span>{t(`portfolioMedia.${work.slug}.title`, { defaultValue: work.title })}</span>
             <span>{t(`portfolioProjects.${project.slug}.category`, { defaultValue: project.category })}</span>
@@ -111,16 +117,26 @@ export default function WorksPage() {
     <motion.main
       className="home-page works-page"
       id="main-content"
-      initial={{ opacity: 0, y: 28, filter: 'blur(10px)' }}
-      animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-      exit={{ opacity: 0, y: -22, filter: 'blur(8px)' }}
+      initial={{ opacity: 0, y: 28 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -22 }}
       transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-      style={{ willChange: 'opacity, transform, filter' }}
+      style={{ willChange: 'opacity, transform' }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
         <title>{t('worksPage.title')}</title>
         <meta name="description" content={t('works.description')} />
+        <link rel="canonical" href="https://www.woguiro.com/works" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.woguiro.com/works" />
+        <meta property="og:title" content={t('worksPage.title')} />
+        <meta property="og:description" content={t('works.description')} />
+        <meta property="og:image" content="https://www.woguiro.com/site-preview.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t('worksPage.title')} />
+        <meta name="twitter:description" content={t('works.description')} />
+        <meta name="twitter:image" content="https://www.woguiro.com/site-preview.png" />
       </Helmet>
 
       <div className="home-sections">

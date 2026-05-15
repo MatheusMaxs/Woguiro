@@ -5,6 +5,33 @@
 @import './loading.css';
 @import './home.css';
 
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: optional;
+  src: url('/fonts/Inter.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: optional;
+  src: url('/fonts/JetBrainsMono.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src: url('/fonts/JetBrainsMono-500.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: dark;
   --bg-primary: #0a0a0a;
@@ -73,6 +100,13 @@ a {
     transform var(--motion-normal) var(--ease-out);
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
+  will-change: transform, opacity;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 3px;
 }
 
 button {
@@ -124,4 +158,36 @@ body.is-scroll-locked {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(54px) scale(0.975) rotateX(4deg);
+  filter: blur(12px);
+  transition:
+    opacity 1.18s var(--ease-out),
+    transform 1.18s var(--ease-out),
+    filter 1.18s var(--ease-out);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+  filter: blur(0);
+}
+
+[data-reveal-item] {
+  opacity: 0;
+  transform: translateY(44px) scale(0.975) rotateX(3deg);
+  filter: blur(10px);
+  transition:
+    opacity 1.05s var(--ease-out) var(--reveal-delay, 0s),
+    transform 1.05s var(--ease-out) var(--reveal-delay, 0s),
+    filter 1.05s var(--ease-out) var(--reveal-delay, 0s);
+}
+
+[data-reveal-item].is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotateX(0);
+  filter: blur(0);
 }

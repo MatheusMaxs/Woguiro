@@ -37,6 +37,7 @@ export interface ProjectMedia {
   subtitle: string;
   description: string;
   src: string;
+  srcAvif?: string;
   poster?: string;
   mediaKind: 'image' | 'video';
   objectPosition?: string;
@@ -96,12 +97,14 @@ const photo = (
   description: string,
   src: string,
   objectPosition?: string,
+  srcAvif?: string,
 ): ProjectMedia => ({
   slug,
   title,
   subtitle,
   description,
   src,
+  srcAvif,
   mediaKind: 'image',
   objectPosition,
 });

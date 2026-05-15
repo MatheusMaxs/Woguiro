@@ -1,71 +1,43 @@
-import { RefObject } from 'react';
-import gsap from 'gsap';
-import ScrollTrigger from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
+import { RefObject, useEffect } from 'react';
 
 export function useScrollReveal(containerRef: RefObject<HTMLElement>) {
-  useGSAP(
-    () => {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        gsap.set('[data-reveal], [data-reveal-item]', { clearProps: 'all', filter: 'none', opacity: 1 });
-        return;
-      }
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-      const singles = gsap.utils.toArray<HTMLElement>('[data-reveal]');
-      const groups = gsap.utils.toArray<HTMLElement>('[data-reveal-group]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      singles.forEach((element) => {
-        gsap.from(element, {
-          opacity: 0,
-          y: 54,
-          scale: 0.975,
-          rotateX: 4,
-          transformOrigin: '50% 70%',
-          filter: 'blur(12px)',
-          duration: 1.18,
-          ease: 'power4.out',
-          clearProps: 'filter,opacity,transform',
-          scrollTrigger: {
-            trigger: element,
-            start: 'top 84%',
-            once: true,
-          },
+    if (reducedMotion) {
+      const singles = container.querySelectorAll<HTMLElement>('[data-reveal], [data-reveal-item]');
+      singles.forEach((el) => el.style.removeProperty('opacity'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
         });
+      },
+      { rootMargin: '0px 0px -100px 0px', threshold: 0.1 },
+    );
+
+    const singles = container.querySelectorAll<HTMLElement>('[data-reveal]');
+    const groups = container.querySelectorAll<HTMLElement>('[data-reveal-group]');
+
+    singles.forEach((el) => observer.observe(el));
+
+    groups.forEach((group) => {
+      const items = group.querySelectorAll<HTMLElement>('[data-reveal-item]');
+      items.forEach((el, index) => {
+        (el as HTMLElement).style.setProperty('--reveal-delay', `${index * 0.075}s`);
+        observer.observe(el);
       });
+    });
 
-      groups.forEach((group) => {
-        const items = group.querySelectorAll<HTMLElement>('[data-reveal-item]');
-
-        if (!items.length) {
-          return;
-        }
-
-        gsap.from(items, {
-          opacity: 0,
-          y: 44,
-          scale: 0.975,
-          rotateX: 3,
-          transformOrigin: '50% 70%',
-          filter: 'blur(10px)',
-          duration: 1.05,
-          stagger: 0.075,
-          ease: 'power4.out',
-          clearProps: 'filter,opacity,transform',
-          scrollTrigger: {
-            trigger: group,
-            start: 'top 82%',
-            once: true,
-          },
-        });
-      });
-
-      const refresh = () => ScrollTrigger.refresh();
-      window.addEventListener('load', refresh, { once: true });
-
-      return () => window.removeEventListener('load', refresh);
-    },
-    { scope: containerRef },
-  );
+    return () => observer.disconnect();
+  }, [containerRef]);
 }
