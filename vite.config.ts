@@ -50,14 +50,31 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,woff2,svg,ico}'],
         runtimeCaching: [
           {
-            urlPattern: /\.(?:webp|png|jpg|jpeg|avif|mp4)$/,
+            urlPattern: /\.(?:webp|png|jpg|jpeg|avif)$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'image-cache',
+              expiration: { maxEntries: 150, maxAgeSeconds: 60 * 24 * 60 * 60 },
+            },
+          },
+          {
+            urlPattern: /\.(?:mp4)$/,
             handler: 'StaleWhileRevalidate',
             options: {
-              cacheName: 'media-cache',
-              expiration: { maxEntries: 100, maxAgeSeconds: 30 * 24 * 60 * 60 },
+              cacheName: 'video-cache',
+              expiration: { maxEntries: 30, maxAgeSeconds: 30 * 24 * 60 * 60 },
+            },
+          },
+          {
+            urlPattern: /\/fonts\/.*\.woff2$/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'font-cache',
+              expiration: { maxEntries: 20, maxAgeSeconds: 60 * 24 * 60 * 60 },
             },
           },
         ],
+        navigationPreload: true,
       },
     }),
   ],
