@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link, useParams } from 'react-router-dom';
 
 import { WORK_PROJECTS, type ProjectMedia, type WorkProject } from '@/data/workProjects';
-
-const revealItem = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0 },
-};
+import { getImageSrcSet, getVideoSources } from '@/utils/responsiveImage';
 
 function CaseMedia({
   media,
@@ -28,9 +23,10 @@ function CaseMedia({
   const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
 
   if (media.mediaKind === 'video') {
+    const videoSources = getVideoSources(media.slug);
+
     return (
       <video
-        src={media.src}
         poster={media.poster}
         muted={!controls}
         loop={!controls}
@@ -42,15 +38,21 @@ function CaseMedia({
         preload={priority ? 'auto' : 'none'}
         draggable={false}
         style={style}
-      />
+      >
+        {videoSources?.['480p'] && <source src={videoSources['480p']} type="video/mp4" media="(max-width: 719px)" />}
+        {videoSources?.['720p'] && <source src={videoSources['720p']} type="video/mp4" media="(min-width: 720px)" />}
+        <source src={media.src} type="video/mp4" />
+      </video>
     );
   }
 
+  const srcSet = getImageSrcSet(media.slug);
+
   return (
     <picture>
-      {media.srcAvif && <source srcSet={media.srcAvif} type="image/avif" />}
-      <source srcSet={media.src} type="image/webp" />
-      <img src={media.src} alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
+      <source srcSet={srcSet?.avif ?? media.srcAvif ?? media.src} type="image/avif" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw" />
+      <source srcSet={srcSet?.webp ?? media.src} type="image/webp" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw" />
+      <img src={media.src} srcSet={srcSet?.webp ?? undefined} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 100vw" alt={alt} loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
     </picture>
   );
 }
@@ -84,24 +86,9 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
   }
 
   return createPortal(
-    <motion.div
-      className="media-lightbox"
-      role="dialog"
-      aria-modal="true"
-      aria-label={mediaTitle}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
-    >
+    <div className="media-lightbox media-lightbox-enter" role="dialog" aria-modal="true" aria-label={mediaTitle}>
       <button type="button" className="media-lightbox-backdrop" aria-label={t('projectCase.closeMedia')} onClick={onClose} />
-      <motion.div
-        className="media-lightbox-panel"
-        initial={{ opacity: 0, y: 28, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 18, scale: 0.98 }}
-        transition={{ duration: 0.34, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="media-lightbox-panel media-lightbox-panel-enter">
         <button type="button" className="media-lightbox-close" data-cursor="link" onClick={onClose}>
           {t('projectCase.close')}
         </button>
@@ -112,8 +99,8 @@ function MediaLightbox({ media, onClose }: { media: ProjectMedia | null; onClose
           <span>{media.mediaKind === 'video' ? t('projectCase.videoWithSound') : t('projectCase.enlargedImage')}</span>
           <strong>{mediaTitle}</strong>
         </div>
-      </motion.div>
-    </motion.div>,
+      </div>
+    </div>,
     document.body
   );
 }
@@ -123,13 +110,9 @@ function ProjectNotFound() {
   const { projectSlug } = useParams();
 
   return (
-    <motion.main
-      className="home-page works-page project-case-page"
+    <main
+      className="home-page works-page project-case-page page-enter"
       id="main-content"
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -22 }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
@@ -152,7 +135,7 @@ function ProjectNotFound() {
           </div>
         </section>
       </div>
-    </motion.main>
+    </main>
   );
 }
 
@@ -201,14 +184,9 @@ export default function WorkProjectPage() {
   const nextProjectTitle = t(`portfolioProjects.${nextProject.slug}.title`, { defaultValue: nextProject.title });
 
   return (
-    <motion.main
-      className="home-page works-page project-case-page"
+    <main
+      className="home-page works-page project-case-page page-enter"
       id="main-content"
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -22 }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-      style={{ willChange: 'opacity, transform' }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
@@ -228,31 +206,26 @@ export default function WorkProjectPage() {
       </Helmet>
 
       <div className="home-sections">
-        <motion.section
-          className="home-section project-case-section"
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.12 } } }}
-        >
+        <section className="home-section project-case-section">
           <div className="section-shell project-case-shell" data-project-slug={project.slug}>
             <div className="section-ghost" aria-hidden="true">
               {t('projectCase.ghost')}
             </div>
 
-            <motion.div className="section-meta-row" variants={revealItem}>
+            <div className="section-meta-row stagger-item" style={{ '--item-index': 0 } as React.CSSProperties}>
               <span>{t('projectCase.caseStudy')}</span>
               <span>{projectCategory}</span>
               <span>{projectDate}</span>
-            </motion.div>
+            </div>
 
-            <motion.div className="project-case-topbar" variants={revealItem}>
+            <div className="project-case-topbar stagger-item" style={{ '--item-index': 1 } as React.CSSProperties}>
               <Link to="/works" className="ghost-button" data-cursor="link">
                 {t('projectCase.backToWorks')}
               </Link>
               <span>{t('projectCase.mediaCount', { count: project.images.length })}</span>
-            </motion.div>
+            </div>
 
-            <motion.div className="project-case-hero" variants={revealItem}>
+            <div className="project-case-hero stagger-item" style={{ '--item-index': 2 } as React.CSSProperties}>
               <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(project.hero)}>
                 <CaseMedia media={project.hero} alt={projectTitle} priority />
                 <span className="project-case-media-hint">{t('projectCase.openLarge')}</span>
@@ -262,13 +235,13 @@ export default function WorkProjectPage() {
                 <h1>{projectTitle}</h1>
                 <span>{projectSubtitle}</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div variants={revealItem}>
+            <div className="stagger-item" style={{ '--item-index': 3 } as React.CSSProperties}>
               <ProjectMeta project={project} />
-            </motion.div>
+            </div>
 
-            <motion.div className="project-case-story-grid" variants={revealItem}>
+            <div className="project-case-story-grid stagger-item" style={{ '--item-index': 4 } as React.CSSProperties}>
               <div className="project-case-story-copy">
                 <p className="section-kicker">{t('projectCase.description')}</p>
                 <h2>{projectSubtitle}</h2>
@@ -284,10 +257,10 @@ export default function WorkProjectPage() {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </div>
 
             {secondaryImage ? (
-              <motion.div className="project-case-editorial" variants={revealItem}>
+              <div className="project-case-editorial stagger-item" style={{ '--item-index': 5 } as React.CSSProperties}>
                 <div className="project-case-editorial-image">
                   <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(secondaryImage)}>
                     <CaseMedia media={secondaryImage} alt="" />
@@ -298,10 +271,10 @@ export default function WorkProjectPage() {
                   <span>{t('projectCase.visualDirection')}</span>
                   <p>{t('projectCase.visualDirectionBody')}</p>
                 </div>
-              </motion.div>
+              </div>
             ) : null}
 
-            <motion.div className="project-case-gallery" variants={revealItem}>
+            <div className="project-case-gallery stagger-item" style={{ '--item-index': 6 } as React.CSSProperties}>
               {project.images.map((work, index) => (
                 <figure key={work.slug} className={`project-case-gallery-item project-case-gallery-item--${index + 1}`}>
                   <button type="button" className="project-case-media-button" data-cursor="view" onClick={() => setActiveMedia(work)}>
@@ -314,20 +287,20 @@ export default function WorkProjectPage() {
                   </figcaption>
                 </figure>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.nav className="project-case-nav" variants={revealItem} aria-label={t('projectCase.navLabel')}>
+            <nav className="project-case-nav stagger-item" style={{ '--item-index': 7 } as React.CSSProperties} aria-label={t('projectCase.navLabel')}>
               <Link to={`/works/${previousProject.slug}`} className="ghost-button" data-cursor="link">
                 ← {previousProjectTitle}
               </Link>
               <Link to={`/works/${nextProject.slug}`} className="primary-button" data-cursor="link">
                 {nextProjectTitle} →
               </Link>
-            </motion.nav>
+            </nav>
           </div>
-        </motion.section>
+        </section>
       </div>
       <MediaLightbox media={activeMedia} onClose={() => setActiveMedia(null)} />
-    </motion.main>
+    </main>
   );
 }

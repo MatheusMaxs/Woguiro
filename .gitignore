@@ -4,3 +4,5 @@ dist/
 vite.config.js
 vite.config.d.ts
 .env*
+assets/images-optimized/
+assets/images-e-videos/port 2026/

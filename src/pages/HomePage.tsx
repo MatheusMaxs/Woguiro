@@ -1,19 +1,18 @@
-import { lazy, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { lazy, Suspense, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-import AboutPreview from '@/components/AboutPreview/AboutPreview';
 import Hero from '@/components/Hero/Hero';
-import ContactSection from '@/components/ContactSection/ContactSection';
 import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
-import PartnershipsSection from '@/components/PartnershipsSection/PartnershipsSection';
-import WorksPreview from '@/components/WorksPreview/WorksPreview';
 import { type WorkFilter } from '@/data/homeContent';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import type { HomeNavigate } from '@/types/home';
 
 const FloatingAtmosphere = lazy(() => import('@/components/FloatingAtmosphere/FloatingAtmosphere'));
+const WorksPreview = lazy(() => import('@/components/WorksPreview/WorksPreview'));
+const AboutPreview = lazy(() => import('@/components/AboutPreview/AboutPreview'));
+const PartnershipsSection = lazy(() => import('@/components/PartnershipsSection/PartnershipsSection'));
+const ContactSection = lazy(() => import('@/components/ContactSection/ContactSection'));
 
 export default function HomePage() {
   const { t, i18n } = useTranslation();
@@ -48,15 +47,10 @@ export default function HomePage() {
   };
 
   return (
-    <motion.main
+    <main
       ref={mainRef}
-      className="home-page"
+      className="home-page page-enter"
       id="main-content"
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -22 }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-      style={{ willChange: 'opacity, transform' }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
@@ -79,15 +73,17 @@ export default function HomePage() {
 
       <div className="home-sections">
         <FloatingAtmosphere />
-        <WorksPreview
-          activeFilter={activeFilter}
-          archiveOpen={archiveOpen}
-          onFilterChange={setActiveFilter}
-        />
-        <AboutPreview expanded={aboutExpanded} onToggleExpanded={() => setAboutExpanded((current) => !current)} />
-        <PartnershipsSection />
-        <ContactSection />
+        <Suspense fallback={null}>
+          <WorksPreview
+            activeFilter={activeFilter}
+            archiveOpen={archiveOpen}
+            onFilterChange={setActiveFilter}
+          />
+          <AboutPreview expanded={aboutExpanded} onToggleExpanded={() => setAboutExpanded((current) => !current)} />
+          <PartnershipsSection />
+          <ContactSection />
+        </Suspense>
       </div>
-    </motion.main>
+    </main>
   );
 }

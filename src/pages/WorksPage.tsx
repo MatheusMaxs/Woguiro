@@ -1,30 +1,33 @@
 import { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import { PROJECT_FILTERS, WORK_PROJECTS, type ProjectFilter, type ProjectMedia, type WorkProject } from '@/data/workProjects';
-
-const revealItem = {
-  hidden: { opacity: 0, y: 22 },
-  visible: { opacity: 1, y: 0 },
-};
+import { getImageSrcSet, getVideoSources } from '@/utils/responsiveImage';
 
 function MediaPreview({ media, priority = false }: { media: ProjectMedia; priority?: boolean }) {
   const style = media.objectPosition ? { objectPosition: media.objectPosition } : undefined;
 
   if (media.mediaKind === 'video') {
+    const videoSources = getVideoSources(media.slug);
+
     return (
-      <video src={media.src} poster={media.poster} muted loop playsInline autoPlay preload={priority ? 'auto' : 'none'} draggable={false} style={style} />
+      <video poster={media.poster} muted loop playsInline autoPlay preload={priority ? 'auto' : 'none'} draggable={false} style={style}>
+        {videoSources?.['480p'] && <source src={videoSources['480p']} type="video/mp4" media="(max-width: 719px)" />}
+        {videoSources?.['720p'] && <source src={videoSources['720p']} type="video/mp4" media="(min-width: 720px)" />}
+        <source src={media.src} type="video/mp4" />
+      </video>
     );
   }
 
+  const srcSet = getImageSrcSet(media.slug);
+
   return (
     <picture>
-      {media.srcAvif && <source srcSet={media.srcAvif} type="image/avif" />}
-      <source srcSet={media.src} type="image/webp" />
-      <img src={media.src} alt="" loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
+      <source srcSet={srcSet?.avif ?? media.srcAvif ?? media.src} type="image/avif" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+      <source srcSet={srcSet?.webp ?? media.src} type="image/webp" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" />
+      <img src={media.src} srcSet={srcSet?.webp ?? undefined} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" alt="" loading={priority ? 'eager' : 'lazy'} fetchPriority={priority ? 'high' : 'low'} draggable={false} style={style} />
     </picture>
   );
 }
@@ -65,10 +68,9 @@ function ProjectCard({ project, index }: { project: WorkProject; index: number }
   );
 
   return (
-    <motion.article
+    <article
       className="works-project-card"
-      variants={revealItem}
-      transition={{ duration: 0.42, delay: index * 0.04, ease: [0.16, 1, 0.3, 1] }}
+      style={{ animationDelay: `${index * 0.04}s` }}
     >
       <Link
         to={`/works/${project.slug}`}
@@ -98,7 +100,7 @@ function ProjectCard({ project, index }: { project: WorkProject; index: number }
       </div>
 
       <ProjectMosaic project={project} />
-    </motion.article>
+    </article>
   );
 }
 
@@ -114,14 +116,9 @@ export default function WorksPage() {
   );
 
   return (
-    <motion.main
-      className="home-page works-page"
+    <main
+      className="home-page works-page page-enter"
       id="main-content"
-      initial={{ opacity: 0, y: 28 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -22 }}
-      transition={{ duration: 0.62, ease: [0.16, 1, 0.3, 1] }}
-      style={{ willChange: 'opacity, transform' }}
     >
       <Helmet>
         <html lang={i18n.resolvedLanguage ?? 'en'} dir={i18n.resolvedLanguage === 'ar' ? 'rtl' : 'ltr'} />
@@ -140,24 +137,19 @@ export default function WorksPage() {
       </Helmet>
 
       <div className="home-sections">
-        <motion.section
-          className="home-section works-page-section"
-          initial="hidden"
-          animate="visible"
-          variants={{ visible: { transition: { staggerChildren: 0.08, delayChildren: 0.14 } } }}
-        >
+        <section className="home-section works-page-section">
           <div className="section-shell works-shell works-projects-shell">
             <div className="section-ghost" aria-hidden="true">
               {t('works.ghost')}
             </div>
 
-            <motion.div className="section-meta-row" variants={revealItem}>
+            <div className="section-meta-row stagger-item" style={{ '--item-index': 0 } as React.CSSProperties}>
               <span>{t('works.viewAll')}</span>
               <span>{t('works.meta')}</span>
               <span>{t('worksPage.projectCount', { count: filteredProjects.length })}</span>
-            </motion.div>
+            </div>
 
-            <motion.div className="works-heading-grid" variants={revealItem}>
+            <div className="works-heading-grid stagger-item" style={{ '--item-index': 1 } as React.CSSProperties}>
               <div className="section-heading-block">
                 <p className="section-kicker">{t('worksPage.kicker')}</p>
                 <h1 className="section-title section-title--works">{t('worksPage.heading')}</h1>
@@ -184,9 +176,9 @@ export default function WorksPage() {
                   {t('nav.portfolio')}
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div className="works-project-list" variants={revealItem}>
+            <div className="works-project-list stagger-item" style={{ '--item-index': 2 } as React.CSSProperties}>
               {filteredProjects.length > 0 ? (
                 filteredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)
               ) : (
@@ -195,10 +187,10 @@ export default function WorksPage() {
                   <p>{t('worksPage.emptyBody')}</p>
                 </div>
               )}
-            </motion.div>
+            </div>
           </div>
-        </motion.section>
+        </section>
       </div>
-    </motion.main>
+    </main>
   );
 }

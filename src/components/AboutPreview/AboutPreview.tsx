@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -120,18 +119,7 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
                 const statValue = stat.labelKey === 'aboutPreview.stats.views' ? youtubeViews : stat.value;
                 const statContent = (
                   <>
-                    <AnimatePresence mode="wait" initial={false}>
-                      <motion.span
-                        key={statValue}
-                        className="about-stat-value"
-                        initial={{ opacity: 0, y: 8, filter: 'blur(5px)' }}
-                        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-                        exit={{ opacity: 0, y: -8, filter: 'blur(5px)' }}
-                        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        {statValue}
-                      </motion.span>
-                    </AnimatePresence>
+                    <span className="about-stat-value">{statValue}</span>
                     <span className="about-stat-label">{t(stat.labelKey)}</span>
                   </>
                 );
@@ -182,53 +170,42 @@ export default function AboutPreview({ expanded, onToggleExpanded }: AboutPrevie
           </div>
         </div>
 
-        <AnimatePresence initial={false}>
-          {expanded ? (
-            <motion.div
-              key="about-expanded"
-              className="about-expanded-grid"
-              initial={{ opacity: 0, height: 0, y: 18 }}
-              animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{ opacity: 0, height: 0, y: -16 }}
-              transition={{ duration: 0.48, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="about-panel about-panel--disciplines">
-                <div className="about-panel-head">
-                  <span>{t('aboutPreview.disciplines')}</span>
-                  <span>{DISCIPLINE_HIGHLIGHTS.length}</span>
-                </div>
+        <div className={`about-expanded-grid${expanded ? ' is-expanded' : ''}`}>
+          <div className="about-panel about-panel--disciplines">
+            <div className="about-panel-head">
+              <span>{t('aboutPreview.disciplines')}</span>
+              <span>{DISCIPLINE_HIGHLIGHTS.length}</span>
+            </div>
 
-                <div className="about-discipline-grid">
-                  {DISCIPLINE_HIGHLIGHTS.map((discipline, index) => (
-                    <div key={discipline.labelKey} className="about-discipline-card">
-                      <strong>{t(discipline.labelKey)}</strong>
-                      <p>{t(`aboutPreview.disciplinesList.${index}`, { defaultValue: discipline.description })}</p>
-                    </div>
-                  ))}
+            <div className="about-discipline-grid">
+              {DISCIPLINE_HIGHLIGHTS.map((discipline, index) => (
+                <div key={discipline.labelKey} className="about-discipline-card">
+                  <strong>{t(discipline.labelKey)}</strong>
+                  <p>{t(`aboutPreview.disciplinesList.${index}`, { defaultValue: discipline.description })}</p>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
 
-              <div className="about-panel about-panel--setup">
-                <div className="about-panel-head">
-                  <span>{t('aboutPreview.specs')}</span>
-                  <span>{WORKING_LANGUAGES.join(' / ')}</span>
-                </div>
+          <div className="about-panel about-panel--setup">
+            <div className="about-panel-head">
+              <span>{t('aboutPreview.specs')}</span>
+              <span>{WORKING_LANGUAGES.join(' / ')}</span>
+            </div>
 
-                <div className="about-full-specs-grid">
-                  {TECH_HIGHLIGHTS.map((item) => (
-                    <div
-                      key={item.id}
-                      className={`about-spec-card about-spec-card--dense ${TECH_GROUP_CLASS_BY_ID[item.id] ?? ''}`.trim()}
-                    >
-                      <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
-                      <strong>{item.value}</strong>
-                    </div>
-                  ))}
+            <div className="about-full-specs-grid">
+              {TECH_HIGHLIGHTS.map((item) => (
+                <div
+                  key={item.id}
+                  className={`about-spec-card about-spec-card--dense ${TECH_GROUP_CLASS_BY_ID[item.id] ?? ''}`.trim()}
+                >
+                  <span>{t(`aboutPreview.tech.${item.label.toLowerCase()}`, { defaultValue: item.label })}</span>
+                  <strong>{item.value}</strong>
                 </div>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

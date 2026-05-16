@@ -73,9 +73,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           framer: ['framer-motion'],
-          gsap: ['gsap', '@gsap/react'],
+          gsap: ['gsap'],
           react: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
-          i18n: ['i18next', 'react-i18next'],
           three: ['three', '@react-three/fiber', '@react-three/drei'],
         },
       },

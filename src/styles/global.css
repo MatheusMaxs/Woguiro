@@ -160,6 +160,97 @@ body.is-scroll-locked {
   }
 }
 
+.page-enter {
+  animation: pageEnter 0.62s var(--ease-out) both;
+}
+
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.stagger-item {
+  animation: staggerItem 0.42s calc(0.12s + var(--item-index, 0) * 0.08s) both var(--ease-out);
+}
+
+@keyframes staggerItem {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.media-lightbox-enter {
+  animation: lightboxFade 0.24s var(--ease-out) both;
+}
+
+@keyframes lightboxFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.media-lightbox-panel-enter {
+  animation: lightboxPanel 0.34s var(--ease-out) both;
+}
+
+@keyframes lightboxPanel {
+  from { opacity: 0; transform: translateY(28px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.lang-menu {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.96);
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
+  pointer-events: none;
+}
+
+.is-open .lang-menu {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.lang-option {
+  opacity: 0;
+  transform: translateX(8px);
+  transition:
+    opacity 0.24s var(--ease-out),
+    transform 0.24s var(--ease-out);
+  transition-delay: calc(0.04s + var(--lang-index, 0) * 0.035s);
+}
+
+.is-open .lang-option {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.lang-trigger {
+  transition: transform 0.22s var(--ease-out);
+}
+
+.lang-trigger:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.about-expanded-grid {
+  display: grid;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition:
+    max-height 0.48s var(--ease-out),
+    opacity 0.48s var(--ease-out),
+    margin 0.48s var(--ease-out);
+  margin-top: 0;
+}
+
+.about-expanded-grid.is-expanded {
+  max-height: 2000px;
+  opacity: 1;
+  margin-top: 3rem;
+}
+
 [data-reveal] {
   opacity: 0;
   transform: translateY(54px) scale(0.975) rotateX(4deg);
